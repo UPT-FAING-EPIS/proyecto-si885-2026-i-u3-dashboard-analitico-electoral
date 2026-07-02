@@ -1,0 +1,40 @@
+table 'Selector Candidato A'
+	lineageTag: a25aa846-bda1-477d-8c43-a3cc0ffb3654
+
+	column IdCandidatoWeb
+		lineageTag: 094c4cf7-b2a9-4825-8874-2a68a9139a26
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [IdCandidatoWeb]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Candidato
+		lineageTag: a6957b91-061e-4cff-8a26-b896116c63fc
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Candidato]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Partido
+		lineageTag: fe43bad1-20d1-4f2e-860a-95cb6dfcded2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Partido]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Selector Candidato A' = calculated
+		mode: import
+		source =
+				
+				SELECTCOLUMNS (
+				    Neocities_CandidatosPropuestas,
+				    "IdCandidatoWeb", Neocities_CandidatosPropuestas[IdCandidatoWeb],
+				    "Candidato", Neocities_CandidatosPropuestas[Candidato],
+				    "Partido", Neocities_CandidatosPropuestas[Partido]
+				)
+
+	annotation PBI_Id = 97807578-8641-4e54-9aa4-170645fc293a
+

@@ -1,0 +1,42 @@
+table SubVariable
+	lineageTag: 80c9de39-2df2-4e20-8adc-d8bd13e7f2eb
+
+	column IdSubVariable
+		dataType: int64
+		formatString: 0
+		lineageTag: f2c9b65f-4d46-43c9-a43f-9077ac60a537
+		summarizeBy: none
+		sourceColumn: IdSubVariable
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdVariable
+		dataType: int64
+		formatString: 0
+		lineageTag: 02eaa24b-1fb5-4a06-85fc-4d73cf77abd4
+		summarizeBy: none
+		sourceColumn: IdVariable
+
+		annotation SummarizationSetBy = Automatic
+
+	column Codigo
+		dataType: string
+		lineageTag: 7102068c-4cd7-4784-aee2-e74919bc0c2d
+		summarizeBy: none
+		sourceColumn: Codigo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition SubVariable = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("sql-candidatos2026-dev-w3-z0lh9d.database.windows.net", "Elecciones2026DW"),
+				    dbo_SubVariable = Origen{[Schema="dbo",Item="SubVariable"]}[Data]
+				in
+				    dbo_SubVariable
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

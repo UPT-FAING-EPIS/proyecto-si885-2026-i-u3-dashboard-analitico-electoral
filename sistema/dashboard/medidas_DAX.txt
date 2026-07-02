@@ -1,0 +1,327 @@
+================================================================
+MEDIDAS DAX — Monitor Electoral Perú 2026
+Tabla base: Candidato | Pegar en: Inicio > Nueva medida
+================================================================
+
+========== PÁGINA 1: RESUMEN ==========
+
+[Total Candidatos]
+Total Candidatos = COUNTROWS(Candidato)
+
+[Total Varones]
+Total Varones = COUNTROWS(FILTER(Candidato, Candidato[Sexo] = "Masculino"))
+
+[Total Damas]
+Total Damas = COUNTROWS(FILTER(Candidato, Candidato[Sexo] = "Femenino"))
+
+[% Varones]
+% Varones = DIVIDE([Total Varones], [Total Candidatos], 0)
+
+[% Damas]
+% Damas = DIVIDE([Total Damas], [Total Candidatos], 0)
+
+[Candidatos con Riesgo]
+Candidatos con Riesgo =
+CALCULATE(
+    COUNTROWS(ClasificacionLegalPenal),
+    ClasificacionLegalPenal[NivelPrincipal] >= 2
+)
+
+[% Con Riesgo]
+% Con Riesgo = DIVIDE([Candidatos con Riesgo], [Total Candidatos], 0)
+
+[Candidatos con Posgrado]
+Candidatos con Posgrado =
+CALCULATE(
+    DISTINCTCOUNT(Posgrado[IdCandidato]),
+    Posgrado[Concluido] = TRUE()
+)
+
+[% Con Posgrado]
+% Con Posgrado = DIVIDE([Candidatos con Posgrado], [Total Candidatos], 0)
+
+[Candidatos con TikTok]
+Candidatos con TikTok =
+CALCULATE(
+    COUNTROWS(CandidatoRedSocial),
+    CandidatoRedSocial[Tiene] = TRUE()
+)
+
+========== PÁGINA 2: INGRESOS Y PATRIMONIO ==========
+
+[Ingreso Promedio]
+Ingreso Promedio = AVERAGE(Ingresos[Total])
+
+[Ingreso Maximo]
+Ingreso Maximo = MAX(Ingresos[Total])
+
+[Ingreso Minimo]
+Ingreso Minimo = MIN(Ingresos[Total])
+
+[Patrimonio Total por Candidato]
+Patrimonio por Candidato =
+SUMX(
+    VALUES(Bien[IdCandidato]),
+    CALCULATE(SUM(Bien[ValorAutovaluo]))
+)
+
+[Patrimonio Promedio]
+Patrimonio Promedio =
+AVERAGEX(
+    VALUES(Bien[IdCandidato]),
+    CALCULATE(SUM(Bien[ValorAutovaluo]))
+)
+
+[Total Inmuebles]
+Total Inmuebles =
+CALCULATE(
+    COUNTROWS(Bien),
+    Bien[TipoBien] = "INMUEBLE"
+)
+
+[Total Vehiculos]
+Total Vehiculos =
+CALCULATE(
+    COUNTROWS(Bien),
+    Bien[TipoBien] = "MUEBLE"
+)
+
+[Valor Total Inmuebles]
+Valor Total Inmuebles =
+CALCULATE(
+    SUM(Bien[ValorAutovaluo]),
+    Bien[TipoBien] = "INMUEBLE"
+)
+
+[Valor Total Vehiculos]
+Valor Total Vehiculos =
+CALCULATE(
+    SUM(Bien[ValorAutovaluo]),
+    Bien[TipoBien] = "MUEBLE"
+)
+
+========== PÁGINA 3: DEMOGRAFÍA ==========
+
+[Edad Promedio Varones]
+Edad Promedio Varones =
+-- Nota: Si tienes columna FechaNacimiento, usa DATEDIFF
+-- Si tienes columna Edad directamente en la tabla usa:
+CALCULATE(AVERAGE(Candidato[Edad]), Candidato[Sexo] = "Masculino")
+
+[Edad Promedio Damas]
+Edad Promedio Damas =
+CALCULATE(AVERAGE(Candidato[Edad]), Candidato[Sexo] = "Femenino")
+
+[Candidatos Menores 50]
+Candidatos Menores 50 =
+COUNTROWS(FILTER(Candidato, Candidato[Edad] < 50))
+
+[Candidatos 50 a 59]
+Candidatos 50 a 59 =
+COUNTROWS(FILTER(Candidato, Candidato[Edad] >= 50 && Candidato[Edad] <= 59))
+
+[Candidatos 60 a 69]
+Candidatos 60 a 69 =
+COUNTROWS(FILTER(Candidato, Candidato[Edad] >= 60 && Candidato[Edad] <= 69))
+
+[Candidatos 70 mas]
+Candidatos 70 mas =
+COUNTROWS(FILTER(Candidato, Candidato[Edad] >= 70))
+
+[Varones con Posgrado]
+Varones con Posgrado =
+CALCULATE(
+    DISTINCTCOUNT(Posgrado[IdCandidato]),
+    Posgrado[Concluido] = TRUE(),
+    FILTER(Candidato, Candidato[Sexo] = "Masculino")
+)
+
+[Damas con Posgrado]
+Damas con Posgrado =
+CALCULATE(
+    DISTINCTCOUNT(Posgrado[IdCandidato]),
+    Posgrado[Concluido] = TRUE(),
+    FILTER(Candidato, Candidato[Sexo] = "Femenino")
+)
+
+========== PÁGINA 4: RIESGO LEGAL ==========
+
+[Riesgo Nivel Critico]
+Riesgo Nivel Critico =
+CALCULATE(
+    COUNTROWS(ClasificacionLegalPenal),
+    ClasificacionLegalPenal[NivelPrincipal] = 4
+        || ClasificacionLegalPenal[NivelPrincipal] = 5
+)
+
+[Riesgo Nivel Alto]
+Riesgo Nivel Alto =
+CALCULATE(
+    COUNTROWS(ClasificacionLegalPenal),
+    ClasificacionLegalPenal[NivelPrincipal] = 3
+)
+
+[Riesgo Nivel Medio]
+Riesgo Nivel Medio =
+CALCULATE(
+    COUNTROWS(ClasificacionLegalPenal),
+    ClasificacionLegalPenal[NivelPrincipal] = 2
+)
+
+[Riesgo Nivel Bajo]
+Riesgo Nivel Bajo =
+CALCULATE(
+    COUNTROWS(ClasificacionLegalPenal),
+    ClasificacionLegalPenal[NivelPrincipal] = 1
+)
+
+[Sin Riesgo]
+Sin Riesgo =
+CALCULATE(
+    COUNTROWS(ClasificacionLegalPenal),
+    ClasificacionLegalPenal[NivelPrincipal] = 0
+)
+
+[Con Sentencias]
+Con Sentencias = COUNTROWS(RelacionSentencias)
+
+[Varones con Riesgo]
+Varones con Riesgo =
+CALCULATE(
+    DISTINCTCOUNT(ClasificacionLegalPenal[IdCandidato]),
+    ClasificacionLegalPenal[NivelPrincipal] >= 2,
+    FILTER(Candidato, Candidato[Sexo] = "Masculino")
+)
+
+[Damas con Riesgo]
+Damas con Riesgo =
+CALCULATE(
+    DISTINCTCOUNT(ClasificacionLegalPenal[IdCandidato]),
+    ClasificacionLegalPenal[NivelPrincipal] >= 2,
+    FILTER(Candidato, Candidato[Sexo] = "Femenino")
+)
+
+========== PÁGINA 5: TIKTOK ==========
+
+[Total Seguidores TikTok]
+Total Seguidores TikTok =
+CALCULATE(
+    SUM(CandidatoRedSocial[Seguidores]),
+    CandidatoRedSocial[Tiene] = TRUE()
+)
+
+[Total Likes TikTok]
+Total Likes TikTok =
+CALCULATE(
+    SUM(CandidatoRedSocial[Likes]),
+    CandidatoRedSocial[Tiene] = TRUE()
+)
+
+[Total Videos TikTok]
+Total Videos TikTok =
+CALCULATE(
+    SUM(CandidatoRedSocial[CantidadVideos]),
+    CandidatoRedSocial[Tiene] = TRUE()
+)
+
+[Promedio Seguidores TikTok]
+Promedio Seguidores TikTok =
+CALCULATE(
+    AVERAGE(CandidatoRedSocial[Seguidores]),
+    CandidatoRedSocial[Tiene] = TRUE()
+)
+
+[Damas con TikTok]
+Damas con TikTok =
+CALCULATE(
+    COUNTROWS(CandidatoRedSocial),
+    CandidatoRedSocial[Tiene] = TRUE(),
+    FILTER(Candidato, Candidato[Sexo] = "Femenino")
+)
+
+[Varones con TikTok]
+Varones con TikTok =
+CALCULATE(
+    COUNTROWS(CandidatoRedSocial),
+    CandidatoRedSocial[Tiene] = TRUE(),
+    FILTER(Candidato, Candidato[Sexo] = "Masculino")
+)
+
+========== PÁGINA 6: CAMPAÑA ==========
+
+[Total Visitas]
+Total Visitas = COUNTROWS(VisitaCampaña)
+
+[Candidatos con Visitas]
+Candidatos con Visitas = DISTINCTCOUNT(VisitaCampaña[IdCandidato])
+
+[Total Regiones Visitadas]
+Total Regiones Visitadas =
+CALCULATE(
+    DISTINCTCOUNT(VisitaCampaña[NombreLugar]),
+    VisitaCampaña[TipoLugar] = "REGION"
+)
+
+[Total Provincias Visitadas]
+Total Provincias Visitadas =
+CALCULATE(
+    DISTINCTCOUNT(VisitaCampaña[NombreLugar]),
+    VisitaCampaña[TipoLugar] = "PROVINCIA"
+)
+
+[Total Distritos Visitados]
+Total Distritos Visitados =
+CALCULATE(
+    DISTINCTCOUNT(VisitaCampaña[NombreLugar]),
+    VisitaCampaña[TipoLugar] = "DISTRITO"
+)
+
+================================================================
+COLUMNAS CALCULADAS (agregar en la tabla Candidato)
+================================================================
+
+[Tiene Posgrado]
+Tiene Posgrado =
+IF(
+    CALCULATE(COUNTROWS(Posgrado), Posgrado[Concluido] = TRUE()) > 0,
+    "Con Posgrado",
+    "Sin Posgrado"
+)
+
+[Nivel Riesgo Texto]
+Nivel Riesgo Texto =
+VAR nivel = CALCULATE(MAX(ClasificacionLegalPenal[NivelPrincipal]))
+RETURN
+SWITCH(
+    TRUE(),
+    nivel >= 4, "Crítico",
+    nivel = 3,  "Alto",
+    nivel = 2,  "Medio",
+    nivel = 1,  "Bajo",
+    nivel = 0,  "Sin alerta",
+    "Sin clasificar"
+)
+
+[Rango Edad]
+Rango Edad =
+SWITCH(
+    TRUE(),
+    Candidato[Edad] < 50,              "Menor de 50",
+    Candidato[Edad] >= 50 && Candidato[Edad] <= 59, "50 a 59",
+    Candidato[Edad] >= 60 && Candidato[Edad] <= 69, "60 a 69",
+    Candidato[Edad] >= 70,             "70 o más",
+    "Sin dato"
+)
+
+================================================================
+NOTAS IMPORTANTES
+================================================================
+- Las medidas de Edad asumen que tienes una columna [Edad] en Candidato.
+  Si no existe, créala como columna calculada:
+  Edad = DATEDIFF(Candidato[FechaNacimiento], TODAY(), YEAR)
+  O agrégala manualmente desde la fuente SQL.
+
+- Formato recomendado para KPIs de porcentaje: Porcentaje, 1 decimal
+- Formato para ingresos/patrimonio: Moneda, sin decimales, símbolo S/
+- Formato para conteos: Número entero
+================================================================

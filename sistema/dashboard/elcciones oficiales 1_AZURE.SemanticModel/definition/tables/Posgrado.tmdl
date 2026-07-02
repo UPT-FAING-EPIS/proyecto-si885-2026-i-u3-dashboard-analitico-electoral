@@ -1,0 +1,112 @@
+table Posgrado
+	lineageTag: 4e533ff8-11d7-42e5-868c-c0bdd2ad707d
+
+	column IdPosgrado
+		dataType: int64
+		formatString: 0
+		lineageTag: abecabbc-c6a3-46a3-805f-93adc4790a27
+		summarizeBy: sum
+		sourceColumn: IdPosgrado
+
+		annotation SummarizationSetBy = Automatic
+
+	column CentroEstudio
+		dataType: string
+		lineageTag: 847e624b-cc69-4bc5-86bb-72872eaefe92
+		summarizeBy: none
+		sourceColumn: CentroEstudio
+
+		annotation SummarizationSetBy = Automatic
+
+	column Especialidad
+		dataType: string
+		lineageTag: 9dfe3d6c-8cb3-4468-bace-1360900d1f91
+		summarizeBy: none
+		sourceColumn: Especialidad
+
+		annotation SummarizationSetBy = Automatic
+
+	column Grado
+		dataType: string
+		lineageTag: 5e2a9d0b-dca2-44f8-a7ee-d8c0402d0c01
+		summarizeBy: none
+		sourceColumn: Grado
+
+		annotation SummarizationSetBy = Automatic
+
+	column Concluido
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7a78f2cc-199e-461b-82e5-16cea347c6de
+		summarizeBy: none
+		sourceColumn: Concluido
+
+		annotation SummarizationSetBy = Automatic
+
+	column AñoObtencion
+		dataType: double
+		formatString: 0
+		lineageTag: c37c8f95-24c8-4241-92eb-a6a52b25aff2
+		summarizeBy: sum
+		sourceColumn: AñoObtencion
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdCandidato
+		dataType: int64
+		formatString: 0
+		lineageTag: 1caf5fd9-f965-4be3-8164-e691195afe1e
+		summarizeBy: none
+		sourceColumn: IdCandidato
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nombre Grado' =
+			
+			VAR TextoLimpio = UPPER(TRIM('Posgrado'[Grado]))
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    'Posgrado'[IdPosgrado] = 43, "MAESTRÍA",
+			    CONTAINSSTRING(TextoLimpio, "DOCT"), "DOCTORADO",
+			    CONTAINSSTRING(TextoLimpio, "MAEST"), "MAESTRÍA",
+			    CONTAINSSTRING(TextoLimpio, "ESPECIALIZA"), "ESPECIALIZACION",
+			    ISBLANK('Posgrado'[Grado]) || 'Posgrado'[Grado] = "" || TextoLimpio = " ", "NO ESPECIFICADO",
+			    "OTRO"
+			)
+		lineageTag: d1461a76-6b10-4546-9310-4838c2c14f6a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Realizo Posgrado' = ```
+			
+			IF(
+			    COUNTROWS(
+			        FILTER(
+			            RELATEDTABLE('Posgrado'), 
+			            'Posgrado'[Concluido] = TRUE()
+			        )
+			    ) > 0, 
+			    "REALIZO POSGRADO", 
+			    "NO REGISTRA"
+			)
+			```
+		lineageTag: f99bb9b9-8494-4a98-8d51-3e7dbb7f67b1
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Posgrado = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("sql-candidatos2026-dev-w3-z0lh9d.database.windows.net", "Elecciones2026DW"),
+				    dbo_Posgrado = Origen{[Schema="dbo",Item="Posgrado"]}[Data]
+				in
+				    dbo_Posgrado
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

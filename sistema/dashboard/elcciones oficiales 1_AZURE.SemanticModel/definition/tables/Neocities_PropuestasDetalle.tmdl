@@ -1,0 +1,94 @@
+table Neocities_PropuestasDetalle
+	lineageTag: 6fb90df1-a6e9-406b-99bd-9e8ccdbe5f09
+
+	column IdCandidatoWeb
+		dataType: string
+		lineageTag: ae02b8e8-0365-48d5-a97b-f13b8d60d11b
+		summarizeBy: none
+		sourceColumn: IdCandidatoWeb
+
+		annotation SummarizationSetBy = Automatic
+
+	column Candidato
+		dataType: string
+		lineageTag: 73304635-b6bb-4b2e-ae8d-6e6261966f00
+		summarizeBy: none
+		sourceColumn: Candidato
+
+		annotation SummarizationSetBy = Automatic
+
+	column Partido
+		dataType: string
+		lineageTag: aa9b0bcd-c3dc-4d5f-847f-d9dc0f594254
+		summarizeBy: none
+		sourceColumn: Partido
+
+		annotation SummarizationSetBy = Automatic
+
+	column TemaCodigo
+		dataType: string
+		lineageTag: 3faab4b0-dff0-447e-b91a-f4d852a9e674
+		summarizeBy: none
+		sourceColumn: TemaCodigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tema
+		dataType: string
+		lineageTag: 70711546-0317-42b8-b401-4d24b52872bc
+		summarizeBy: none
+		sourceColumn: Tema
+
+		annotation SummarizationSetBy = Automatic
+
+	column PropuestaCorta
+		dataType: string
+		lineageTag: b03d1757-1eec-4f99-9574-29446d613d98
+		summarizeBy: none
+		sourceColumn: PropuestaCorta
+
+		annotation SummarizationSetBy = Automatic
+
+	column PropuestaDetalle
+		dataType: string
+		lineageTag: 77fbd69d-76fe-4e8b-8bbb-a687fa25cf8a
+		summarizeBy: none
+		sourceColumn: PropuestaDetalle
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fuentes
+		dataType: string
+		lineageTag: ca8ed547-2da1-45cd-9169-23577e017963
+		summarizeBy: none
+		sourceColumn: Fuentes
+
+		annotation SummarizationSetBy = Automatic
+
+	column CantidadFuentes
+		dataType: int64
+		formatString: 0
+		lineageTag: e581424f-48c6-4b96-9aac-3a2710ff642c
+		summarizeBy: sum
+		sourceColumn: CantidadFuentes
+
+		annotation SummarizationSetBy = Automatic
+
+	column FuenteDataset
+		dataType: string
+		lineageTag: 735d98fc-b71a-4c0f-a953-29d63c716ad8
+		summarizeBy: none
+		sourceColumn: FuenteDataset
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Neocities_PropuestasDetalle = m
+		mode: import
+		source =
+				let
+				  Origen = Csv.Document(File.Contents("C:\Users\DIEGO\Downloads\PROYECTO_SI885_2026-II-U2_DASHBOARDELECTORAL-main\data\Neocities_PropuestasDetalle.csv"), [Delimiter = ",", Columns = 10, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos", {{"IdCandidatoWeb", type text}, {"Candidato", type text}, {"Partido", type text}, {"TemaCodigo", type text}, {"Tema", type text}, {"PropuestaCorta", type text}, {"PropuestaDetalle", type text}, {"Fuentes", type text}, {"CantidadFuentes", Int64.Type}, {"FuenteDataset", type text}}, "es")
+				in
+				  #"Tipo de columna cambiado"
+

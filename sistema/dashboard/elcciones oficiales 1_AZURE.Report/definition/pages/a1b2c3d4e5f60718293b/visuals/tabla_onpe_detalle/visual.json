@@ -1,0 +1,158 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "tabla_onpe_detalle",
+  "position": {
+    "x": 28.161571516267649,
+    "y": 478.74671577655005,
+    "z": 7000,
+    "height": 241.38489871086557,
+    "width": 1185.8033149171272,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ONPE_GastosCampana"
+                    }
+                  },
+                  "Property": "Anexo"
+                }
+              },
+              "queryRef": "ONPE_GastosCampana.Anexo",
+              "nativeQueryRef": "Anexo"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ONPE_GastosCampana"
+                    }
+                  },
+                  "Property": "Concepto"
+                }
+              },
+              "queryRef": "ONPE_GastosCampana.Concepto",
+              "nativeQueryRef": "Concepto"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ONPE_GastosCampana"
+                    }
+                  },
+                  "Property": "Tipo"
+                }
+              },
+              "queryRef": "ONPE_GastosCampana.Tipo",
+              "nativeQueryRef": "Tipo"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ONPE_GastosCampana"
+                        }
+                      },
+                      "Property": "Monto"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(ONPE_GastosCampana.Monto)",
+              "nativeQueryRef": "Monto"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ONPE_GastosCampana"
+                    }
+                  },
+                  "Property": "FechaPresentacion"
+                }
+              },
+              "queryRef": "ONPE_GastosCampana.FechaPresentacion",
+              "nativeQueryRef": "FechaPresentacion"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "80D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "ONPE_GastosCampana.Anexo"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "620D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "ONPE_GastosCampana.Concepto"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Detalle de ingresos y gastos reportados'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

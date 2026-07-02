@@ -1,0 +1,67 @@
+table RTC_DetalleTrayectoriaPolitica
+	lineageTag: dca4186d-9301-4455-841d-54229aaba4d7
+
+	column Candidato
+		dataType: string
+		lineageTag: 21bf9004-8eec-4922-a418-7a943527ef59
+		summarizeBy: none
+		sourceColumn: Candidato
+
+		annotation SummarizationSetBy = Automatic
+
+	column Categoria
+		dataType: string
+		lineageTag: 7dc61725-2026-450e-9b0b-550921d382b5
+		summarizeBy: none
+		sourceColumn: Categoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: c2d946dc-f384-441b-bcb1-e35496b3079e
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Detalle
+		dataType: string
+		lineageTag: 14dc8e05-bb1a-41f5-afdb-b38709f3c52d
+		summarizeBy: none
+		sourceColumn: Detalle
+
+		annotation SummarizationSetBy = Automatic
+
+	column Electo
+		dataType: string
+		lineageTag: fb63bb35-8caa-4a06-82d2-3f5202ffae18
+		summarizeBy: none
+		sourceColumn: Electo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fuente
+		dataType: string
+		lineageTag: 62487e94-b8dd-4175-b7b0-551e6c48a6e6
+		summarizeBy: none
+		sourceColumn: Fuente
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RTC_DetalleTrayectoriaPolitica = m
+		mode: import
+		source =
+				let
+				  Origen = Csv.Document(File.Contents("C:\Users\DIEGO\Downloads\PROYECTO_SI885_2026-II-U2_DASHBOARDELECTORAL-main\data\RTC_ComparativaDetalle.csv"), [Delimiter = ",", Columns = 6, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(Origen, {{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}}, "es"),
+				  #"Encabezados promovidos" = Table.PromoteHeaders(#"Tipo de columna cambiado", [PromoteAllScalars=true]),
+				  #"Tipo cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos",{{"Candidato", type text}, {"Categoria", type text}, {"Item", type text}, {"Detalle", type text}, {"Electo", type text}, {"Fuente", type text}}),
+				  #"Filas filtradas" = Table.SelectRows(#"Tipo cambiado", each [Categoria] = "Trayectoria politica")
+				in
+				  #"Filas filtradas"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

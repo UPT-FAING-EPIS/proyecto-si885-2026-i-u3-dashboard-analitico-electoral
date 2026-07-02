@@ -1,0 +1,394 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap');
+
+:root {
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --bg-light: #f8fafc;
+  --bg-dark: #0f172a;
+  --text-light: #1e293b;
+  --text-dark: #f1f5f9;
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  background-image:
+    radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(147, 51, 234, 0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(147, 51, 234, 0.1) 0px, transparent 50%);
+  background-attachment: fixed;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Glassmorphism Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.dark .glass-card {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Candidate Card Specifics */
+.candidate-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.candidate-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.candidate-card:hover .candidate-name {
+  color: var(--primary);
+}
+
+/* Photo/Logo Transitions */
+.photo-wrap {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  border-radius: 8px;
+  /* Default: Logo shape (Square-ish) */
+  padding: 4px;
+  background: transparent;
+  /* Default: Transparent for logo */
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
+
+.dark .photo-wrap {
+  background: transparent;
+}
+
+/* Hover State: Show Photo (Rounded) */
+.candidate-card:hover .photo-wrap {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #e2e8f0, #ffffff);
+  /* Bg for photo */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 24px;
+  /* Rounded for photo */
+}
+
+.dark .candidate-card:hover .photo-wrap {
+  background: linear-gradient(135deg, #334155, #1e293b);
+}
+
+.photo-wrap img {
+  position: absolute;
+  inset: 4px;
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+  object-fit: cover;
+  border-radius: 16px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  background-color: transparent;
+}
+
+/* Logo: Visible by default */
+.photo-wrap .candidate-logo {
+  object-fit: contain;
+  padding: 0;
+  opacity: 1;
+  /* Visible initially */
+  transform: scale(1);
+  z-index: 20;
+  border-radius: 0;
+}
+
+/* Photo: Hidden by default */
+.photo-wrap .candidate-photo {
+  opacity: 0;
+  /* Hidden initially */
+  transform: scale(0.9);
+  z-index: 10;
+  background-color: transparent;
+  object-fit: cover;
+}
+
+/* Swap on Hover */
+.candidate-card:hover .photo-wrap .candidate-logo {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.candidate-card:hover .photo-wrap .candidate-photo {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Modal Styles */
+.modal-content {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.modal-section h3 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  color: var(--primary);
+  border-bottom: 2px solid rgba(59, 130, 246, 0.2);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+/* Modal Photo */
+.modal-photo-wrap {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, #3b82f6, #9333ea);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.modal-photo-wrap:hover {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+.modal-photo-wrap img {
+  position: absolute;
+  inset: 4px;
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+  border-radius: 50%;
+  background: white;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.modal-photo-wrap:hover img {
+  border-radius: 0;
+  background: transparent;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modal-photo-wrap .candidate-logo {
+  object-fit: contain;
+  padding: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 0;
+  background: transparent;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modal-photo-wrap:hover .candidate-photo {
+  opacity: 0;
+}
+
+.modal-photo-wrap:hover .candidate-logo {
+  opacity: 1;
+}
+
+/* Dark Mode Overrides */
+.dark body {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+.dark .modal-content {
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .text-gray-900 {
+  color: #f1f5f9 !important;
+}
+
+.dark .text-gray-700 {
+  color: #cbd5e1 !important;
+}
+
+.dark .text-gray-600 {
+  color: #94a3b8 !important;
+}
+
+.dark .text-gray-500 {
+  color: #64748b !important;
+}
+
+.dark .bg-white {
+  background-color: #1e293b !important;
+}
+
+.dark .bg-gray-50 {
+  background-color: #0f172a !important;
+}
+
+.dark .border-gray-200 {
+  border-color: #334155 !important;
+}
+
+.dark .border-gray-300 {
+  border-color: #475569 !important;
+}
+
+/* Timeline */
+#tl-body::before {
+  background: linear-gradient(to bottom, #3b82f6, #9333ea);
+  width: 3px;
+  border-radius: 3px;
+}
+
+/* Badge Congreso */
+.badge-congreso {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 80px !important;
+  height: 80px !important;
+  z-index: 30;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s ease;
+  border: none !important;
+}
+
+.candidate-card:hover .badge-congreso {
+  transform: rotate(10deg) scale(1.1);
+}
+
+/* Video Container */
+.video-responsive-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+  height: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: 4px solid rgba(255, 255, 255, 0.5);
+}
+
+.video-responsive-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.dark .video-responsive-container {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Theme Toggle */
+#theme-toggle {
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark #theme-toggle {
+  background: rgba(15, 23, 42, 0.5);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Modal Open Animation */
+.modal-open {
+  animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

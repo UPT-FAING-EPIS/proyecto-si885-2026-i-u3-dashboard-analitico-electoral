@@ -1,0 +1,95 @@
+table Ubicacion
+	lineageTag: c6f7c922-f9b7-49ba-9f6c-2b10ae740acb
+
+	column IdUbicacion
+		dataType: int64
+		formatString: 0
+		lineageTag: 8c8a5481-2403-4f16-bfdb-8f231d4407bc
+		summarizeBy: sum
+		sourceColumn: IdUbicacion
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo
+		dataType: string
+		lineageTag: 1f772b71-09d1-4554-8c2e-2d8fe40df2b4
+		summarizeBy: none
+		sourceColumn: Tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Departamento
+		dataType: string
+		lineageTag: 6170d5c4-1132-4005-b1c0-8dac34ad2e4b
+		summarizeBy: none
+		sourceColumn: Departamento
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Provincia
+		dataType: string
+		lineageTag: 5c6f1c8c-bd17-43aa-adce-f58ffb854ef9
+		summarizeBy: none
+		sourceColumn: Provincia
+
+		annotation SummarizationSetBy = Automatic
+
+	column Distrito
+		dataType: string
+		lineageTag: 153f4c5a-8954-4fe9-ae34-0e8366dd87af
+		summarizeBy: none
+		sourceColumn: Distrito
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdCandidato
+		dataType: int64
+		formatString: 0
+		lineageTag: 17c8dee6-46c9-4e17-85d4-0d00649a1411
+		summarizeBy: none
+		sourceColumn: IdCandidato
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Departamento Corregido' =
+			
+			
+			IF(
+			
+			    'Ubicacion'[Departamento] = "JUNIN",
+			
+			    "JUNÍN",
+			
+			    'Ubicacion'[Departamento]
+			
+			)
+		lineageTag: d05a3886-7db3-4537-96a3-c927bbbfa029
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Departamento Con Pais' = 'Ubicacion'[Departamento Corregido] & ", PERÚ"
+		lineageTag: cd375cde-a992-4ea8-a902-557d9051e461
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Ubicacion = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("sql-candidatos2026-dev-w3-z0lh9d.database.windows.net", "Elecciones2026DW"),
+				    dbo_Ubicacion = Origen{[Schema="dbo",Item="Ubicacion"]}[Data],
+				    #"Filas alternas quitadas" = Table.AlternateRows(dbo_Ubicacion,68,1,71),
+				    #"Filas alternas quitadas1" = Table.AlternateRows(#"Filas alternas quitadas",32,1,70)
+				in
+				    #"Filas alternas quitadas1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

@@ -1,0 +1,90 @@
+table ClasificacionLegalPenal
+	lineageTag: d1fedd1d-1e29-4567-b086-21bd4e4fca73
+
+	column IdClasificacion
+		dataType: int64
+		formatString: 0
+		lineageTag: eb1d8e03-8aae-4b14-9d7a-1deb2fc74df8
+		summarizeBy: none
+		sourceColumn: IdClasificacion
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdCandidato
+		dataType: int64
+		formatString: 0
+		lineageTag: f81e6d8e-7a38-4f28-b3fb-9f689e8a83e5
+		summarizeBy: none
+		sourceColumn: IdCandidato
+
+		annotation SummarizationSetBy = Automatic
+
+	column NivelPrincipal
+		dataType: string
+		lineageTag: 29474acc-5476-469d-8647-511645429889
+		summarizeBy: none
+		sourceColumn: NivelPrincipal
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubNivel
+		dataType: string
+		lineageTag: de6e74ab-b4d9-4aab-96a6-11c14453f474
+		summarizeBy: none
+		sourceColumn: SubNivel
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubSubNivel
+		dataType: string
+		lineageTag: 2e5586e7-bc4f-4891-b36e-81878ad1cda1
+		summarizeBy: none
+		sourceColumn: SubSubNivel
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodigoCompleto
+		dataType: string
+		lineageTag: 07519d22-3ede-4b94-ae1c-fddce31e9c23
+		summarizeBy: none
+		sourceColumn: CodigoCompleto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Justificacion
+		dataType: string
+		lineageTag: 378a3c4d-a53b-4f61-8fcb-4717e98d19bc
+		summarizeBy: none
+		sourceColumn: Justificacion
+
+		annotation SummarizationSetBy = Automatic
+
+	column FechaRegistro
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5ea7c4e0-37f2-4744-be13-7f4e51a0142f
+		summarizeBy: none
+		sourceColumn: FechaRegistro
+
+		variation Variación
+			isDefault
+			relationship: 37bcd194-1d47-4d23-a149-c368f4e42370
+			defaultHierarchy: LocalDateTable_c11babc2-bf80-4a26-bd4c-3c5cc68d733b.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ClasificacionLegalPenal = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("sql-candidatos2026-dev-w3-z0lh9d.database.windows.net", "Elecciones2026DW"),
+				    dbo_ClasificacionLegalPenal = Origen{[Schema="dbo",Item="ClasificacionLegalPenal"]}[Data]
+				in
+				    dbo_ClasificacionLegalPenal
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

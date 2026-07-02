@@ -1,0 +1,984 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "a41c6e471e8bd45c4909",
+  "position": {
+    "x": 552.167955801105,
+    "y": 286.64456721915286,
+    "z": 22000,
+    "height": 195.119459791283,
+    "width": 694.98735420503374,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "GanttChartByMAQSoftware1448688115701",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ExperienciaLaboral"
+                    }
+                  },
+                  "Property": "CentroTrabajo"
+                }
+              },
+              "queryRef": "ExperienciaLaboral.CentroTrabajo",
+              "nativeQueryRef": "CentroTrabajo"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ExperienciaLaboral"
+                    }
+                  },
+                  "Property": "Cargo"
+                }
+              },
+              "queryRef": "ExperienciaLaboral.Cargo",
+              "nativeQueryRef": "Cargo"
+            }
+          ]
+        },
+        "StartDate": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ExperienciaLaboral"
+                        }
+                      },
+                      "Property": "Fecha Inicio EL"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(ExperienciaLaboral.Fecha Inicio EL)",
+              "nativeQueryRef": "Primera fecha: Fecha Inicio EL"
+            }
+          ]
+        },
+        "EndDate": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ExperienciaLaboral"
+                        }
+                      },
+                      "Property": "Fecha Fin Corregida"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(ExperienciaLaboral.Fecha Fin Corregida)",
+              "nativeQueryRef": "Primera fecha: Fecha Fin Corregida"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "categoryColumnsWidth": [
+        {
+          "properties": {
+            "categoryLength": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "'\"task-column0:15;column0:118.5;task-column1:128.5;column1:117.35;\"'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "caption": [
+        {
+          "properties": {
+            "captionValue": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"Null\":\"#118DFF\",\"ELECCION_POPULAR\":\"#414fb1\",\"PARTIDARIO\":\"#717bc5\"}'"
+                }
+              }
+            },
+            "captionValueForStatusColorMapping": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{}'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dateType": [
+        {
+          "properties": {
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Year'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "barColor": [
+        {
+          "properties": {
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0.2
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "And": {
+                    "Left": {
+                      "And": {
+                        "Left": {
+                          "Comparison": {
+                            "ComparisonKind": 0,
+                            "Left": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Entity": "CargoPartidario"
+                                  }
+                                },
+                                "Property": "Cargo"
+                              }
+                            },
+                            "Right": {
+                              "Literal": {
+                                "Value": "'DIPUTADO(A)'"
+                              }
+                            }
+                          }
+                        },
+                        "Right": {
+                          "Comparison": {
+                            "ComparisonKind": 0,
+                            "Left": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Entity": "CargoPartidario"
+                                  }
+                                },
+                                "Property": "Organizacion"
+                              }
+                            },
+                            "Right": {
+                              "Literal": {
+                                "Value": "'CONVERGENCIA DEMOCRATICA'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "Right": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "CargoPartidario"
+                              }
+                            },
+                            "Property": "TipoCargo"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'ELECCION_POPULAR'"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0.4
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "And": {
+                    "Left": {
+                      "And": {
+                        "Left": {
+                          "Comparison": {
+                            "ComparisonKind": 0,
+                            "Left": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Entity": "CargoPartidario"
+                                  }
+                                },
+                                "Property": "Cargo"
+                              }
+                            },
+                            "Right": {
+                              "Literal": {
+                                "Value": "'PRESIDENTE'"
+                              }
+                            }
+                          }
+                        },
+                        "Right": {
+                          "Comparison": {
+                            "ComparisonKind": 0,
+                            "Left": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Entity": "CargoPartidario"
+                                  }
+                                },
+                                "Property": "Organizacion"
+                              }
+                            },
+                            "Right": {
+                              "Literal": {
+                                "Value": "'PERU NACION'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "Right": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "CargoPartidario"
+                              }
+                            },
+                            "Property": "TipoCargo"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'PARTIDARIO'"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0.4
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "And": {
+                    "Left": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "ExperienciaLaboral"
+                              }
+                            },
+                            "Property": "CentroTrabajo"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'CEPLAN'"
+                          }
+                        }
+                      }
+                    },
+                    "Right": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "ExperienciaLaboral"
+                              }
+                            },
+                            "Property": "Cargo"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'MIEMBRO DEL CONSEJO DIRECTIVO'"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0.4
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "And": {
+                    "Left": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "ExperienciaLaboral"
+                              }
+                            },
+                            "Property": "CentroTrabajo"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'CONGRESO DE LA REPUBLICA'"
+                          }
+                        }
+                      }
+                    },
+                    "Right": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "ExperienciaLaboral"
+                              }
+                            },
+                            "Property": "Cargo"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'CONGRESISTA'"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0.4
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "And": {
+                    "Left": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "ExperienciaLaboral"
+                              }
+                            },
+                            "Property": "CentroTrabajo"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'CONSULTOR INDEPENDIENTE'"
+                          }
+                        }
+                      }
+                    },
+                    "Right": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "ExperienciaLaboral"
+                              }
+                            },
+                            "Property": "Cargo"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'CONSULTOR INDEPENDIENTE'"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0.4
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "And": {
+                    "Left": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "ExperienciaLaboral"
+                              }
+                            },
+                            "Property": "CentroTrabajo"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'GOBIERNO REGIONAL ANCASH'"
+                          }
+                        }
+                      }
+                    },
+                    "Right": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "ExperienciaLaboral"
+                              }
+                            },
+                            "Property": "Cargo"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'LOCADOR FAG'"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0.4
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "And": {
+                    "Left": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "ExperienciaLaboral"
+                              }
+                            },
+                            "Property": "CentroTrabajo"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'GOBIERNO REGIONAL DE CAJAMARCA'"
+                          }
+                        }
+                      }
+                    },
+                    "Right": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "ExperienciaLaboral"
+                              }
+                            },
+                            "Property": "Cargo"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'GOBERNADOR REGIONAL'"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "And": {
+                    "Left": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "ExperienciaLaboral"
+                              }
+                            },
+                            "Property": "CentroTrabajo"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'GOBIERNO REGIONAL DE LA LIBERTAD'"
+                          }
+                        }
+                      }
+                    },
+                    "Right": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "ExperienciaLaboral"
+                              }
+                            },
+                            "Property": "Cargo"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'GOBERNADOR REGIONAL'"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "And": {
+                    "Left": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "ExperienciaLaboral"
+                              }
+                            },
+                            "Property": "CentroTrabajo"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'MUNICIPALIDAD PROVINCIAL DE TRUJILLO'"
+                          }
+                        }
+                      }
+                    },
+                    "Right": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "ExperienciaLaboral"
+                              }
+                            },
+                            "Property": "Cargo"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'ALCALDE'"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "And": {
+                    "Left": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "ExperienciaLaboral"
+                              }
+                            },
+                            "Property": "CentroTrabajo"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'UNIVERSIDAD CESAR VALLEJO'"
+                          }
+                        }
+                      }
+                    },
+                    "Right": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "ExperienciaLaboral"
+                              }
+                            },
+                            "Property": "Cargo"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'ASESOR'"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "And": {
+                    "Left": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "ExperienciaLaboral"
+                              }
+                            },
+                            "Property": "CentroTrabajo"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'UNIVERSIDAD CESAR VALLEJO'"
+                          }
+                        }
+                      }
+                    },
+                    "Right": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "ExperienciaLaboral"
+                              }
+                            },
+                            "Property": "Cargo"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'PRESIDENTE DEL DIRECTORIO'"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "''"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "c2c89eb2eb249b0c10e8",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ExperienciaLaboral"
+              }
+            },
+            "Property": "Cargo"
+          }
+        },
+        "type": "Categorical",
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

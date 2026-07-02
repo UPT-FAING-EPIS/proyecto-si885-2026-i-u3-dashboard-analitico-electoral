@@ -1,0 +1,67 @@
+table RTC_DetallePropiedades
+	lineageTag: 850602ef-119f-42a0-9f7d-dc6d39cfa1b8
+
+	column Candidato
+		dataType: string
+		lineageTag: e3560ea7-25f6-4acb-ac94-7fdfc439b128
+		summarizeBy: none
+		sourceColumn: Candidato
+
+		annotation SummarizationSetBy = Automatic
+
+	column Categoria
+		dataType: string
+		lineageTag: be29ee07-1f40-4cdb-be70-912a5b65ca1a
+		summarizeBy: none
+		sourceColumn: Categoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: 8073a754-1b38-4803-a71a-384c591d8379
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Detalle
+		dataType: string
+		lineageTag: 0a9a63ae-0219-4e64-b5f7-e056bc9b3199
+		summarizeBy: none
+		sourceColumn: Detalle
+
+		annotation SummarizationSetBy = Automatic
+
+	column Electo
+		dataType: string
+		lineageTag: 1a613687-e2e6-428c-bf9a-80ea539a777c
+		summarizeBy: none
+		sourceColumn: Electo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fuente
+		dataType: string
+		lineageTag: 325869d1-6378-4eb0-b2ce-07cbe7f64703
+		summarizeBy: none
+		sourceColumn: Fuente
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RTC_DetallePropiedades = m
+		mode: import
+		source =
+				let
+				  Origen = Csv.Document(File.Contents("C:\Users\DIEGO\Downloads\PROYECTO_SI885_2026-II-U2_DASHBOARDELECTORAL-main\data\RTC_ComparativaDetalle.csv"), [Delimiter = ",", Columns = 6, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(Origen, {{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}}, "es"),
+				  #"Encabezados promovidos" = Table.PromoteHeaders(#"Tipo de columna cambiado", [PromoteAllScalars=true]),
+				  #"Tipo cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos",{{"Candidato", type text}, {"Categoria", type text}, {"Item", type text}, {"Detalle", type text}, {"Electo", type text}, {"Fuente", type text}}),
+				  #"Filas filtradas" = Table.SelectRows(#"Tipo cambiado", each [Categoria] = "Propiedades declaradas")
+				in
+				  #"Filas filtradas"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

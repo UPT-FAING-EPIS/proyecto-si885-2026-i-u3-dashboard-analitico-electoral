@@ -1,0 +1,343 @@
+relationship 6646e807-1c18-4a36-9d1b-a1034e5c750a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Candidato.FechaNacimiento
+	toColumn: LocalDateTable_2a03736a-3b79-492c-9a24-480d6ddd8a30.Date
+
+relationship 37bcd194-1d47-4d23-a149-c368f4e42370
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ClasificacionLegalPenal.FechaRegistro
+	toColumn: LocalDateTable_c11babc2-bf80-4a26-bd4c-3c5cc68d733b.Date
+
+relationship 2c062227-1adc-456c-a055-003e1fb360d5
+	crossFilteringBehavior: bothDirections
+	fromColumn: CandidatoRedSocial.IdRedSocial
+	toColumn: RedSocial.IdRedSocial
+
+	annotation PBI_IsFromSource = FS
+
+relationship db4c4284-6811-4b12-808e-d8c2a6970bb6
+	crossFilteringBehavior: bothDirections
+	fromColumn: ClasificacionVariable.IdClasificacion
+	toColumn: ClasificacionLegalPenal.IdClasificacion
+
+	annotation PBI_IsFromSource = FS
+
+relationship df03690f-fdb2-4cc3-b357-e09e215392fc
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: PartidoRedSocial.IdPartido
+	toColumn: Partido.IdPartido
+
+	annotation PBI_IsFromSource = FS
+
+relationship 3aaef649-c1af-4ab3-b6ac-19983c7c44a4
+	crossFilteringBehavior: bothDirections
+	fromColumn: ClasificacionVariable.IdSubVariable
+	toColumn: SubVariable.IdSubVariable
+
+	annotation PBI_IsFromSource = FS
+
+relationship 2854b411-b592-4a95-8ef2-1d90cb44bbad
+	crossFilteringBehavior: bothDirections
+	fromColumn: ClasificacionVariable.IdVariable
+	toColumn: VariableSecundaria.IdVariable
+
+	annotation PBI_IsFromSource = FS
+
+relationship 059cc294-94b2-4c54-b376-55c657d8d8c4
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromColumn: SubVariable.IdVariable
+	toColumn: VariableSecundaria.IdVariable
+
+	annotation PBI_IsFromSource = FS
+
+relationship 39ce0229-e402-8526-f00c-13a8a71b56da
+	crossFilteringBehavior: bothDirections
+	fromColumn: Ubicacion.IdCandidato
+	toColumn: Candidato.IdCandidato
+
+relationship 918062fe-8d14-5145-fa28-f9d305e9e733
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Candidato.IdCandidato
+	toColumn: ClasificacionLegalPenal.IdCandidato
+
+relationship 11f7e20c-aa22-2731-e1b0-1047d1d9ff49
+	crossFilteringBehavior: bothDirections
+	fromColumn: Bien.IdCandidato
+	toColumn: Candidato.IdCandidato
+
+relationship e364f2aa-803d-78aa-693e-fdb175f42dcf
+	crossFilteringBehavior: bothDirections
+	fromColumn: CargoPartidario.IdCandidato
+	toColumn: Candidato.IdCandidato
+
+relationship 106f0145-8461-b75f-7b78-450a3ddbc31e
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Candidato.IdCandidato
+	toColumn: EducacionBasica.IdCandidato
+
+relationship 4060810e-c588-00fe-4eb7-7c180dce1564
+	crossFilteringBehavior: bothDirections
+	fromColumn: EducacionUniversitaria.IdCandidato
+	toColumn: Candidato.IdCandidato
+
+relationship 29ef8b93-079a-737c-b35f-a5460c23c277
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Candidato.IdCandidato
+	toColumn: EstudiosNoUniversitarios.IdCandidato
+
+relationship fa4900e5-9ae0-8d65-8778-a199efc62384
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Candidato.IdCandidato
+	toColumn: EstudiosTecnicos.IdCandidato
+
+relationship ef4f2694-ac90-98d6-2b30-d54f74995318
+	crossFilteringBehavior: bothDirections
+	fromColumn: ExperienciaLaboral.IdCandidato
+	toColumn: Candidato.IdCandidato
+
+relationship db60b63c-db94-e35e-4431-e2fdc7b798e4
+	crossFilteringBehavior: bothDirections
+	fromColumn: VisitaCampaña.IdCandidato
+	toColumn: Candidato.IdCandidato
+
+relationship 4c0e9b3a-b7ef-0fc1-9a06-6bf3330f8ef5
+	crossFilteringBehavior: bothDirections
+	fromColumn: RelacionSentencias.IdCandidato
+	toColumn: Candidato.IdCandidato
+
+relationship 1a5a76f9-67b9-137b-47e4-59c79516368a
+	crossFilteringBehavior: bothDirections
+	fromColumn: Posgrado.IdCandidato
+	toColumn: Candidato.IdCandidato
+
+relationship bf9ce5aa-8b06-7f20-227b-912bf43297e6
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Candidato.IdCandidato
+	toColumn: Ingresos.IdCandidato
+
+relationship 4b6d8daa-b57c-daf4-8148-d954053d877f
+	crossFilteringBehavior: bothDirections
+	fromColumn: FuenteInformacion.IdClasificacion
+	toColumn: ClasificacionLegalPenal.IdClasificacion
+
+relationship 35a65925-7420-bacc-5f95-e82d2877266e
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: CandidatoRedSocial.IdCandidato
+	toColumn: Candidato.IdCandidato
+
+relationship dc7c85d9-0271-4aa0-b55b-f934d446885f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: HistorialTikTok.FechaRegistro
+	toColumn: LocalDateTable_b867f783-6fce-437f-80a5-3fd72ac8eba6.Date
+
+relationship bb7efcd1-b046-9534-7fac-3df8a868d3f8
+	crossFilteringBehavior: bothDirections
+	fromColumn: HistorialTikTok.IdCandidato
+	toColumn: Candidato.IdCandidato
+
+relationship 7e7e4afe-5ffe-2061-568f-e237d1a6e709
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Partido.IdPartido
+	toColumn: Candidato.IdPartido
+
+	annotation PBI_IsFromSource = FS
+
+relationship 6607033a-07e6-4467-b99c-4cd4b6a5d073
+	joinOnDateBehavior: datePartOnly
+	fromColumn: CargoPartidario.'Fecha Inicio DT'
+	toColumn: LocalDateTable_771d46dd-6de6-458d-bebc-4b100af8f46b.Date
+
+relationship a2e3c1a3-2ece-47d5-8851-a9db8d2dafdd
+	joinOnDateBehavior: datePartOnly
+	fromColumn: CargoPartidario.'Fecha Fin Corregida'
+	toColumn: LocalDateTable_316d1536-40ec-4d90-a87b-4f20060c3fd8.Date
+
+relationship 803b6cf9-8e5f-4113-9d7a-5461c206d68a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ExperienciaLaboral.'Fecha Inicio EL'
+	toColumn: LocalDateTable_488eb27a-897c-4b25-94e2-8bf2a6291779.Date
+
+relationship 9d278f73-9083-4c9e-b56f-2cf06402d7c4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ExperienciaLaboral.'Fecha Fin Corregida'
+	toColumn: LocalDateTable_f0729898-5b85-4689-b3c5-c9d3e21772b1.Date
+
+relationship 4893fc7e-bec5-afa4-33f2-367e1df46c60
+	fromColumn: RTC_ComparativaDetalle.Candidato
+	toColumn: RTC_ComparativaResumen.Candidato
+
+relationship 871ef3b3-a878-373a-b446-e4201ff04934
+	isActive: false
+	fromColumn: Bien.IdCandidato
+	toColumn: ClasificacionLegalPenal.IdCandidato
+
+relationship 023ba474-3cf9-3e5f-a3d3-f252f6ed82ea
+	isActive: false
+	fromColumn: CargoPartidario.IdCandidato
+	toColumn: ClasificacionLegalPenal.IdCandidato
+
+relationship b50601cd-24aa-63e7-6673-28be69399918
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: EducacionBasica.IdCandidato
+	toColumn: ClasificacionLegalPenal.IdCandidato
+
+relationship e7079ea5-0db1-46da-bfff-76a8ce20eab3
+	isActive: false
+	fromColumn: EducacionUniversitaria.IdCandidato
+	toColumn: ClasificacionLegalPenal.IdCandidato
+
+relationship fae21515-9c59-10fe-0c5a-86a407287671
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: EstudiosNoUniversitarios.IdCandidato
+	toColumn: ClasificacionLegalPenal.IdCandidato
+
+relationship 2e6e35d1-a8b7-3db1-a98a-5443969e9b7e
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: EstudiosTecnicos.IdCandidato
+	toColumn: ClasificacionLegalPenal.IdCandidato
+
+relationship fd1d2d71-c12e-b034-8784-87ba7b097157
+	isActive: false
+	fromColumn: ExperienciaLaboral.IdCandidato
+	toColumn: ClasificacionLegalPenal.IdCandidato
+
+relationship 1448f0d6-8f7c-b441-bc23-f9324fddd595
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Ingresos.IdCandidato
+	toColumn: ClasificacionLegalPenal.IdCandidato
+
+relationship ba0f12b6-ac0d-6884-2d89-86e890aeb145
+	isActive: false
+	fromColumn: Posgrado.IdCandidato
+	toColumn: ClasificacionLegalPenal.IdCandidato
+
+relationship 07877314-83e4-ef14-daf4-8ff0b0a76a77
+	isActive: false
+	fromColumn: RelacionSentencias.IdCandidato
+	toColumn: ClasificacionLegalPenal.IdCandidato
+
+relationship d24ed9cc-e285-0d9e-c86e-61122dc9701b
+	isActive: false
+	fromColumn: Ubicacion.IdCandidato
+	toColumn: ClasificacionLegalPenal.IdCandidato
+
+relationship b2e884b2-b599-06ad-e3ea-f82b92ff9f19
+	isActive: false
+	fromColumn: VisitaCampaña.IdCandidato
+	toColumn: ClasificacionLegalPenal.IdCandidato
+
+relationship 251d1fc7-93c9-4604-8abd-9854a87fe1ae
+	isActive: false
+	fromColumn: Bien.IdCandidato
+	toColumn: Ingresos.IdCandidato
+
+relationship 6a0da601-7f43-72d0-0006-cd9b9b39633f
+	isActive: false
+	fromColumn: CargoPartidario.IdCandidato
+	toColumn: Ingresos.IdCandidato
+
+relationship b6458fd3-0c06-e352-4234-6fa9afbe1be7
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: EducacionBasica.IdCandidato
+	toColumn: Ingresos.IdCandidato
+
+relationship 6f9df8b4-6dd8-6ec3-b2d0-be760e413787
+	isActive: false
+	fromColumn: EducacionUniversitaria.IdCandidato
+	toColumn: Ingresos.IdCandidato
+
+relationship 2dc220bc-8f11-69c1-e2bb-c6d4afa4a964
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: EstudiosNoUniversitarios.IdCandidato
+	toColumn: Ingresos.IdCandidato
+
+relationship a796716a-ff62-7d44-842c-6b4ab6b586f0
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: EstudiosTecnicos.IdCandidato
+	toColumn: Ingresos.IdCandidato
+
+relationship e35de754-428b-519b-ebcf-6bb2f3864607
+	isActive: false
+	fromColumn: ExperienciaLaboral.IdCandidato
+	toColumn: Ingresos.IdCandidato
+
+relationship 196f8703-cf31-3916-09e2-1573a0dcea50
+	isActive: false
+	fromColumn: Posgrado.IdCandidato
+	toColumn: Ingresos.IdCandidato
+
+relationship 83b701e2-1314-20dd-cfec-ff28f1596cd7
+	isActive: false
+	fromColumn: RelacionSentencias.IdCandidato
+	toColumn: Ingresos.IdCandidato
+
+relationship cf906960-d5f4-0be7-4260-d659010d1c45
+	isActive: false
+	fromColumn: Ubicacion.IdCandidato
+	toColumn: Ingresos.IdCandidato
+
+relationship a87912cd-f536-acdf-3945-8b1ac17fd05f
+	isActive: false
+	fromColumn: VisitaCampaña.IdCandidato
+	toColumn: Ingresos.IdCandidato
+
+relationship 89969631-e443-fa62-e74f-5162b7eb6cb2
+	fromColumn: Neocities_PropuestasDetalle.IdCandidatoWeb
+	toColumn: Neocities_CandidatosPropuestas.IdCandidatoWeb
+
+relationship c836f1a9-c21f-7014-ed2e-330bf9655675
+	fromColumn: Neocities_OrientacionCandidato.IdCandidatoWeb
+	toColumn: Neocities_CandidatosPropuestas.IdCandidatoWeb
+
+relationship 7f2429b8-24df-4ca3-9d6b-15f15c65034b
+	fromColumn: ONPE_GastosCampana.Partido
+	toColumn: ONPE_OrganizacionesPoliticas.Partido
+
+relationship 32581577-6292-4149-b760-885d69574e65
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ONPE_GastosCampana.FechaPresentacion
+	toColumn: LocalDateTable_2f3e5947-a5b3-4014-a2c1-0530e9c25560.Date
+
+relationship 7b342ead-35c7-45fe-b416-f45b2cbb8d90
+	fromColumn: RTC_DetalleTrayectoriaPolitica.Candidato
+	toColumn: RTC_ComparativaResumen.Candidato
+
+relationship 7fb8e039-44d7-44f3-8c2e-1a0d3b2c5755
+	fromColumn: RTC_DetalleExperienciaLaboral.Candidato
+	toColumn: RTC_ComparativaResumen.Candidato
+
+relationship a4294253-7836-4ae3-9451-8ce99428341f
+	fromColumn: RTC_DetallePropiedades.Candidato
+	toColumn: RTC_ComparativaResumen.Candidato
+
+relationship a23d0c43-51e8-4e3b-bc33-47c26a102e1a
+	fromColumn: RTC_DetalleEducacionTitulos.Candidato
+	toColumn: RTC_ComparativaResumen.Candidato
+
+relationship 43c95252-bfe2-4d4d-9f28-55cd73f50394
+	fromColumn: RTC_DetalleContratosEstado.Candidato
+	toColumn: RTC_ComparativaResumen.Candidato
+

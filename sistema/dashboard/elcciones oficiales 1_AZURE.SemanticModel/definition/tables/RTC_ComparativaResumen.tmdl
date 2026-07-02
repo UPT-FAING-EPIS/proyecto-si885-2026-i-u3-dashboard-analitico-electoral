@@ -1,0 +1,83 @@
+table RTC_ComparativaResumen
+	lineageTag: 285f3e2a-5ed3-478d-b86f-4c3aa08d2be4
+
+	column Candidato
+		dataType: string
+		lineageTag: 201c3694-cc46-411d-b772-f123e40c3c42
+		summarizeBy: none
+		sourceColumn: Candidato
+
+		annotation SummarizationSetBy = Automatic
+
+	column Elecciones
+		dataType: int64
+		formatString: 0
+		lineageTag: 5ba0e43f-0a37-4375-beb6-430e15053897
+		summarizeBy: none
+		sourceColumn: Elecciones
+
+		annotation SummarizationSetBy = Automatic
+
+	column Contratos
+		dataType: int64
+		formatString: 0
+		lineageTag: da677352-d4f1-48cf-8814-85b8e4e00b17
+		summarizeBy: none
+		sourceColumn: Contratos
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total contratos S/'
+		dataType: int64
+		formatString: 0
+		lineageTag: 38357ca2-63fe-44cf-bdc7-0b223c49ede7
+		summarizeBy: none
+		sourceColumn: Total contratos S/
+
+		annotation SummarizationSetBy = Automatic
+
+	column Titulos
+		dataType: int64
+		formatString: 0
+		lineageTag: 16b4ad4c-6b62-4da5-994e-30ef8397d0fb
+		summarizeBy: none
+		sourceColumn: Titulos
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bienes
+		dataType: int64
+		formatString: 0
+		lineageTag: 386a1469-4634-4ec5-8d9f-2f2c59f4a1f4
+		summarizeBy: none
+		sourceColumn: Bienes
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trabajos
+		dataType: int64
+		formatString: 0
+		lineageTag: b87eaaba-9698-4f50-a1a2-6ad86d766f0c
+		summarizeBy: none
+		sourceColumn: Trabajos
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fuente
+		dataType: string
+		lineageTag: 911f10c9-22d4-4112-b2d3-263b0d94083c
+		summarizeBy: none
+		sourceColumn: Fuente
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RTC_ComparativaResumen = m
+		mode: import
+		source =
+				let
+				  Origen = Csv.Document(File.Contents("C:\Users\DIEGO\Downloads\PROYECTO_SI885_2026-II-U2_DASHBOARDELECTORAL-main\data\RTC_ComparativaResumen.csv"), [Delimiter = ",", Columns = 8, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos", {{"Candidato", type text}, {"Elecciones", Int64.Type}, {"Contratos", Int64.Type}, {"Total contratos S/", Int64.Type}, {"Titulos", Int64.Type}, {"Bienes", Int64.Type}, {"Trabajos", Int64.Type}, {"Fuente", type text}}, "es")
+				in
+				  #"Tipo de columna cambiado"
+

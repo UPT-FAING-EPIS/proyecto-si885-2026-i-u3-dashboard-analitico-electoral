@@ -1,0 +1,63 @@
+table VisitaCampaña
+	lineageTag: 322731a0-17e4-4a44-8af6-f18d0468b4be
+
+	column IdVisita
+		dataType: int64
+		formatString: 0
+		lineageTag: 3c3987ea-7401-4b11-906e-334357541031
+		summarizeBy: sum
+		sourceColumn: IdVisita
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoLugar
+		dataType: string
+		lineageTag: 48ae6ed6-98ce-4b0c-bcc4-67ad8cf6cee7
+		summarizeBy: none
+		sourceColumn: TipoLugar
+
+		annotation SummarizationSetBy = Automatic
+
+	column NombreLugar
+		dataType: string
+		lineageTag: ba0347b2-e91d-42ea-a93f-a6ff2915b5bb
+		summarizeBy: none
+		sourceColumn: NombreLugar
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdCandidato
+		dataType: int64
+		formatString: 0
+		lineageTag: f274db3e-ae42-449e-bb26-33305f6861b3
+		summarizeBy: none
+		sourceColumn: IdCandidato
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ubicacion_Mapa = ```
+			
+			IF(
+			    'VisitaCampaña'[TipoLugar] = "DISTRITO", 
+			    'VisitaCampaña'[NombreLugar] & ", Lima, Lima,Perú", 
+			    'VisitaCampaña'[NombreLugar] & ", Perú"
+			)
+			```
+		lineageTag: e72c0f14-d092-4e6c-b3bb-044dbb8aec51
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition VisitaCampaña = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("sql-candidatos2026-dev-w3-z0lh9d.database.windows.net", "Elecciones2026DW"),
+				    dbo_VisitaCampaña = Origen{[Schema="dbo",Item="VisitaCampaña"]}[Data]
+				in
+				    dbo_VisitaCampaña
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

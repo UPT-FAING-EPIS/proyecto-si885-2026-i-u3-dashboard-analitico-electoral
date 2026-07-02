@@ -1,0 +1,59 @@
+table EstudiosTecnicos
+	lineageTag: 7b3e0957-ab04-44a2-8d18-e25d53b7bad4
+
+	column IdTecnico
+		dataType: int64
+		formatString: 0
+		lineageTag: 0cf33b9a-259f-4969-a7bf-af0507ece2b8
+		summarizeBy: sum
+		sourceColumn: IdTecnico
+
+		annotation SummarizationSetBy = Automatic
+
+	column CentroEstudio
+		dataType: string
+		lineageTag: b2d0580c-b565-410c-96f6-b84516ce61e4
+		summarizeBy: none
+		sourceColumn: CentroEstudio
+
+		annotation SummarizationSetBy = Automatic
+
+	column Carrera
+		dataType: string
+		lineageTag: e6782c81-8da8-430f-997e-4378c3f14bfa
+		summarizeBy: none
+		sourceColumn: Carrera
+
+		annotation SummarizationSetBy = Automatic
+
+	column Concluido
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f7fbcb7e-de26-466b-95dd-73227aa60bdd
+		summarizeBy: none
+		sourceColumn: Concluido
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdCandidato
+		dataType: int64
+		formatString: 0
+		lineageTag: 60a6e5a2-f97f-43ae-a237-948c513ed4bb
+		summarizeBy: none
+		sourceColumn: IdCandidato
+
+		annotation SummarizationSetBy = Automatic
+
+	partition EstudiosTecnicos = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("sql-candidatos2026-dev-w3-z0lh9d.database.windows.net", "Elecciones2026DW"),
+				    dbo_EstudiosTecnicos = Origen{[Schema="dbo",Item="EstudiosTecnicos"]}[Data]
+				in
+				    dbo_EstudiosTecnicos
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

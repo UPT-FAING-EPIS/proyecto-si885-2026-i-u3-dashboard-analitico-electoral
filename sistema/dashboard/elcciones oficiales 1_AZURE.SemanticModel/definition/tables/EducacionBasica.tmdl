@@ -1,0 +1,61 @@
+table EducacionBasica
+	lineageTag: 07196a19-7f9a-4880-ad80-84aedb810368
+
+	column IdEducacionBasica
+		dataType: int64
+		formatString: 0
+		lineageTag: beb41ef1-355c-4cc7-8b9a-7194be1f5996
+		summarizeBy: sum
+		sourceColumn: IdEducacionBasica
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdCandidato
+		dataType: int64
+		formatString: 0
+		lineageTag: dc6a80a4-149a-4d9e-abe8-46d7e2aa75cf
+		summarizeBy: none
+		sourceColumn: IdCandidato
+
+		annotation SummarizationSetBy = Automatic
+
+	column TieneEducacionBasica
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 50873681-c445-4d41-9f3c-629182964e62
+		summarizeBy: none
+		sourceColumn: TieneEducacionBasica
+
+		annotation SummarizationSetBy = Automatic
+
+	column TienePrimaria
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a6c01d00-ba97-4843-a254-56b891704f8a
+		summarizeBy: none
+		sourceColumn: TienePrimaria
+
+		annotation SummarizationSetBy = Automatic
+
+	column TieneSecundaria
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2ad1858e-642d-4587-a092-b06b5eb89586
+		summarizeBy: none
+		sourceColumn: TieneSecundaria
+
+		annotation SummarizationSetBy = Automatic
+
+	partition EducacionBasica = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("sql-candidatos2026-dev-w3-z0lh9d.database.windows.net", "Elecciones2026DW"),
+				    dbo_EducacionBasica = Origen{[Schema="dbo",Item="EducacionBasica"]}[Data]
+				in
+				    dbo_EducacionBasica
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

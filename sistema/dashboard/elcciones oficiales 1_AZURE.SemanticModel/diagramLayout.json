@@ -1,0 +1,372 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 2107.1038918417007,
+        "y": 8.7431696594738568
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 2106.5215533549717,
+            "y": 179.26486089255548
+          },
+          "nodeIndex": "Bien",
+          "nodeLineageTag": "eb86473b-72ac-40d6-af8e-ee20bd012bb9",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 2642.8899992388156,
+            "y": 553.798493577026
+          },
+          "nodeIndex": "Candidato",
+          "nodeLineageTag": "3f3fbf51-8c09-40f9-97c7-090bdfbcfec8",
+          "size": {
+            "height": 279.14754098360652,
+            "width": 234
+          },
+          "zIndex": 24
+        },
+        {
+          "location": {
+            "x": 2255,
+            "y": 757.73122820808487
+          },
+          "nodeIndex": "CandidatoRedSocial",
+          "nodeLineageTag": "9f1d1725-a6b9-49c4-a642-3101ef9bf8cd",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 22
+        },
+        {
+          "location": {
+            "x": 2390.5215533549717,
+            "y": 167.26486089255548
+          },
+          "nodeIndex": "CargoPartidario",
+          "nodeLineageTag": "b82495f8-bfca-454b-b8a1-71a2c3763c3a",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 21
+        },
+        {
+          "location": {
+            "x": 1456.8899992388156,
+            "y": 182.12607383398063
+          },
+          "nodeIndex": "ClasificacionLegalPenal",
+          "nodeLineageTag": "d1fedd1d-1e29-4567-b086-21bd4e4fca73",
+          "size": {
+            "height": 341,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 1736.0970326892925,
+            "y": 0
+          },
+          "nodeIndex": "ClasificacionVariable",
+          "nodeLineageTag": "2d52a6d9-997e-483c-96ea-eb5f1d870efd",
+          "size": {
+            "height": 215,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 3066.5215533549717,
+            "y": 555.26486089255548
+          },
+          "nodeIndex": "EducacionBasica",
+          "nodeLineageTag": "07196a19-7f9a-4880-ad80-84aedb810368",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 2799.5215533549717,
+            "y": 8.2648608925554754
+          },
+          "nodeIndex": "EducacionUniversitaria",
+          "nodeLineageTag": "7159242c-8b02-440a-9df5-e6adb5ab8e79",
+          "size": {
+            "height": 309,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 3242.5215533549717,
+            "y": 191.26486089255548
+          },
+          "nodeIndex": "EstudiosNoUniversitarios",
+          "nodeLineageTag": "e439f784-e151-4a25-a135-02f8b5b2868b",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 2870.5215533549717,
+            "y": 812.26486089255548
+          },
+          "nodeIndex": "EstudiosTecnicos",
+          "nodeLineageTag": "7b3e0957-ab04-44a2-8d18-e25d53b7bad4",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 3442.5215533549717,
+            "y": 581.26486089255548
+          },
+          "nodeIndex": "ExperienciaLaboral",
+          "nodeLineageTag": "f72d5183-56a9-45cc-89b9-febc7148bafb",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 1011.5215533549717,
+            "y": 61
+          },
+          "nodeIndex": "FuenteInformacion",
+          "nodeLineageTag": "029e8a72-490c-4e68-ad44-40b3211622aa",
+          "size": {
+            "height": 191,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 3244.5215533549717,
+            "y": 807.26486089255548
+          },
+          "nodeIndex": "Ingresos",
+          "nodeLineageTag": "7915e899-851e-4a0a-94ac-138475bcb6eb",
+          "size": {
+            "height": 247,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 1640.6837504307778,
+            "y": 668.87622680831191
+          },
+          "nodeIndex": "Partido",
+          "nodeLineageTag": "fb4b3314-51e5-4881-9c7a-933709f7e963",
+          "size": {
+            "height": 287.016393442623,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 1260.4357299436851,
+            "y": 570.95375158413174
+          },
+          "nodeIndex": "PartidoRedSocial",
+          "nodeLineageTag": "80676989-9c2b-4957-a820-5d81fcb012b0",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 3820.5215533549717,
+            "y": 527.26486089255548
+          },
+          "nodeIndex": "Posgrado",
+          "nodeLineageTag": "4e533ff8-11d7-42e5-868c-c0bdd2ad707d",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 1961.9316937986362,
+            "y": 931.9648295751274
+          },
+          "nodeIndex": "RedSocial",
+          "nodeLineageTag": "97380913-2a23-4d4e-8634-80cf03db1c34",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 3854.5215533549717,
+            "y": 216.26486089255548
+          },
+          "nodeIndex": "RelacionSentencias",
+          "nodeLineageTag": "67045d4d-0bf4-4df4-8a4f-ab91505bb972",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 1309.4508186847456,
+            "y": 0
+          },
+          "nodeIndex": "SubVariable",
+          "nodeLineageTag": "80c9de39-2df2-4e20-8adc-d8bd13e7f2eb",
+          "size": {
+            "height": 160,
+            "width": 234
+          },
+          "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 3565.5215533549717,
+            "y": 145.26486089255548
+          },
+          "nodeIndex": "Ubicacion",
+          "nodeLineageTag": "c6f7c922-f9b7-49ba-9f6c-2b10ae740acb",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 17
+        },
+        {
+          "location": {
+            "x": 2082.5215533549717,
+            "y": 0
+          },
+          "nodeIndex": "VariableSecundaria",
+          "nodeLineageTag": "e85d68af-9a42-495d-a6e0-c4078660568b",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 18
+        },
+        {
+          "location": {
+            "x": 3491.5215533549717,
+            "y": 422.26486089255548
+          },
+          "nodeIndex": "VisitaCampaña",
+          "nodeLineageTag": "322731a0-17e4-4a44-8af6-f18d0468b4be",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 19
+        },
+        {
+          "location": {
+            "x": 3263.8002418795618,
+            "y": 0
+          },
+          "nodeIndex": "Tabla de Medidas",
+          "nodeLineageTag": "d56cbb95-9843-4f1b-b7ba-d528cc9d86e7",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 20
+        },
+        {
+          "location": {
+            "x": 2577.6718267694505,
+            "y": 905.82095503644166
+          },
+          "nodeIndex": "HistorialTikTok",
+          "nodeLineageTag": "e9cadc2f-46e9-4020-87b6-21cf8e16ff9f",
+          "size": {
+            "height": 313.11475409836066,
+            "width": 234
+          },
+          "zIndex": 23
+        },
+        {
+          "location": {
+            "x": 3127,
+            "y": 473.46785456740122
+          },
+          "nodeIndex": "RTC_ComparativaResumen",
+          "nodeLineageTag": "285f3e2a-5ed3-478d-b86f-4c3aa08d2be4",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3127,
+            "y": 497.46785456740122
+          },
+          "nodeIndex": "RTC_ComparativaDetalle",
+          "nodeLineageTag": "38f74c9d-5f20-4452-88f5-7842219d225e",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3127,
+            "y": 509.46785456740122
+          },
+          "nodeIndex": "DimCandidatoRTC",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas las tablas",
+      "zoomValue": 61,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas las tablas",
+  "defaultDiagram": "Todas las tablas"
+}

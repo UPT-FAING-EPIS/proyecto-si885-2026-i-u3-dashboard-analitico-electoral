@@ -1,0 +1,111 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "grafico_cantidad_propuestas",
+  "position": {
+    "x": 684.929650092081,
+    "y": 251.44260282381831,
+    "z": 12000,
+    "height": 176.00982197667281,
+    "width": 564.23720073664822,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Neocities_PropuestasDetalle"
+                    }
+                  },
+                  "Property": "Tema"
+                }
+              },
+              "queryRef": "Neocities_PropuestasDetalle.Tema",
+              "nativeQueryRef": "Tema",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tabla de Medidas"
+                    }
+                  },
+                  "Property": "Cantidad Propuestas Candidato A"
+                }
+              },
+              "queryRef": "Tabla de Medidas.Cantidad Propuestas Candidato A",
+              "nativeQueryRef": "Propuestas A"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tabla de Medidas"
+                    }
+                  },
+                  "Property": "Cantidad Propuestas Candidato B"
+                }
+              },
+              "queryRef": "Tabla de Medidas.Cantidad Propuestas Candidato B",
+              "nativeQueryRef": "Propuestas B"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Cantidad de propuestas por tema'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#00567e'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

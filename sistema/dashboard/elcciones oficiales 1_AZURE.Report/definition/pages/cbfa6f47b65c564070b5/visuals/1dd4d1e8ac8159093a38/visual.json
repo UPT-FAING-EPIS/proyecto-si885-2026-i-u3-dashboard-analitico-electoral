@@ -1,0 +1,68 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "1dd4d1e8ac8159093a38",
+  "position": {
+    "x": 6.4701354927583923,
+    "y": 82.92038665221574,
+    "z": 36000,
+    "height": 125.91986888366067,
+    "width": 304.73881002523041,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "multiRowCard",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "RelacionSentencias"
+                    }
+                  },
+                  "Property": "MateriaDemanda"
+                }
+              },
+              "queryRef": "Min(RelacionSentencias.MateriaDemanda)",
+              "nativeQueryRef": "MateriaDemanda"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "RelacionSentencias"
+                    }
+                  },
+                  "Property": "FalloPena"
+                }
+              },
+              "queryRef": "RelacionSentencias.FalloPena",
+              "nativeQueryRef": "FalloPena"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "categoryLabels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "5fc98570e2e91d712006"
+}

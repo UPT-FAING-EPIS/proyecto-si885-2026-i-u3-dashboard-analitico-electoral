@@ -1,0 +1,66 @@
+table RTC_ComparativaDetalle
+	lineageTag: 38f74c9d-5f20-4452-88f5-7842219d225e
+
+	column Candidato
+		dataType: string
+		lineageTag: 3dab429e-2b6e-4f6a-b036-79c9efc84b08
+		summarizeBy: none
+		sourceColumn: Candidato
+
+		annotation SummarizationSetBy = Automatic
+
+	column Categoria
+		dataType: string
+		lineageTag: 3d74eedb-37bd-4ceb-8566-7796ade753d1
+		summarizeBy: none
+		sourceColumn: Categoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: 2e875e21-fcfa-4cef-9172-8857d39dc1a5
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Detalle
+		dataType: string
+		lineageTag: 615899fc-4ea5-4902-99ac-90817cf01d8b
+		summarizeBy: none
+		sourceColumn: Detalle
+
+		annotation SummarizationSetBy = Automatic
+
+	column Electo
+		dataType: string
+		lineageTag: f6c75f3a-a901-4881-bf58-e51864799c16
+		summarizeBy: none
+		sourceColumn: Electo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fuente
+		dataType: string
+		lineageTag: 27a85fc2-6f7e-4cc2-b375-73cc68b1bf28
+		summarizeBy: none
+		sourceColumn: Fuente
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RTC_ComparativaDetalle = m
+		mode: import
+		source =
+				let
+				  Origen = Csv.Document(File.Contents("C:\Users\DIEGO\Downloads\PROYECTO_SI885_2026-II-U2_DASHBOARDELECTORAL-main\data\RTC_ComparativaDetalle.csv"), [Delimiter = ",", Columns = 6, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(Origen, {{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}}, "es"),
+				    #"Encabezados promovidos" = Table.PromoteHeaders(#"Tipo de columna cambiado", [PromoteAllScalars=true]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos",{{"Candidato", type text}, {"Categoria", type text}, {"Item", type text}, {"Detalle", type text}, {"Electo", type text}, {"Fuente", type text}})
+				in
+				  #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

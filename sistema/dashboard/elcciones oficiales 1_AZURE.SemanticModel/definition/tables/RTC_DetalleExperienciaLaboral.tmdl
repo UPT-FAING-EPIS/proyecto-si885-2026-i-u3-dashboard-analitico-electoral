@@ -1,0 +1,67 @@
+table RTC_DetalleExperienciaLaboral
+	lineageTag: 9500c6a4-aa3b-43ec-a49b-937956efa626
+
+	column Candidato
+		dataType: string
+		lineageTag: e8d6e333-ddc5-4b4d-b61f-df0276b0c17d
+		summarizeBy: none
+		sourceColumn: Candidato
+
+		annotation SummarizationSetBy = Automatic
+
+	column Categoria
+		dataType: string
+		lineageTag: a7b3b4f0-69ab-4eec-9303-b16434b399c8
+		summarizeBy: none
+		sourceColumn: Categoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: ad519f8e-4414-4dc9-88ed-b66d3cbece9d
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Detalle
+		dataType: string
+		lineageTag: e123c1c3-654c-48af-8b61-f9f6c99c1a84
+		summarizeBy: none
+		sourceColumn: Detalle
+
+		annotation SummarizationSetBy = Automatic
+
+	column Electo
+		dataType: string
+		lineageTag: d963ef51-12f6-4143-bde4-b91e5634afc2
+		summarizeBy: none
+		sourceColumn: Electo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fuente
+		dataType: string
+		lineageTag: b860ab70-675d-4f2d-99ea-b8f8a9314133
+		summarizeBy: none
+		sourceColumn: Fuente
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RTC_DetalleExperienciaLaboral = m
+		mode: import
+		source =
+				let
+				  Origen = Csv.Document(File.Contents("C:\Users\DIEGO\Downloads\PROYECTO_SI885_2026-II-U2_DASHBOARDELECTORAL-main\data\RTC_ComparativaDetalle.csv"), [Delimiter = ",", Columns = 6, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(Origen, {{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}}, "es"),
+				  #"Encabezados promovidos" = Table.PromoteHeaders(#"Tipo de columna cambiado", [PromoteAllScalars=true]),
+				  #"Tipo cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos",{{"Candidato", type text}, {"Categoria", type text}, {"Item", type text}, {"Detalle", type text}, {"Electo", type text}, {"Fuente", type text}}),
+				  #"Filas filtradas" = Table.SelectRows(#"Tipo cambiado", each [Categoria] = "Experiencia laboral")
+				in
+				  #"Filas filtradas"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,50 @@
+table RelacionSentencias
+	lineageTag: 67045d4d-0bf4-4df4-8a4f-ab91505bb972
+
+	column IdSentencia
+		dataType: int64
+		formatString: 0
+		lineageTag: f4913879-967a-4307-b345-792f47ded832
+		summarizeBy: sum
+		sourceColumn: IdSentencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdCandidato
+		dataType: int64
+		formatString: 0
+		lineageTag: 49bfdf11-b5ec-4e2e-b926-64f83cffd06f
+		summarizeBy: none
+		sourceColumn: IdCandidato
+
+		annotation SummarizationSetBy = Automatic
+
+	column MateriaDemanda
+		dataType: string
+		lineageTag: c3fca9f5-16c8-46c7-930b-fa8293d87c31
+		summarizeBy: none
+		sourceColumn: MateriaDemanda
+
+		annotation SummarizationSetBy = Automatic
+
+	column FalloPena
+		dataType: string
+		lineageTag: df57c075-7050-46a7-b51a-d9a0cbcb9a26
+		summarizeBy: none
+		sourceColumn: FalloPena
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RelacionSentencias = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("sql-candidatos2026-dev-w3-z0lh9d.database.windows.net", "Elecciones2026DW"),
+				    dbo_RelacionSentencias = Origen{[Schema="dbo",Item="RelacionSentencias"]}[Data]
+				in
+				    dbo_RelacionSentencias
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

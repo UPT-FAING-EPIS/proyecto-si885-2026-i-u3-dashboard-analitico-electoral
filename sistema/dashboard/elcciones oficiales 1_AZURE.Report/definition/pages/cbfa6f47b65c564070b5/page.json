@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "cbfa6f47b65c564070b5",
+  "displayName": "Perfil Candidato",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280
+}

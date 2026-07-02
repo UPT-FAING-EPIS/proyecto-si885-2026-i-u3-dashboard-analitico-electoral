@@ -1,0 +1,102 @@
+table ONPE_GastosCampana
+	lineageTag: 4c929ef1-adb5-413e-af43-c114ee92e5c9
+
+	column Partido
+		dataType: string
+		lineageTag: 4216b075-a266-4f3f-9ae3-b43e2a723c86
+		summarizeBy: none
+		sourceColumn: Partido
+
+		annotation SummarizationSetBy = Automatic
+
+	column Anexo
+		dataType: string
+		lineageTag: 45ee60e9-854c-47ef-8dcd-6d17c6b8d139
+		summarizeBy: none
+		sourceColumn: Anexo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Concepto
+		dataType: string
+		lineageTag: f6b0bc3b-1dac-486f-b1c9-abbf23453f75
+		summarizeBy: none
+		sourceColumn: Concepto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo
+		dataType: string
+		lineageTag: 48e487ea-df61-4231-9c4d-406fccf9edbb
+		summarizeBy: none
+		sourceColumn: Tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Monto
+		dataType: double
+		formatString: "S/"\ #,0.00;-"S/"\ #,0.00;"S/"\ #,0.00
+		lineageTag: 36031c77-7e9f-4fb5-95c3-d63fad04d2c3
+		summarizeBy: sum
+		sourceColumn: Monto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-PE"}
+
+	column FechaPresentacion
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 25ae3d28-5c96-4078-abc2-5e20f767d7c6
+		summarizeBy: none
+		sourceColumn: FechaPresentacion
+
+		variation Variación
+			isDefault
+			relationship: 32581577-6292-4149-b760-885d69574e65
+			defaultHierarchy: LocalDateTable_2f3e5947-a5b3-4014-a2c1-0530e9c25560.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ProcesoElectoral
+		dataType: string
+		lineageTag: 1d29b2d3-2537-43a1-884e-4fd847855864
+		summarizeBy: none
+		sourceColumn: ProcesoElectoral
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fuente
+		dataType: string
+		lineageTag: 16fa5c32-3381-42a2-9764-b53202e632ee
+		summarizeBy: none
+		sourceColumn: Fuente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Observacion
+		dataType: string
+		lineageTag: 7b601d66-85d5-4d74-b4d7-54f28a8555da
+		summarizeBy: none
+		sourceColumn: Observacion
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ONPE_GastosCampana = m
+		mode: import
+		source =
+				let
+				  Origen = Csv.Document(File.Contents("C:\Users\DIEGO\Downloads\PROYECTO_SI885_2026-II-U2_DASHBOARDELECTORAL-main\data\ONPE_GastosCampana.csv"), [Delimiter = ",", Columns = 9, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				  #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				  #"Tipo texto" = Table.TransformColumnTypes(#"Encabezados promovidos", {{"Partido", type text}, {"Anexo", type text}, {"Concepto", type text}, {"Tipo", type text}, {"Monto", type text}, {"FechaPresentacion", type text}, {"ProcesoElectoral", type text}, {"Fuente", type text}, {"Observacion", type text}}, "es"),
+				  #"Monto corregido" = Table.TransformColumns(#"Tipo texto", {{"Monto", each Number.FromText(_, "en-US"), type number}}),
+				  #"Fecha corregida" = Table.TransformColumns(#"Monto corregido", {{"FechaPresentacion", each Date.FromText(_, "es-PE"), type date}})
+				in
+				  #"Fecha corregida"
+
+	annotation PBI_NavigationStepName = Navegacion
+
+	annotation PBI_ResultType = Table
+

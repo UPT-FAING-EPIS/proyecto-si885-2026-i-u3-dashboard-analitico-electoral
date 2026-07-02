@@ -1,0 +1,90 @@
+table Bien
+	lineageTag: eb86473b-72ac-40d6-af8e-ee20bd012bb9
+
+	measure '% Mujeres' = ```
+			
+			DIVIDE(
+			    [Total Mujeres], 
+			    36, 
+			    0
+			)
+			```
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: bdef7b0c-4b0f-4615-a8e6-b7560c538776
+
+	measure 'Total Candidatos v2' =
+			
+			CALCULATE(COUNTROWS(Candidato), ALL(Candidato))
+		formatString: 0
+		lineageTag: f90cfb95-ac0e-468d-aeaa-a54609eda562
+
+	measure 'Candidatos por Partido' = COUNTROWS(Candidato)
+		formatString: 0
+		lineageTag: 747656ad-9292-44ee-84af-41f44731ee7c
+
+	column IdBien
+		dataType: int64
+		formatString: 0
+		lineageTag: e5ff526a-cb7f-433b-b537-853537c5a2cc
+		summarizeBy: sum
+		sourceColumn: IdBien
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdCandidato
+		dataType: int64
+		formatString: 0
+		lineageTag: 4fcb89ee-c1d4-4659-a5d4-81246df8dbd5
+		summarizeBy: none
+		sourceColumn: IdCandidato
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoBien
+		dataType: string
+		lineageTag: cb288915-725e-416a-ad16-471851a6a374
+		summarizeBy: none
+		sourceColumn: TipoBien
+
+		annotation SummarizationSetBy = Automatic
+
+	column Registro
+		dataType: string
+		lineageTag: c2446311-af3b-48b1-abd4-88fb1cac0743
+		summarizeBy: none
+		sourceColumn: Registro
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descripcion
+		dataType: string
+		lineageTag: 9a2b992f-c29a-4eda-9c42-46c4c4dcd4d4
+		summarizeBy: none
+		sourceColumn: Descripcion
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValorAutovaluo
+		dataType: double
+		formatString: "S/"\ #,0.00;-"S/"\ #,0.00;"S/"\ #,0.00
+		lineageTag: 65af44b5-3d68-44e8-9d46-631264c049c9
+		summarizeBy: sum
+		sourceColumn: ValorAutovaluo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-PE"}
+
+	partition Bien = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("sql-candidatos2026-dev-w3-z0lh9d.database.windows.net", "Elecciones2026DW"),
+				    dbo_Bien = Origen{[Schema="dbo",Item="Bien"]}[Data]
+				in
+				    dbo_Bien
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

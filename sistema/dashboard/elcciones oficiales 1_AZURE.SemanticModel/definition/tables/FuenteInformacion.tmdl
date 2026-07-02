@@ -1,0 +1,87 @@
+table FuenteInformacion
+	lineageTag: 029e8a72-490c-4e68-ad44-40b3211622aa
+
+	column IdFuente
+		dataType: int64
+		formatString: 0
+		lineageTag: 020a8fbc-9672-4a7c-8636-3e2b4b153221
+		summarizeBy: sum
+		sourceColumn: IdFuente
+
+		annotation SummarizationSetBy = Automatic
+
+	column NombreFuente
+		dataType: string
+		lineageTag: e112c9e9-781c-4d9a-a021-d7679de36f4c
+		summarizeBy: none
+		sourceColumn: NombreFuente
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoFuente
+		dataType: string
+		lineageTag: 96186433-cc89-4601-9321-c2e5ac186e7d
+		summarizeBy: none
+		sourceColumn: TipoFuente
+
+		annotation SummarizationSetBy = Automatic
+
+	column LinkFuente
+		dataType: string
+		lineageTag: 9736c9b4-4b12-4b22-b7a0-0ff8cdead40c
+		summarizeBy: none
+		sourceColumn: LinkFuente
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdClasificacion =
+			
+			SWITCH(
+			    TRUE(),
+			    'FuenteInformacion'[IdFuente] IN {1, 2, 3}, 1,
+			    'FuenteInformacion'[IdFuente] IN {4, 5}, 2,
+			    'FuenteInformacion'[IdFuente] IN {6, 7, 8, 9}, 3,
+			    'FuenteInformacion'[IdFuente] IN {10}, 4,
+			    'FuenteInformacion'[IdFuente] IN {11,12}, 5,
+			    'FuenteInformacion'[IdFuente] IN {13, 14,15}, 6,
+			    'FuenteInformacion'[IdFuente] IN {16,17}, 7,
+			    'FuenteInformacion'[IdFuente] IN {18, 19, 20}, 8,
+			    'FuenteInformacion'[IdFuente] IN {21}, 9,
+			    'FuenteInformacion'[IdFuente] IN {22}, 10,
+			    'FuenteInformacion'[IdFuente] IN {23, 24}, 11,
+			    'FuenteInformacion'[IdFuente] IN {25, 26}, 13,
+			    'FuenteInformacion'[IdFuente] IN {27, 28, 29}, 15,
+			    'FuenteInformacion'[IdFuente] IN {30, 31}, 16,
+			    'FuenteInformacion'[IdFuente] IN {32, 33}, 17,
+			    'FuenteInformacion'[IdFuente] IN {34, 35}, 18,
+			    'FuenteInformacion'[IdFuente] IN {36, 37, 38}, 20,
+			    'FuenteInformacion'[IdFuente] IN {39, 40}, 21,
+			    'FuenteInformacion'[IdFuente] IN {41}, 22,
+			    'FuenteInformacion'[IdFuente] IN {42, 43, 44, 45}, 24,
+			    'FuenteInformacion'[IdFuente] IN {46, 47, 48}, 26,
+			    'FuenteInformacion'[IdFuente] IN {49, 50}, 29,
+			    'FuenteInformacion'[IdFuente] IN {51, 52}, 30,
+			    'FuenteInformacion'[IdFuente] IN {53, 54}, 31,
+			    'FuenteInformacion'[IdFuente] IN {55}, 34,
+			    'FuenteInformacion'[IdFuente] IN {56, 57, 58, 59}, 36,
+			    BLANK() -- Opcional: valor si no es ninguno de los anteriores
+			)
+		formatString: 0
+		lineageTag: 34d616b5-10c5-4939-8da9-fee2096703d7
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FuenteInformacion = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("sql-candidatos2026-dev-w3-z0lh9d.database.windows.net", "Elecciones2026DW"),
+				    dbo_FuenteInformacion = Origen{[Schema="dbo",Item="FuenteInformacion"]}[Data]
+				in
+				    dbo_FuenteInformacion
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

@@ -1,0 +1,135 @@
+table CargoPartidario
+	lineageTag: b82495f8-bfca-454b-b8a1-71a2c3763c3a
+
+	column IdCargoPartidario
+		dataType: int64
+		formatString: 0
+		lineageTag: 80e5e4b8-05a4-441a-a63d-c97e92b857b0
+		summarizeBy: sum
+		sourceColumn: IdCargoPartidario
+
+		annotation SummarizationSetBy = Automatic
+
+	column Organizacion
+		dataType: string
+		lineageTag: ab88b25d-917b-4f92-bfd0-ddf227e2a286
+		summarizeBy: none
+		sourceColumn: Organizacion
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoCargo
+		dataType: string
+		lineageTag: a130d823-9160-4db7-8f70-264d88c2cf3b
+		summarizeBy: none
+		sourceColumn: TipoCargo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cargo
+		dataType: string
+		lineageTag: 93554556-31d1-466a-a90d-bae3f2c893b6
+		summarizeBy: none
+		sourceColumn: Cargo
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnioInicio
+		dataType: int64
+		formatString: 0
+		lineageTag: a7d84802-a501-4838-ab75-af8765792082
+		summarizeBy: sum
+		sourceColumn: AnioInicio
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnioFin
+		dataType: double
+		formatString: 0
+		lineageTag: e51d5dbd-c21d-47f9-94af-3f28022a687d
+		summarizeBy: sum
+		sourceColumn: AnioFin
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdCandidato
+		dataType: int64
+		formatString: 0
+		lineageTag: c324b09f-43df-4152-aee3-21db84a2c7a8
+		summarizeBy: none
+		sourceColumn: IdCandidato
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cargo Estandarizado' =
+			
+			IF(
+			    'CargoPartidario'[TipoCargo] = "ELECCION_POPULAR",
+			    SWITCH(
+			        TRUE(),
+			        CONTAINSSTRING('CargoPartidario'[Cargo], "GOBERN"), "GOBERNADOR(A) REGIONAL",
+			        CONTAINSSTRING('CargoPartidario'[Cargo], "ALCAL"), "ALCALDE(SA) PROVINCIAL O DISTRITAL",
+			        CONTAINSSTRING('CargoPartidario'[Cargo], "REGID"), "REGIDOR(A) PROVINCIAL O DISTRITAL",
+			        CONTAINSSTRING('CargoPartidario'[Cargo], "CONRES"), "CONGRESISTA",
+			        CONTAINSSTRING('CargoPartidario'[Cargo], "DIPUTADO"), "DIPUTADO(A)",
+			        'CargoPartidario'[Cargo]-- Si no cumple ninguna, deja el nombre original
+			    ),
+			    'CargoPartidario'[Cargo] -- Si no es ELECCION_POPULAR, deja el nombre original
+			)
+		lineageTag: 3443a710-7a6e-471a-bfa2-3edf687c6451
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fecha Inicio DT' = DATE(CargoPartidario[AnioInicio], 1, 1)
+		formatString: Short Date
+		lineageTag: 1a203bd5-528d-4a0a-be00-28a03c613b5a
+		summarizeBy: none
+
+		variation Variación
+			isDefault
+			relationship: 6607033a-07e6-4467-b99c-4cd4b6a5d073
+			defaultHierarchy: LocalDateTable_771d46dd-6de6-458d-bebc-4b100af8f46b.'Jerarquía de fechas'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Fecha Fin Corregida' = ```
+			
+			IF(
+			    ISBLANK(CargoPartidario[AnioFin]), 
+			    TODAY(), 
+			    DATE(CargoPartidario[AnioFin], 1, 1)
+			)
+			```
+		formatString: Short Date
+		lineageTag: 08cdf0ac-82b6-4833-b134-7760c2e48ee0
+		summarizeBy: none
+
+		variation Variación
+			isDefault
+			relationship: a2e3c1a3-2ece-47d5-8851-a9db8d2dafdd
+			defaultHierarchy: LocalDateTable_316d1536-40ec-4d90-a87b-4f20060c3fd8.'Jerarquía de fechas'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition CargoPartidario = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("sql-candidatos2026-dev-w3-z0lh9d.database.windows.net", "Elecciones2026DW"),
+				    dbo_CargoPartidario = Origen{[Schema="dbo",Item="CargoPartidario"]}[Data]
+				in
+				    dbo_CargoPartidario
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

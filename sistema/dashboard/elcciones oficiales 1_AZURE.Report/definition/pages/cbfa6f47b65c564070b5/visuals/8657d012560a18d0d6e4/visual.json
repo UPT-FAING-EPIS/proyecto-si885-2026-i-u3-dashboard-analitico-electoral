@@ -1,0 +1,391 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "8657d012560a18d0d6e4",
+  "position": {
+    "x": 550.15641497851448,
+    "y": 86.496255371393488,
+    "z": 19000,
+    "height": 172.99251074278698,
+    "width": 712.08545119705343,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "GanttChartByMAQSoftware1448688115701",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CargoPartidario"
+                    }
+                  },
+                  "Property": "Organizacion"
+                }
+              },
+              "queryRef": "CargoPartidario.Organizacion",
+              "nativeQueryRef": "Organizacion"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CargoPartidario"
+                    }
+                  },
+                  "Property": "Cargo"
+                }
+              },
+              "queryRef": "CargoPartidario.Cargo",
+              "nativeQueryRef": "Cargo"
+            }
+          ]
+        },
+        "EndDate": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CargoPartidario"
+                        }
+                      },
+                      "Property": "Fecha Fin Corregida"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(CargoPartidario.Fecha Fin Corregida)",
+              "nativeQueryRef": "Primera fecha: Fecha Fin Corregida"
+            }
+          ]
+        },
+        "StartDate": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CargoPartidario"
+                        }
+                      },
+                      "Property": "Fecha Inicio DT"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(CargoPartidario.Fecha Inicio DT)",
+              "nativeQueryRef": "Primera fecha: Fecha Inicio DT"
+            }
+          ]
+        },
+        "Resource": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CargoPartidario"
+                        }
+                      },
+                      "Property": "TipoCargo"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(CargoPartidario.TipoCargo)",
+              "nativeQueryRef": "Primera fecha: TipoCargo"
+            }
+          ]
+        },
+        "Legend": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CargoPartidario"
+                    }
+                  },
+                  "Property": "TipoCargo"
+                }
+              },
+              "queryRef": "CargoPartidario.TipoCargo",
+              "nativeQueryRef": "TipoCargo"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "categoryColumnsWidth": [
+        {
+          "properties": {
+            "categoryLength": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "'\"task-column0:15;column0:102;task-column1:112;column1:130.1;\"'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "caption": [
+        {
+          "properties": {
+            "captionValue": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"Null\":\"#118DFF\",\"ELECCION_POPULAR\":\"#414fb1\",\"PARTIDARIO\":\"#717bc5\"}'"
+                }
+              }
+            },
+            "captionValueForStatusColorMapping": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{}'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dateType": [
+        {
+          "properties": {
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Year'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "barColor": [
+        {
+          "properties": {
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0.2
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "And": {
+                    "Left": {
+                      "And": {
+                        "Left": {
+                          "Comparison": {
+                            "ComparisonKind": 0,
+                            "Left": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Entity": "CargoPartidario"
+                                  }
+                                },
+                                "Property": "Cargo"
+                              }
+                            },
+                            "Right": {
+                              "Literal": {
+                                "Value": "'DIPUTADO(A)'"
+                              }
+                            }
+                          }
+                        },
+                        "Right": {
+                          "Comparison": {
+                            "ComparisonKind": 0,
+                            "Left": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Entity": "CargoPartidario"
+                                  }
+                                },
+                                "Property": "Organizacion"
+                              }
+                            },
+                            "Right": {
+                              "Literal": {
+                                "Value": "'CONVERGENCIA DEMOCRATICA'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "Right": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "CargoPartidario"
+                              }
+                            },
+                            "Property": "TipoCargo"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'ELECCION_POPULAR'"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0.4
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "And": {
+                    "Left": {
+                      "And": {
+                        "Left": {
+                          "Comparison": {
+                            "ComparisonKind": 0,
+                            "Left": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Entity": "CargoPartidario"
+                                  }
+                                },
+                                "Property": "Cargo"
+                              }
+                            },
+                            "Right": {
+                              "Literal": {
+                                "Value": "'PRESIDENTE'"
+                              }
+                            }
+                          }
+                        },
+                        "Right": {
+                          "Comparison": {
+                            "ComparisonKind": 0,
+                            "Left": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Entity": "CargoPartidario"
+                                  }
+                                },
+                                "Property": "Organizacion"
+                              }
+                            },
+                            "Right": {
+                              "Literal": {
+                                "Value": "'PERU NACION'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "Right": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "CargoPartidario"
+                              }
+                            },
+                            "Property": "TipoCargo"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'PARTIDARIO'"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

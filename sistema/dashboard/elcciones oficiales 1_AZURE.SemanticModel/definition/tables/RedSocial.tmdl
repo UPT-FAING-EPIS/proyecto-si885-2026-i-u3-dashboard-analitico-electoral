@@ -1,0 +1,33 @@
+table RedSocial
+	lineageTag: 97380913-2a23-4d4e-8634-80cf03db1c34
+
+	column IdRedSocial
+		dataType: int64
+		formatString: 0
+		lineageTag: ba465b24-04f9-4a42-95c0-56d619b4ef57
+		summarizeBy: none
+		sourceColumn: IdRedSocial
+
+		annotation SummarizationSetBy = Automatic
+
+	column NombreRed
+		dataType: string
+		lineageTag: 98613232-77af-42e2-8311-acaebfbdfdd6
+		summarizeBy: none
+		sourceColumn: NombreRed
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RedSocial = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("sql-candidatos2026-dev-w3-z0lh9d.database.windows.net", "Elecciones2026DW"),
+				    dbo_RedSocial = Origen{[Schema="dbo",Item="RedSocial"]}[Data]
+				in
+				    dbo_RedSocial
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

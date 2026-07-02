@@ -1,0 +1,67 @@
+model Model
+	culture: es-ES
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-PE
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Candidato","Bien","CandidatoRedSocial","CargoPartidario","ClasificacionLegalPenal","EducacionBasica","EducacionUniversitaria","EstudiosNoUniversitarios","EstudiosTecnicos","ExperienciaLaboral","Ingresos","Partido","Posgrado","RelacionSentencias","Ubicacion","VisitaCampaña","ClasificacionVariable","FuenteInformacion","PartidoRedSocial","SubVariable","RedSocial","VariableSecundaria","Tabla de Medidas","HistorialTikTok","RTC_ComparativaResumen","RTC_ComparativaDetalle","Neocities_CandidatosPropuestas","Neocities_OrientacionCandidato","Neocities_PropuestasDetalle","ONPE_GastosCampana","ONPE_OrganizacionesPoliticas","RTC_DetalleContratosEstado","RTC_DetalleEducacionTitulos","RTC_DetallePropiedades","RTC_DetalleExperienciaLaboral","RTC_DetalleTrayectoriaPolitica"]
+
+annotation PBI_RemovedChildren = [{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"80676989-9c2b-4957-a820-5d81fcb012b0","fromColumnLocalLineageTag":"c74d1d0d-918b-43a2-b8fd-475b5efc3398","toTableLocalLineageTag":"97380913-2a23-4d4e-8634-80cf03db1c34","toColumnLocalLineageTag":"ba465b24-04f9-4a42-95c0-56d619b4ef57"}},"objectType":"Relationship"}]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Candidato
+ref table DateTableTemplate_2a579720-0579-44f7-8b15-63469c479907
+ref table LocalDateTable_2a03736a-3b79-492c-9a24-480d6ddd8a30
+ref table Bien
+ref table CandidatoRedSocial
+ref table CargoPartidario
+ref table ClasificacionLegalPenal
+ref table LocalDateTable_c11babc2-bf80-4a26-bd4c-3c5cc68d733b
+ref table EducacionBasica
+ref table EducacionUniversitaria
+ref table EstudiosNoUniversitarios
+ref table EstudiosTecnicos
+ref table ExperienciaLaboral
+ref table Ingresos
+ref table Partido
+ref table Posgrado
+ref table RelacionSentencias
+ref table Ubicacion
+ref table VisitaCampaña
+ref table ClasificacionVariable
+ref table FuenteInformacion
+ref table PartidoRedSocial
+ref table SubVariable
+ref table RedSocial
+ref table VariableSecundaria
+ref table 'Tabla de Medidas'
+ref table HistorialTikTok
+ref table LocalDateTable_b867f783-6fce-437f-80a5-3fd72ac8eba6
+ref table LocalDateTable_771d46dd-6de6-458d-bebc-4b100af8f46b
+ref table LocalDateTable_316d1536-40ec-4d90-a87b-4f20060c3fd8
+ref table LocalDateTable_488eb27a-897c-4b25-94e2-8bf2a6291779
+ref table LocalDateTable_f0729898-5b85-4689-b3c5-c9d3e21772b1
+ref table RTC_ComparativaResumen
+ref table RTC_ComparativaDetalle
+ref table DimCandidatoRTC
+ref table Neocities_CandidatosPropuestas
+ref table Neocities_OrientacionCandidato
+ref table Neocities_PropuestasDetalle
+ref table 'Selector Candidato A'
+ref table 'Selector Candidato B'
+ref table ONPE_GastosCampana
+ref table ONPE_OrganizacionesPoliticas
+ref table LocalDateTable_2f3e5947-a5b3-4014-a2c1-0530e9c25560
+ref table RTC_DetalleContratosEstado
+ref table RTC_DetalleEducacionTitulos
+ref table RTC_DetallePropiedades
+ref table RTC_DetalleExperienciaLaboral
+ref table RTC_DetalleTrayectoriaPolitica
+
+ref cultureInfo es-ES
+

@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+<head>
+   <script>
+     // Prevent flash of unstyled content
+     if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+       document.documentElement.classList.add('dark');
+     } else {
+       document.documentElement.classList.remove('dark');
+     }
+   </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Candidatos Presidenciales Perú 2026</title>
+  <!-- Tailwind utilitario -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            primary: '#3b82f6',
+            secondary: '#9333ea',
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="antialiased min-h-screen flex flex-col relative overflow-x-hidden">
+  
+  <!-- Background Elements -->
+  <div class="fixed inset-0 -z-10 pointer-events-none">
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+  </div>
+
+  <!-- Botón modo oscuro -->
+  <button id="theme-toggle"
+    class="fixed top-4 right-4 z-50 px-4 py-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 group backdrop-blur-md"
+    title="Cambiar tema">
+    <div class="relative w-5 h-5">
+      <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-full h-full transition-transform duration-500 rotate-0 dark:rotate-90 dark:opacity-0" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"/></svg>
+      <svg id="icon-sun"  xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-full h-full transition-transform duration-500 -rotate-90 opacity-0 dark:rotate-0 dark:opacity-100 text-yellow-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12ZM12 2v2m0 16v2M4.22 4.22 5.64 5.64m12.72 12.72 1.42 1.42M2 12h2m16 0h2M4.22 19.78 5.64 18.36m12.72-12.72 1.42-1.42"/></svg>
+    </div>
+    <span class="text-sm font-medium group-hover:text-primary transition-colors">Tema</span>
+  </button>
+
+  <!-- Contenido -->
+  <main class="flex-grow container mx-auto max-w-7xl px-4 py-12 relative z-10">
+    <header class="text-center mb-16 animate-fade-in">
+      <div class="inline-block mb-4 px-4 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm font-semibold tracking-wide uppercase">Elecciones Generales</div>
+      <h1 class="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 mb-6 tracking-tight">
+        Perú 2026
+      </h1>
+      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+        Explora los perfiles, propuestas y antecedentes de los candidatos presidenciales en una interfaz moderna y transparente.
+      </p>
+    </header>
+
+    <div id="candidate-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 perspective-1000">
+      <noscript class="col-span-full text-center text-red-500 bg-red-50 p-4 rounded-lg">
+        Activa JavaScript para ver la lista de candidatos.
+      </noscript>
+    </div>
+  </main>
+  
+  <!-- Modal -->
+  <div id="candidate-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden transition-opacity duration-300" aria-hidden="true">
+    <div class="modal-content w-full max-w-4xl rounded-3xl shadow-2xl relative overflow-hidden flex flex-col max-h-[90vh]">
+      
+      <!-- Header Sticky -->
+      <div class="sticky top-0 z-20 flex justify-end p-4 bg-gradient-to-b from-white/90 to-transparent dark:from-slate-900/90 pointer-events-none">
+        <button id="close-modal" class="pointer-events-auto p-2 rounded-full bg-white/80 dark:bg-slate-800/80 hover:bg-white dark:hover:bg-slate-700 shadow-lg transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Cerrar">
+          <svg class="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="overflow-y-auto p-6 md:p-10 pt-0 custom-scrollbar">
+        <div class="flex flex-col md:flex-row items-center md:items-start mb-10 gap-8">
+          <div class="modal-photo-wrap flex-shrink-0">
+            <img id="modal-photo" class="candidate-photo" alt="Foto">
+            <img id="modal-logo"  class="candidate-logo"  alt="Logo">
+          </div>
+          <div class="w-full text-center md:text-left space-y-2">
+            <h2 id="modal-name" class="text-4xl font-bold text-gray-900 dark:text-white font-display">Nombre</h2>
+            <p id="modal-partido" class="text-xl text-primary font-medium">Partido</p>
+            <p id="modal-info" class="text-base text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">Información...</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Columna Principal -->
+          <div class="lg:col-span-2 space-y-8">
+            <div id="modal-section-orientacion" class="modal-section">
+              <h3>Orientación y Propuestas</h3>
+              <ul id="modal-orientacion" class="space-y-2"></ul>
+            </div>
+
+            <div id="modal-section-posiciones" class="modal-section hidden">
+              <h3>Posiciones por tema</h3>
+              <div id="modal-posiciones" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+            </div>
+
+            <div id="modal-section-video" class="modal-section">
+              <h3>Entrevista Destacada</h3>
+              <div class="video-responsive-container">
+                <iframe id="modal-video-iframe" src="" title="YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna Lateral -->
+          <div class="space-y-8">
+            <div id="modal-section-contras" class="modal-section">
+              <h3 class="!text-red-600 !border-red-200" id="modal-contras-title">Contras / Investigaciones</h3>
+              <div id="modal-contras-container" class="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-4 rounded-r-lg">
+                <ul id="modal-contras-list" class="space-y-3"></ul>
+              </div>
+            </div>
+
+            <div id="modal-section-formacion" class="modal-section">
+              <h3>Formación</h3>
+              <ul id="modal-formacion" class="space-y-2 text-sm"></ul>
+            </div>
+
+            <div id="modal-section-cargos-partidos" class="space-y-6">
+              <div id="modal-section-cargos" class="modal-section">
+                <h3>Cargos Públicos</h3>
+                <ul id="modal-cargos" class="space-y-2 text-sm"></ul>
+              </div>
+              <div id="modal-section-partidos" class="modal-section">
+                <h3>Trayectoria</h3>
+                <ul id="modal-partidos" class="space-y-2 text-sm"></ul>
+              </div>
+            </div>
+
+            <div id="modal-section-entrevistas" class="modal-section hidden">
+              <h3>Más Contenido</h3>
+              <ul id="modal-entrevistas" class="space-y-2 text-sm"></ul>
+            </div>
+            
+            <div id="modal-section-webs" class="modal-section hidden">
+              <h3>Webs Oficiales</h3>
+              <ul id="modal-webs" class="space-y-2 text-sm"></ul>
+            </div>
+
+            <div id="modal-section-relaciones" class="modal-section hidden">
+              <h3>Relaciones</h3>
+              <ul id="modal-relaciones" class="space-y-2 text-sm"></ul>
+            </div>
+            
+            <div id="modal-section-notas" class="modal-section hidden">
+              <h3>Notas</h3>
+              <ul id="modal-notas" class="space-y-2 text-sm"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline Section -->
+  <section id="timeline" class="container mx-auto max-w-5xl px-4 py-16 relative">
+    <div class="absolute left-0 top-0 w-full h-full bg-gradient-to-b from-transparent via-blue-50/50 dark:via-blue-900/10 to-transparent -z-10"></div>
+    <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">Calendario Electoral</h2>
+    
+    <div class="bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-xl border border-white/20">
+      <!-- Controles -->
+      <div id="tl-controls" class="flex flex-wrap justify-center gap-3 mb-6"></div>
+      <div id="tl-months" class="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200 dark:border-gray-700 pb-6"></div>
+      <!-- Línea temporal -->
+      <div id="tl-body" class="relative pl-6 md:pl-10 space-y-8"></div>
+    </div>
+  </section>
+
+  <footer class="text-center py-8 border-t border-gray-200 dark:border-gray-800 mt-auto bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm">
+    <div class="container mx-auto px-4">
+      <p class="text-sm text-gray-500 dark:text-gray-400 font-medium">
+        Elaborado por @Ciro32h · Última actualización: 04/11/25
+      </p> 
+      <p class="text-xs text-gray-400 dark:text-gray-500 mt-2 max-w-lg mx-auto">
+        Este sitio recopila información de dominio público. El contenido es de carácter informativo y no se garantiza su precisión absoluta.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Lógica -->
+  <script src="app.js"></script>
+</body>
+</html>

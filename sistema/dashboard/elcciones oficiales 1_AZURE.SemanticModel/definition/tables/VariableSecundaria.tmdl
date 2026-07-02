@@ -1,0 +1,33 @@
+table VariableSecundaria
+	lineageTag: e85d68af-9a42-495d-a6e0-c4078660568b
+
+	column IdVariable
+		dataType: int64
+		formatString: 0
+		lineageTag: 59ba46e3-dc6d-4fb4-b735-27c2def85296
+		summarizeBy: none
+		sourceColumn: IdVariable
+
+		annotation SummarizationSetBy = Automatic
+
+	column Codigo
+		dataType: string
+		lineageTag: 85e26da6-f9c2-49f5-b162-2041fa45f4f2
+		summarizeBy: none
+		sourceColumn: Codigo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition VariableSecundaria = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("sql-candidatos2026-dev-w3-z0lh9d.database.windows.net", "Elecciones2026DW"),
+				    dbo_VariableSecundaria = Origen{[Schema="dbo",Item="VariableSecundaria"]}[Data]
+				in
+				    dbo_VariableSecundaria
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "elcciones oficiales 1_AZURE"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "b55b14e0-304b-47b9-997f-6a15841ba519"
+  }
+}

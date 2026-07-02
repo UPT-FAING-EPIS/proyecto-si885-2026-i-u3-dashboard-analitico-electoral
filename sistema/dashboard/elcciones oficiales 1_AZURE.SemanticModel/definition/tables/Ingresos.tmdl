@@ -1,0 +1,67 @@
+table Ingresos
+	lineageTag: 7915e899-851e-4a0a-94ac-138475bcb6eb
+
+	column IdIngreso
+		dataType: int64
+		formatString: 0
+		lineageTag: f07a6118-2681-4afb-ba31-cf92f9f70f05
+		summarizeBy: sum
+		sourceColumn: IdIngreso
+
+		annotation SummarizationSetBy = Automatic
+
+	column RemuneracionPublica
+		dataType: double
+		formatString: "S/"\ #,0.00;-"S/"\ #,0.00;"S/"\ #,0.00
+		lineageTag: eac17c3e-d124-4772-9ad0-3bc621f4504d
+		summarizeBy: sum
+		sourceColumn: RemuneracionPublica
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-PE"}
+
+	column RemuneracionPrivada
+		dataType: double
+		formatString: "S/"\ #,0.00;-"S/"\ #,0.00;"S/"\ #,0.00
+		lineageTag: c9468bc8-b326-44f3-af30-c5c9a44d890e
+		summarizeBy: sum
+		sourceColumn: RemuneracionPrivada
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-PE"}
+
+	column Total
+		dataType: double
+		formatString: "S/"\ #,0.00;-"S/"\ #,0.00;"S/"\ #,0.00
+		lineageTag: 3cf9097a-ee45-4a7e-a443-a6a3b44afbb2
+		summarizeBy: sum
+		sourceColumn: Total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-PE"}
+
+	column IdCandidato
+		dataType: int64
+		formatString: 0
+		lineageTag: 192c69a3-28f4-4d9a-8bdd-ac1d7e2a0db9
+		summarizeBy: none
+		sourceColumn: IdCandidato
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Ingresos = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("sql-candidatos2026-dev-w3-z0lh9d.database.windows.net", "Elecciones2026DW"),
+				    dbo_Ingresos = Origen{[Schema="dbo",Item="Ingresos"]}[Data]
+				in
+				    dbo_Ingresos
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

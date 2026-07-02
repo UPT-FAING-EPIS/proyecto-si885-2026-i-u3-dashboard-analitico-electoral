@@ -1,0 +1,68 @@
+table EducacionUniversitaria
+	lineageTag: 7159242c-8b02-440a-9df5-e6adb5ab8e79
+
+	column IdEducacion
+		dataType: int64
+		formatString: 0
+		lineageTag: cb4ce265-9dae-4004-9791-31f83723f8e1
+		summarizeBy: sum
+		sourceColumn: IdEducacion
+
+		annotation SummarizationSetBy = Automatic
+
+	column Universidad
+		dataType: string
+		lineageTag: 632c7177-25c6-4b7f-ab75-f3e26683f1e6
+		summarizeBy: none
+		sourceColumn: Universidad
+
+		annotation SummarizationSetBy = Automatic
+
+	column Grado
+		dataType: string
+		lineageTag: 6d5514f0-223d-4a3f-87ad-c812ac376d49
+		summarizeBy: none
+		sourceColumn: Grado
+
+		annotation SummarizationSetBy = Automatic
+
+	column Concluido
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 768c77cf-415c-43cb-8e4a-f8baf203dfea
+		summarizeBy: none
+		sourceColumn: Concluido
+
+		annotation SummarizationSetBy = Automatic
+
+	column AñoObtencion
+		dataType: double
+		formatString: 0
+		lineageTag: a82b20cf-f16d-4d88-a1f4-065e32516a93
+		summarizeBy: sum
+		sourceColumn: AñoObtencion
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdCandidato
+		dataType: int64
+		formatString: 0
+		lineageTag: cb175605-b2cf-453e-9863-589c72afd765
+		summarizeBy: none
+		sourceColumn: IdCandidato
+
+		annotation SummarizationSetBy = Automatic
+
+	partition EducacionUniversitaria = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("sql-candidatos2026-dev-w3-z0lh9d.database.windows.net", "Elecciones2026DW"),
+				    dbo_EducacionUniversitaria = Origen{[Schema="dbo",Item="EducacionUniversitaria"]}[Data]
+				in
+				    dbo_EducacionUniversitaria
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

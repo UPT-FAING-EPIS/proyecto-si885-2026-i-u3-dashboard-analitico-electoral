@@ -1,0 +1,79 @@
+table HistorialTikTok
+	lineageTag: e9cadc2f-46e9-4020-87b6-21cf8e16ff9f
+
+	column IdHistorial
+		dataType: int64
+		formatString: 0
+		lineageTag: 3a47c0e3-e75a-46c8-bc31-af206d926b15
+		summarizeBy: sum
+		sourceColumn: IdHistorial
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdCandidato
+		dataType: int64
+		formatString: 0
+		lineageTag: 750f6b26-3b4c-4a84-9e82-8bee9410f310
+		summarizeBy: none
+		sourceColumn: IdCandidato
+
+		annotation SummarizationSetBy = User
+
+	column Usuario
+		dataType: string
+		lineageTag: 51da7879-331a-45a7-b565-b04b219dda33
+		summarizeBy: none
+		sourceColumn: Usuario
+
+		annotation SummarizationSetBy = Automatic
+
+	column Seguidores
+		dataType: int64
+		formatString: 0
+		lineageTag: ce60a0d1-7600-41a6-ac6c-6a03a1419adb
+		summarizeBy: none
+		sourceColumn: Seguidores
+
+		annotation SummarizationSetBy = User
+
+	column FechaRegistro
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 46fec055-5934-4547-b17d-9a8a8ba97449
+		summarizeBy: none
+		sourceColumn: FechaRegistro
+
+		variation Variación
+			isDefault
+			relationship: dc7c85d9-0271-4aa0-b55b-f934d446885f
+			defaultHierarchy: LocalDateTable_b867f783-6fce-437f-80a5-3fd72ac8eba6.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Likes
+		dataType: int64
+		formatString: 0
+		lineageTag: 5c4f7c96-b3eb-45bb-97d8-9fb57cddcd53
+		summarizeBy: none
+		sourceColumn: Likes
+
+		annotation SummarizationSetBy = User
+
+	column Videos
+		dataType: int64
+		formatString: 0
+		lineageTag: 19bb6225-0b61-4259-b704-8cc1a2ffe2a0
+		summarizeBy: none
+		sourceColumn: Videos
+
+		annotation SummarizationSetBy = User
+
+	partition HistorialTikTok = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("sql-candidatos2026-dev-w3-z0lh9d.database.windows.net", "Elecciones2026DW"),
+				    dbo_HistorialTikTok = Origen{[Schema="dbo",Item="HistorialTikTok"]}[Data]
+				in
+				    dbo_HistorialTikTok
+

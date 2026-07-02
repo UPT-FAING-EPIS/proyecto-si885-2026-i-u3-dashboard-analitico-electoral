@@ -1,0 +1,42 @@
+table ONPE_OrganizacionesPoliticas
+	lineageTag: 0a7d15f7-6dbf-4c7a-9e02-7f4bc9e0b8a3
+
+	column Orden
+		dataType: int64
+		formatString: 0
+		lineageTag: 1dd7166d-9116-4cc9-8f46-173389f436f4
+		summarizeBy: sum
+		sourceColumn: Orden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Partido
+		dataType: string
+		lineageTag: f161b79a-d046-4f50-84fb-a2b2a4eadf63
+		summarizeBy: none
+		sourceColumn: Partido
+
+		annotation SummarizationSetBy = Automatic
+
+	column FuenteCatalogo
+		dataType: string
+		lineageTag: ae8e7d62-e253-4309-a2e2-97294a63f4d4
+		summarizeBy: none
+		sourceColumn: FuenteCatalogo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ONPE_OrganizacionesPoliticas = m
+		mode: import
+		source =
+				let
+				  Origen = Csv.Document(File.Contents("C:\Users\DIEGO\Downloads\PROYECTO_SI885_2026-II-U2_DASHBOARDELECTORAL-main\data\ONPE_OrganizacionesPoliticas.csv"), [Delimiter = ",", Columns = 3, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				  #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				  #"Tipo cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos", {{"Orden", Int64.Type}, {"Partido", type text}, {"FuenteCatalogo", type text}}, "es")
+				in
+				  #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegacion
+
+	annotation PBI_ResultType = Table
+

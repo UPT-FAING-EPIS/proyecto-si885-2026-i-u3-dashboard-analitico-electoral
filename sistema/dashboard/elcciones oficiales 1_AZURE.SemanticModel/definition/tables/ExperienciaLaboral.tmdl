@@ -1,0 +1,107 @@
+table ExperienciaLaboral
+	lineageTag: f72d5183-56a9-45cc-89b9-febc7148bafb
+
+	column IdExperiencia
+		dataType: int64
+		formatString: 0
+		lineageTag: e5e14d83-3528-424f-8610-12a92819e58c
+		summarizeBy: sum
+		sourceColumn: IdExperiencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column CentroTrabajo
+		dataType: string
+		lineageTag: fa64e08a-6326-43d7-8265-b22d4f9362fd
+		summarizeBy: none
+		sourceColumn: CentroTrabajo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cargo
+		dataType: string
+		lineageTag: 3161bb68-64f4-4e7d-9c4d-2bfe301c250c
+		summarizeBy: none
+		sourceColumn: Cargo
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnioInicio
+		dataType: int64
+		formatString: 0
+		lineageTag: 9e7c9ffe-be4b-4360-8fa1-dde8be60e40a
+		summarizeBy: sum
+		sourceColumn: AnioInicio
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnioFin
+		dataType: double
+		formatString: 0
+		lineageTag: 63646add-c89b-455b-bc1d-2ce2d12b36f6
+		summarizeBy: sum
+		sourceColumn: AnioFin
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdCandidato
+		dataType: int64
+		formatString: 0
+		lineageTag: 7ff62cda-7f62-4368-9cb2-259951a024d5
+		summarizeBy: none
+		sourceColumn: IdCandidato
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fecha Inicio EL' = DATE(ExperienciaLaboral[AnioInicio], 1, 1)
+		formatString: Short Date
+		lineageTag: 0e5a8a3d-9f1b-4165-9ff8-b75d785dd193
+		summarizeBy: none
+
+		variation Variación
+			isDefault
+			relationship: 803b6cf9-8e5f-4113-9d7a-5461c206d68a
+			defaultHierarchy: LocalDateTable_488eb27a-897c-4b25-94e2-8bf2a6291779.'Jerarquía de fechas'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Fecha Fin Corregida' = ```
+			
+			IF(
+			    ISBLANK(ExperienciaLaboral[AnioFin]), 
+			    TODAY(), 
+			    DATE(ExperienciaLaboral[AnioFin], 1, 1)
+			)
+			```
+		formatString: Short Date
+		lineageTag: e8832a6f-2b2d-430f-8051-2a45e53e13ab
+		summarizeBy: none
+
+		variation Variación
+			isDefault
+			relationship: 9d278f73-9083-4c9e-b56f-2cf06402d7c4
+			defaultHierarchy: LocalDateTable_f0729898-5b85-4689-b3c5-c9d3e21772b1.'Jerarquía de fechas'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition ExperienciaLaboral = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("sql-candidatos2026-dev-w3-z0lh9d.database.windows.net", "Elecciones2026DW"),
+				    dbo_ExperienciaLaboral = Origen{[Schema="dbo",Item="ExperienciaLaboral"]}[Data]
+				in
+				    dbo_ExperienciaLaboral
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

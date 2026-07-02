@@ -1,0 +1,43 @@
+table Partido
+	lineageTag: fb4b3314-51e5-4881-9c7a-933709f7e963
+
+	column IdPartido
+		dataType: int64
+		formatString: 0
+		lineageTag: af716371-cc74-4ae0-a0d3-3bb2fef4d22f
+		summarizeBy: none
+		sourceColumn: IdPartido
+
+		annotation SummarizationSetBy = Automatic
+
+	column NombrePartido
+		dataType: string
+		lineageTag: ff5d3555-aee5-43c2-b85e-0e7d633d7e21
+		summarizeBy: none
+		sourceColumn: NombrePartido
+
+		annotation SummarizationSetBy = Automatic
+
+	column LogoUrl
+		dataType: string
+		lineageTag: d559c57b-fdf6-4bbd-a2a3-e451e3a2dc74
+		dataCategory: ImageUrl
+		summarizeBy: none
+		sourceColumn: LogoUrl
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Partido = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("sql-candidatos2026-dev-w3-z0lh9d.database.windows.net", "Elecciones2026DW"),
+				    dbo_Partido = Origen{[Schema="dbo",Item="Partido"]}[Data],
+				    #"Poner En Mayúsculas Cada Palabra" = Table.TransformColumns(dbo_Partido,{{"NombrePartido", Text.Proper, type text}})
+				in
+				    #"Poner En Mayúsculas Cada Palabra"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

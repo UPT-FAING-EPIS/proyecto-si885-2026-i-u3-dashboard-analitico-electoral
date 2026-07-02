@@ -1,0 +1,66 @@
+table Neocities_OrientacionCandidato
+	lineageTag: 56d02c05-632c-4a71-98ba-3a571831f617
+
+	column IdCandidatoWeb
+		dataType: string
+		lineageTag: b3dfbf2f-d7d4-4cbc-8891-ddb16ee42756
+		summarizeBy: none
+		sourceColumn: IdCandidatoWeb
+
+		annotation SummarizationSetBy = Automatic
+
+	column Candidato
+		dataType: string
+		lineageTag: aaaa3c76-d4c0-457a-85f7-53e8e6bafa40
+		summarizeBy: none
+		sourceColumn: Candidato
+
+		annotation SummarizationSetBy = Automatic
+
+	column Partido
+		dataType: string
+		lineageTag: f3d3c055-cc92-487b-a68e-da0f7cf32538
+		summarizeBy: none
+		sourceColumn: Partido
+
+		annotation SummarizationSetBy = Automatic
+
+	column Orden
+		dataType: int64
+		formatString: 0
+		lineageTag: a00b3e72-0874-4460-a5d4-d9e944018f29
+		summarizeBy: sum
+		sourceColumn: Orden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Orientacion
+		dataType: string
+		lineageTag: 3866ec8e-e505-46b9-81fd-fc6d148f1cb8
+		summarizeBy: none
+		sourceColumn: Orientacion
+
+		annotation SummarizationSetBy = Automatic
+
+	column FuenteDataset
+		dataType: string
+		lineageTag: 7efd99a5-2229-4ad9-a938-a23f6121337c
+		summarizeBy: none
+		sourceColumn: FuenteDataset
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Neocities_OrientacionCandidato = m
+		mode: import
+		source =
+				let
+				  Origen = Csv.Document(File.Contents("C:\Users\DIEGO\Downloads\PROYECTO_SI885_2026-II-U2_DASHBOARDELECTORAL-main\data\Neocities_OrientacionCandidato.csv"), [Delimiter = ",", Columns = 6, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos", {{"IdCandidatoWeb", type text}, {"Candidato", type text}, {"Partido", type text}, {"Orden", Int64.Type}, {"Orientacion", type text}, {"FuenteDataset", type text}}, "es")
+				in
+				  #"Tipo de columna cambiado"
+
+	annotation PBI_NavigationStepName = Navegacion
+
+	annotation PBI_ResultType = Table
+

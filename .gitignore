@@ -1,0 +1,17 @@
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+*.mp4
+
+.env
+.env.*
+
+.terraform/
+*.tfstate
+*.tfstate.*
+
+.DS_Store
+Thumbs.db

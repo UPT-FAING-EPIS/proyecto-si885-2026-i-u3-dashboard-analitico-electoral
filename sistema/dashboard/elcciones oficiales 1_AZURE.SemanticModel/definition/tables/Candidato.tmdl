@@ -1,0 +1,93 @@
+table Candidato
+	lineageTag: 3f3fbf51-8c09-40f9-97c7-090bdfbcfec8
+
+	column IdCandidato
+		dataType: int64
+		formatString: 0
+		lineageTag: ea903799-3719-4621-9c4c-92dde3270c76
+		summarizeBy: none
+		sourceColumn: IdCandidato
+
+		annotation SummarizationSetBy = Automatic
+
+	column NombreCompleto
+		dataType: string
+		lineageTag: 35eda931-f08e-4605-ae26-26d10c131e1a
+		summarizeBy: none
+		sourceColumn: NombreCompleto
+
+		annotation SummarizationSetBy = Automatic
+
+	column DNI
+		dataType: string
+		lineageTag: 01cd8bc9-65f2-4d73-bf36-74608b754f0d
+		summarizeBy: none
+		sourceColumn: DNI
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sexo
+		dataType: string
+		lineageTag: c7623946-c7f6-4c31-9153-5ece49c86a6a
+		summarizeBy: none
+		sourceColumn: Sexo
+
+		annotation SummarizationSetBy = Automatic
+
+	column CargoPostula
+		dataType: string
+		lineageTag: 7c18c28b-8959-49b7-bde7-5aa6f5cdf447
+		summarizeBy: none
+		sourceColumn: CargoPostula
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdPartido
+		dataType: int64
+		formatString: 0
+		lineageTag: 2a1329ac-22ca-42ec-aaad-79e3318b23f9
+		summarizeBy: none
+		sourceColumn: IdPartido
+
+		annotation SummarizationSetBy = User
+
+	column FechaNacimiento
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1da4945d-2402-4836-97fc-e3d1231baade
+		summarizeBy: none
+		sourceColumn: FechaNacimiento
+
+		variation Variación
+			isDefault
+			relationship: 6646e807-1c18-4a36-9d1b-a1034e5c750a
+			defaultHierarchy: LocalDateTable_2a03736a-3b79-492c-9a24-480d6ddd8a30.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FotoUrl
+		dataType: string
+		lineageTag: cb7f3244-2f43-4ffa-8e54-ac42e7427087
+		dataCategory: ImageUrl
+		summarizeBy: none
+		sourceColumn: FotoUrl
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Candidato = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("sql-candidatos2026-dev-w3-z0lh9d.database.windows.net", "Elecciones2026DW"),
+				    dbo_Candidato = Origen{[Schema="dbo",Item="Candidato"]}[Data],
+				    #"Tipo cambiado" = Table.TransformColumnTypes(dbo_Candidato,{{"IdCandidato", Int64.Type}}),
+				    #"Poner En Mayúsculas Cada Palabra" = Table.TransformColumns(#"Tipo cambiado",{{"NombreCompleto", Text.Proper, type text}})
+				in
+				    #"Poner En Mayúsculas Cada Palabra"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

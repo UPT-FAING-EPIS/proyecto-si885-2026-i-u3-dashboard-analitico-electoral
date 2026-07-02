@@ -1,0 +1,132 @@
+{
+  "source_url": "https://revisatucandidato.pe/",
+  "source_note": "Fuentes declaradas por RTC: JNE, SUNEDU, OECE. Indicadores cuentan registros declarados por cada candidato.",
+  "candidates": [
+    {
+      "candidate": "Keiko Fujimori Higuchi",
+      "short_name": "Keiko Fujimori",
+      "elections_count": 7,
+      "contracts_count": 0,
+      "contracts_total_soles": 0,
+      "titles_count": 2,
+      "properties_count": 1,
+      "jobs_count": 1,
+      "titles": [
+        {
+          "Titulo": "Maestría - TÍTULO DE MÁSTER EN ADMINISTRACIÓN DE EMPRESAS (GRADO DE MAESTRO)",
+          "Institucion": "COLUMBIA UNIVERSITY",
+          "Anio": "2008"
+        },
+        {
+          "Titulo": "Título - GRADO DE LICENCIADA EN ADMINISTRACIÓN DE EMPRESAS (GRADO DE BACHILLER Y TÍTULO PROFESIONAL)",
+          "Institucion": "BOSTON UNIVERSITY",
+          "Anio": "1997"
+        }
+      ],
+      "elections": [
+        {
+          "Eleccion": "SEGUNDA VUELTA DE ELECCIÓN PRESIDENCIAL 2021",
+          "Cargo": "PRESIDENTE DE LA REPÚBLICA",
+          "Electo": ""
+        },
+        {
+          "Eleccion": "ELECCIONES GENERALES 2021",
+          "Cargo": "PRESIDENTE DE LA REPÚBLICA",
+          "Electo": ""
+        },
+        {
+          "Eleccion": "SEGUNDA VUELTA DE ELECCIÓN PRESIDENCIAL 2016",
+          "Cargo": "PRESIDENTE DE LA REPÚBLICA",
+          "Electo": ""
+        },
+        {
+          "Eleccion": "ELECCIONES GENERALES 2016",
+          "Cargo": "PRESIDENTE DE LA REPÚBLICA",
+          "Electo": ""
+        },
+        {
+          "Eleccion": "SEGUNDA VUELTA DE LA ELECCIÓN PRESIDENCIAL 2011",
+          "Cargo": "PRESIDENTE DE LA REPÚBLICA",
+          "Electo": ""
+        },
+        {
+          "Eleccion": "ELECCIONES GENERALES 2011",
+          "Cargo": "PRESIDENTE DE LA REPÚBLICA",
+          "Electo": ""
+        },
+        {
+          "Eleccion": "ELECCIONES GENERALES 2006",
+          "Cargo": "CONGRESISTA DE LA REPÚBLICA",
+          "Electo": "Si"
+        }
+      ],
+      "contracts": [
+        "Sin contratos."
+      ],
+      "properties": [
+        "Mueble - REGISTRO DE PROPIEDAD VEHICULAR"
+      ],
+      "jobs": [
+        "Presidenta - Partido Político Fuerza Popular"
+      ]
+    },
+    {
+      "candidate": "Roberto Sanchez Palomino",
+      "short_name": "Roberto Sanchez",
+      "elections_count": 4,
+      "contracts_count": 6,
+      "contracts_total_soles": 121980,
+      "titles_count": 2,
+      "properties_count": 1,
+      "jobs_count": 5,
+      "titles": [
+        {
+          "Titulo": "Título - PSICOLOGO",
+          "Institucion": "UNIVERSIDAD NACIONAL MAYOR DE SAN MARCOS",
+          "Anio": "2000"
+        },
+        {
+          "Titulo": "Bachiller - BACHILLER EN PSICOLOGIA",
+          "Institucion": "UNIVERSIDAD NACIONAL MAYOR DE SAN MARCOS",
+          "Anio": "1999"
+        }
+      ],
+      "elections": [
+        {
+          "Eleccion": "ELECCIONES GENERALES 2021",
+          "Cargo": "CONGRESISTA DE LA REPÚBLICA",
+          "Electo": "Si"
+        },
+        {
+          "Eleccion": "ELECCIONES CONGRESALES EXTRAORDINARIAS 2020",
+          "Cargo": "CONGRESISTA DE LA REPÚBLICA",
+          "Electo": ""
+        },
+        {
+          "Eleccion": "ELECCIONES REGIONALES Y MUNICIPALES 2006",
+          "Cargo": "ALCALDE PROVINCIAL",
+          "Electo": ""
+        },
+        {
+          "Eleccion": "ELECCIONES GENERALES 2006",
+          "Cargo": "CONGRESISTA DE LA REPÚBLICA",
+          "Electo": ""
+        }
+      ],
+      "contracts": [
+        "6 contrato s",
+        "Total: S/ 121,980"
+      ],
+      "properties": [
+        "Inmueble - Casa Hacienda Huando S/N - Huando , Huaral, Lima"
+      ],
+      "jobs": [
+        "Congresista - Congreso de la República",
+        "Ministro - Ministerio de Comercio Exterior y Turismo - MINCETUR",
+        "Gerente de Desarrollo Social - Municipalidad Provincial de Huaral",
+        "Gerente de la Capital Humano - Municipalidad Distrital de San Borja",
+        "Gerente de Administración y Finanzas - Municipalidad Provincial de Huaura - Huacho"
+      ]
+    }
+  ]
+}

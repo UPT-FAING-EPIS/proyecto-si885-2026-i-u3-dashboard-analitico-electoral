@@ -1,0 +1,48 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "ea5a8fb916eccb75ccbd",
+  "displayName": "Comparativa RTC",
+  "displayOption": "FitToWidth",
+  "height": 920,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "9fa21c6ea0d3cab418ae",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "RTC_ComparativaResumen"
+              }
+            },
+            "Property": "Elecciones"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "24aa02c7a0d40690e594",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "f50141b23e9358d3b31b",
+        "boundFilter": "9fa21c6ea0d3cab418ae",
+        "asAggregation": true,
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "RTC_ComparativaResumen"
+              }
+            },
+            "Property": "Elecciones"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+-- Medidas para la pagina "Comparativa RTC"
+-- Copiar en Power BI: Modelado > Nueva medida
+
+Elecciones RTC =
+SUM ( 'RTC_ComparativaResumen'[Elecciones] )
+
+Contratos RTC =
+SUM ( 'RTC_ComparativaResumen'[Contratos] )
+
+Total Contratos RTC =
+SUM ( 'RTC_ComparativaResumen'[Total contratos S/] )
+
+Titulos RTC =
+SUM ( 'RTC_ComparativaResumen'[Titulos] )
+
+Bienes RTC =
+SUM ( 'RTC_ComparativaResumen'[Bienes] )
+
+Trabajos RTC =
+SUM ( 'RTC_ComparativaResumen'[Trabajos] )
+
+Elecciones Keiko =
+CALCULATE (
+    [Elecciones RTC],
+    'RTC_ComparativaResumen'[Candidato] = "Keiko Fujimori Higuchi"
+)
+
+Elecciones Roberto =
+CALCULATE (
+    [Elecciones RTC],
+    'RTC_ComparativaResumen'[Candidato] = "Roberto Sanchez Palomino"
+)
+
+Diferencia Elecciones =
+[Elecciones Keiko] - [Elecciones Roberto]
+
+Contratos Keiko =
+CALCULATE (
+    [Contratos RTC],
+    'RTC_ComparativaResumen'[Candidato] = "Keiko Fujimori Higuchi"
+)
+
+Contratos Roberto =
+CALCULATE (
+    [Contratos RTC],
+    'RTC_ComparativaResumen'[Candidato] = "Roberto Sanchez Palomino"
+)
+
+Total Contratos Roberto =
+CALCULATE (
+    [Total Contratos RTC],
+    'RTC_ComparativaResumen'[Candidato] = "Roberto Sanchez Palomino"
+)
+
+Registros Detalle RTC =
+COUNTROWS ( 'RTC_ComparativaDetalle' )
+
+Registros Trayectoria RTC =
+CALCULATE (
+    [Registros Detalle RTC],
+    'RTC_ComparativaDetalle'[Categoria] = "Trayectoria politica"
+)
+
+Registros Educacion RTC =
+CALCULATE (
+    [Registros Detalle RTC],
+    'RTC_ComparativaDetalle'[Categoria] = "Educacion y titulos"
+)
+
+Registros Experiencia RTC =
+CALCULATE (
+    [Registros Detalle RTC],
+    'RTC_ComparativaDetalle'[Categoria] = "Experiencia laboral"
+)
+
+Lectura Comparativa RTC =
+"Keiko registra "
+    & FORMAT ( [Elecciones Keiko], "0" )
+    & " elecciones frente a "
+    & FORMAT ( [Elecciones Roberto], "0" )
+    & " de Roberto Sanchez. Roberto registra "
+    & FORMAT ( [Contratos Roberto], "0" )
+    & " contratos con el Estado por "
+    & FORMAT ( [Total Contratos Roberto], "S/ #,##0" )
+    & "."
+
+Fuente RTC =
+"Fuente: revisatucandidato.pe | Datos declarados por RTC: JNE, SUNEDU y OECE"
+

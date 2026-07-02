@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "b03ca8db41731056707a",
+  "position": {
+    "x": 6.2682342425107631,
+    "y": 31.36864085041762,
+    "z": 2000,
+    "height": 78.77014257993757,
+    "width": 65.632099715700988,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "simpleImageEBC4593F96F1425FB3D84C5BF02B5075",
+    "query": {
+      "queryState": {
+        "imageURL": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Candidato"
+                    }
+                  },
+                  "Property": "FotoUrl"
+                }
+              },
+              "queryRef": "Candidato.FotoUrl",
+              "nativeQueryRef": "FotoUrl"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "996a986c80e010b67307"
+}

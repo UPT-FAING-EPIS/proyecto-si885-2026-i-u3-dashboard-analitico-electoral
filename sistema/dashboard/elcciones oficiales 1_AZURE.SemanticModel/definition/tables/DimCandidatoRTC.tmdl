@@ -1,0 +1,30 @@
+table DimCandidatoRTC
+	lineageTag: fbb0c0f8-8ed9-44ef-af11-a1d311a4f23f
+
+	column Candidato
+		lineageTag: 83c9dac9-a9f9-4f77-a1e0-2905f6b5f07e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Candidato]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimCandidatoRTC = calculated
+		mode: import
+		source =
+				
+				DISTINCT (
+				    UNION (
+				        SELECTCOLUMNS (
+				            RTC_ComparativaResumen,
+				            "Candidato", RTC_ComparativaResumen[Candidato]
+				        ),
+				        SELECTCOLUMNS (
+				            RTC_ComparativaDetalle,
+				            "Candidato", RTC_ComparativaDetalle[Candidato]
+				        )
+				    )
+				)
+
+	annotation PBI_Id = e15f756a9a7045e2ab5ae96101d76c03
+

@@ -1,0 +1,514 @@
+table 'Tabla de Medidas'
+	lineageTag: d56cbb95-9843-4f1b-b7ba-d528cc9d86e7
+
+	measure Edad = DATEDIFF(SELECTEDVALUE(Candidato[FechaNacimiento]), TODAY(), YEAR)
+		formatString: 0
+		lineageTag: ba377471-8339-4793-9a89-4f7ea6e08efc
+
+	measure 'Edad Promedio' = AVERAGEX(Candidato, DATEDIFF(Candidato[FechaNacimiento], TODAY(), YEAR))
+		lineageTag: f3e0918e-5ad7-42e2-80da-0b13acf12d26
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% por Sexo' = DIVIDE(COUNT(Candidato[IdCandidato]), CALCULATE(COUNT(Candidato[IdCandidato]), ALL(Candidato[Sexo])))
+		lineageTag: 5dfbd288-8335-4658-b8b7-c1375ca05c12
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Maximo Nivel Alcanzado' = ```
+			
+			VAR CandidatoID = SELECTEDVALUE(Candidato[IdCandidato])
+			VAR TieneDoc = COUNTROWS(FILTER(Posgrado, Posgrado[IdCandidato] = CandidatoID && CONTAINSSTRING(Posgrado[Grado], "DOCTOR")))
+			VAR TieneMae = COUNTROWS(FILTER(Posgrado, Posgrado[IdCandidato] = CandidatoID && (CONTAINSSTRING(Posgrado[Grado], "MAESTR") || CONTAINSSTRING(Posgrado[Grado], "MAGISTER"))))
+			VAR TieneUni = COUNTROWS(FILTER(EducacionUniversitaria, EducacionUniversitaria[IdCandidato] = CandidatoID && EducacionUniversitaria[Concluido] = 1))
+			VAR TieneTec = COUNTROWS(FILTER(EstudiosTecnicos, EstudiosTecnicos[IdCandidato] = CandidatoID))
+			RETURN 
+			SWITCH(TRUE(),
+			    TieneDoc > 0, "Doctorado",
+			    TieneMae > 0, "Maestría",
+			    TieneUni > 0, "Universitario",
+			    TieneTec > 0, "Técnico",
+			    "Educación Básica"
+			)
+			```
+		formatString: 0
+		lineageTag: 81cd418b-dd08-4971-a84f-fec5a8f9ea56
+
+	measure 'Ingreso Promedio' = AVERAGE(Ingresos[Total])
+		formatString: "S/"\ #,0.00;-"S/"\ #,0.00;"S/"\ #,0.00
+		lineageTag: 807e9b9e-91cf-4ccd-906e-ae6a4a100b64
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-PE"}
+
+	measure 'Patrimonio Total' = SUM(Bien[ValorAutovaluo])
+		formatString: "S/"\ #,0.00;-"S/"\ #,0.00;"S/"\ #,0.00
+		lineageTag: 4550dd0b-0c4a-4488-97ab-1af07daa4d86
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-PE"}
+
+	measure 'Valor Promedio por Bien' = AVERAGE(Bien[ValorAutovaluo])
+		lineageTag: 9fc2e8d6-015d-4f21-ac71-330b85ef62ef
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Max Bienes' = MAXX(VALUES(Candidato[NombreCompleto]), CALCULATE(COUNT(Bien[IdBien])))
+		formatString: 0
+		lineageTag: c01d0f13-56a1-4b84-8f10-492f13d31b85
+
+	measure 'Min Bienes' = MINX(VALUES(Candidato[NombreCompleto]), CALCULATE(COUNT(Bien[IdBien])))
+		formatString: 0
+		lineageTag: 2831b1e5-2ac4-4be1-a32d-c980ab9e119a
+
+	measure 'Total Fundadores' = COUNTROWS(FILTER(CargoPartidario, CargoPartidario[Cargo] = "FUNDADOR"))
+		formatString: 0
+		lineageTag: 443d1456-f687-484d-ba2f-ae11a7091f98
+
+	measure '% Ex-Autoridades' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        DISTINCTCOUNT(CargoPartidario[IdCandidato]), 
+			        CargoPartidario[TipoCargo] = "ELECCION_POPULAR"
+			    ), 
+			    COUNT(Candidato[IdCandidato]), 
+			    0
+			)
+			```
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: f3c85591-1b91-4180-b4b7-530d823b1094
+
+	measure 'Total Regiones' = CALCULATE(DISTINCTCOUNT('VisitaCampaña'[NombreLugar]), 'VisitaCampaña'[TipoLugar] = "REGION")
+		formatString: 0
+		lineageTag: 6a95f727-e8cc-477c-b5fd-eef99b16082e
+
+	measure 'Distritos Lima' = CALCULATE(DISTINCTCOUNT('VisitaCampaña'[NombreLugar]), 'VisitaCampaña'[TipoLugar] = "DISTRITO")
+		formatString: 0
+		lineageTag: 46c70de0-7b64-4eb3-be42-95e964694b7d
+
+	measure '% con TikTok' = DIVIDE(CALCULATE(COUNT(CandidatoRedSocial[IdCandidato]), CandidatoRedSocial[Tiene] = 1), COUNT(Candidato[IdCandidato]))
+		formatString: 0
+		lineageTag: 6398e49b-6eda-45b8-9dfa-a791ca636959
+
+	measure 'Promedio Seguidores' = AVERAGE(CandidatoRedSocial[Seguidores])
+		lineageTag: c9bb41a3-6426-4e48-81c6-24a35195f0fe
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Promedio Likes' = AVERAGE(CandidatoRedSocial[Likes])
+		lineageTag: 3935d884-01c6-4fec-8bb4-8f0bf68199aa
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Promedio Videos' = AVERAGE(CandidatoRedSocial[CantidadVideos])
+		lineageTag: c553bfb3-c34f-4d73-a67f-01c11964dbb0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Visitas' = COUNT('VisitaCampaña'[IdVisita])
+		formatString: 0
+		lineageTag: 53c3b0c9-dd3d-4445-ac23-937d60f521fa
+
+	measure 'Frecuencia Variables' = COUNT(ClasificacionVariable[IdClasificacion])
+		formatString: 0
+		lineageTag: d41224e4-19a4-4113-b374-1eda073c6bc8
+
+	measure '% Incidencia Variable' = ```
+			
+			DIVIDE(
+			    [Frecuencia Variables], 
+			    CALCULATE(COUNT(ClasificacionVariable[IdClasificacion]), ALL(VariableSecundaria)), 
+			    0
+			)
+			```
+		lineageTag: 03c7b2da-c79c-4b30-964b-c55c898a937d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Mujeres' =
+			
+			CALCULATE(
+			    COUNTROWS('Candidato'),
+			    'Candidato'[Sexo] = "FEMENINO"
+			)
+		formatString: 0
+		lineageTag: 3bb63af0-7316-4baa-b765-adc0126b746c
+
+	measure '% Hombress' = ```
+			
+			DIVIDE(
+			    [Total Hombres], 
+			    36, 
+			    0
+			)
+			```
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: 6152655f-8cc4-4811-bb15-c74ff7af1a49
+
+	measure 'Total Hombres' =
+			
+			CALCULATE(
+			    COUNTROWS('Candidato'),
+			    'Candidato'[Sexo] = "Masculino"
+			)
+		formatString: 0
+		lineageTag: e1a25d42-a428-427f-a6d6-c67bb380766c
+
+	measure '% Posgrado Concluido' = ```
+			
+			VAR CandidatosConcluidos = 
+			    CALCULATE(
+			        DISTINCTCOUNT('Posgrado'[IdCandidato]), 
+			        'Posgrado'[Concluido] = TRUE()
+			    )
+			VAR TotalCandidatos = 
+			    DISTINCTCOUNT('Candidato'[IdCandidato])
+			
+			RETURN 
+			    DIVIDE(CandidatosConcluidos, TotalCandidatos, 0)
+			```
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: 2b5309b2-ca94-41ad-a412-b7ef8192bd28
+
+	measure '% Pregrado Concluido' = ```
+			
+			VAR CandidatosConcluidos = 
+			    CALCULATE(
+			        DISTINCTCOUNT('EducacionUniversitaria'[IdCandidato]), 
+			        'EducacionUniversitaria'[Concluido] = TRUE()
+			    )
+			VAR TotalCandidatos = 
+			    DISTINCTCOUNT('Candidato'[IdCandidato])
+			
+			RETURN 
+			    DIVIDE(CandidatosConcluidos, TotalCandidatos, 0)
+			```
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: 26d1b957-7ef8-4bd8-8767-2806cf7dd7f4
+
+	measure '% Educación No Universitaria Concluido' = ```
+			
+			VAR CandidatosConcluidos = 
+			    CALCULATE(
+			        DISTINCTCOUNT('EstudiosNoUniversitarios'[IdCandidato]), 
+			        'EstudiosNoUniversitarios'[Concluido] = TRUE()
+			    )
+			VAR TotalCandidatos = 
+			    DISTINCTCOUNT('Candidato'[IdCandidato])
+			
+			RETURN 
+			    DIVIDE(CandidatosConcluidos, TotalCandidatos, 0)
+			```
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: 48a334a0-41a0-401d-83ca-1dedc2fc5e57
+
+	measure '% Tecnico Concluido' = ```
+			
+			VAR CandidatosConcluidos = 
+			    CALCULATE(
+			        DISTINCTCOUNT('EstudiosTecnicos'[IdCandidato]), 
+			        EstudiosTecnicos[Concluido] = TRUE()
+			    )
+			VAR TotalCandidatos = 
+			    DISTINCTCOUNT('Candidato'[IdCandidato])
+			
+			RETURN 
+			    DIVIDE(CandidatosConcluidos, TotalCandidatos, 0)
+			```
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: 3bd983e1-77df-432c-80f9-7f65147c8d98
+
+	measure '% Candidatos con sentencias declaradas ante el JNE' = ```
+			
+			VAR CandidatosConcluidos = 
+			    CALCULATE(
+			        DISTINCTCOUNT(RelacionSentencias[IdCandidato])
+			    )
+			VAR TotalCandidatos = 
+			    DISTINCTCOUNT('Candidato'[IdCandidato])
+			
+			RETURN 
+			    DIVIDE(CandidatosConcluidos, TotalCandidatos, 0)
+			```
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: 6f34e1ce-9e69-4835-96b4-fc3b6a355f07
+
+	measure 'Titulo Nivel Dinamico' = ```
+			
+			"CANDIDATOS CON EL NIVEL " & 
+			SELECTEDVALUE(ClasificacionLegalPenal[NivelPrincipal], "NIVEL SELECCIONADO") & 
+			" - " & 
+			SELECTEDVALUE(ClasificacionLegalPenal[SubNivel], "")
+			```
+		lineageTag: 2ea6b238-5995-4e47-9ba3-14ea2db77f5d
+
+	measure 'Estado Pregrado' =
+			
+			IF(
+			    ISBLANK(COUNTROWS(RELATEDTABLE('EducacionUniversitaria'))),
+			    "SIN PREGRADO UNIVERSITARIO",
+			    "CON PREGRADO UNIVERSITARIO"
+			)
+		lineageTag: 898177c0-b4e5-4b36-8946-4a9471c9b5b8
+
+	measure 'Estado Posgrado Medida' = ```
+			
+			VAR PosgradosConcluidos = 
+			    COUNTROWS(
+			        FILTER(
+			            RELATEDTABLE('Posgrado'), 
+			            'Posgrado'[Concluido] = TRUE()
+			        )
+			    )
+			RETURN
+			    IF(
+			        ISBLANK(PosgradosConcluidos) || PosgradosConcluidos = 0, 
+			        "Sin Posgrado", 
+			        "Con Posgrado"
+			    )
+			```
+		lineageTag: 79f54707-8ee5-4846-9efa-90f93f0931a9
+
+	measure 'Estado Pregrado Medida' = ```
+			
+			VAR PregradosConcluidos = 
+			    COUNTROWS(
+			        FILTER(
+			            RELATEDTABLE('EducacionUniversitaria'), 
+			            'EducacionUniversitaria'[Concluido] = TRUE()
+			        )
+			    )
+			RETURN
+			    IF(
+			        ISBLANK(PregradosConcluidos) || PregradosConcluidos = 0, 
+			        "Sin Pregrado", 
+			        "Con Pregrado"
+			    )
+			```
+		lineageTag: 6044f285-1b2f-47b6-895a-96a35a20c005
+
+	measure 'Total Candidatos' = COUNTROWS(Candidato)
+		formatString: 0
+		lineageTag: b903de1f-738c-428e-a648-6dc89e483ac1
+
+	measure 'Total Propuestas Neocities' = COUNTROWS(Neocities_PropuestasDetalle)
+		formatString: 0
+		lineageTag: 77ed77e9-c7ca-4b1d-9ff2-13f4858b01f0
+
+	measure 'Total Candidatos Neocities' = DISTINCTCOUNT(Neocities_CandidatosPropuestas[IdCandidatoWeb])
+		formatString: 0
+		lineageTag: 7d25f33d-662d-47dd-b524-4cc701fdaac6
+
+	measure 'Total Fuentes Neocities' = SUM(Neocities_PropuestasDetalle[CantidadFuentes])
+		formatString: 0
+		lineageTag: 5bd06d16-88ad-489e-a876-f724615697e3
+
+	measure 'Temas con Propuestas' = DISTINCTCOUNT(Neocities_PropuestasDetalle[Tema])
+		formatString: 0
+		lineageTag: d6a01451-8860-4d05-a70f-9e2e57c9f3df
+
+	measure 'Candidato A seleccionado' = SELECTEDVALUE('Selector Candidato A'[Candidato], "Elige candidato A")
+		lineageTag: 8638d776-c6fe-4701-b936-b1377951d7a1
+
+	measure 'Candidato B seleccionado' = SELECTEDVALUE('Selector Candidato B'[Candidato], "Elige candidato B")
+		lineageTag: 9b15a664-e723-4831-8050-39df63f7efcd
+
+	measure 'Partido Candidato A' = SELECTEDVALUE('Selector Candidato A'[Partido], "")
+		lineageTag: a8986d19-b0b8-489e-b75f-2833693d3454
+
+	measure 'Partido Candidato B' = SELECTEDVALUE('Selector Candidato B'[Partido], "")
+		lineageTag: 52a684be-0407-4a4b-889c-009a6e290684
+
+	measure 'Propuesta Corta Candidato A' =
+			
+			VAR IdA = SELECTEDVALUE('Selector Candidato A'[IdCandidatoWeb])
+			RETURN
+			    IF(
+			        ISBLANK(IdA),
+			        "Elige candidato A",
+			        CONCATENATEX(
+			            CALCULATETABLE(
+			                VALUES(Neocities_PropuestasDetalle[PropuestaCorta]),
+			                Neocities_PropuestasDetalle[IdCandidatoWeb] = IdA
+			            ),
+			            Neocities_PropuestasDetalle[PropuestaCorta],
+			            UNICHAR(10)
+			        )
+			    )
+		lineageTag: 8d4eea2a-d93a-4765-8f2f-052535729d7f
+
+	measure 'Propuesta Corta Candidato B' =
+			
+			VAR IdB = SELECTEDVALUE('Selector Candidato B'[IdCandidatoWeb])
+			RETURN
+			    IF(
+			        ISBLANK(IdB),
+			        "Elige candidato B",
+			        CONCATENATEX(
+			            CALCULATETABLE(
+			                VALUES(Neocities_PropuestasDetalle[PropuestaCorta]),
+			                Neocities_PropuestasDetalle[IdCandidatoWeb] = IdB
+			            ),
+			            Neocities_PropuestasDetalle[PropuestaCorta],
+			            UNICHAR(10)
+			        )
+			    )
+		lineageTag: cc3eeac8-2816-4f62-929d-a2a296d62547
+
+	measure 'Detalle Propuesta Candidato A' =
+			
+			VAR IdA = SELECTEDVALUE('Selector Candidato A'[IdCandidatoWeb])
+			RETURN
+			    IF(
+			        NOT ISINSCOPE(Neocities_PropuestasDetalle[Tema]),
+			        BLANK(),
+			        IF(
+			            ISBLANK(IdA),
+			            "Elige candidato A",
+			            CONCATENATEX(
+			                CALCULATETABLE(
+			                    VALUES(Neocities_PropuestasDetalle[PropuestaDetalle]),
+			                    Neocities_PropuestasDetalle[IdCandidatoWeb] = IdA
+			                ),
+			                Neocities_PropuestasDetalle[PropuestaDetalle],
+			                UNICHAR(10)
+			            )
+			        )
+			    )
+		lineageTag: d9d81870-32bb-4076-bbd1-c78b854dc7af
+
+	measure 'Detalle Propuesta Candidato B' =
+			
+			VAR IdB = SELECTEDVALUE('Selector Candidato B'[IdCandidatoWeb])
+			RETURN
+			    IF(
+			        NOT ISINSCOPE(Neocities_PropuestasDetalle[Tema]),
+			        BLANK(),
+			        IF(
+			            ISBLANK(IdB),
+			            "Elige candidato B",
+			            CONCATENATEX(
+			                CALCULATETABLE(
+			                    VALUES(Neocities_PropuestasDetalle[PropuestaDetalle]),
+			                    Neocities_PropuestasDetalle[IdCandidatoWeb] = IdB
+			                ),
+			                Neocities_PropuestasDetalle[PropuestaDetalle],
+			                UNICHAR(10)
+			            )
+			        )
+			    )
+		lineageTag: 012ec9eb-3618-430c-8a06-76f8f54bdc3d
+
+	measure 'Fuentes Candidato A' =
+			
+			VAR IdA = SELECTEDVALUE('Selector Candidato A'[IdCandidatoWeb])
+			RETURN
+			    IF(
+			        NOT ISINSCOPE(Neocities_PropuestasDetalle[Tema]),
+			        BLANK(),
+			        CALCULATE(
+			            SUM(Neocities_PropuestasDetalle[CantidadFuentes]),
+			            Neocities_PropuestasDetalle[IdCandidatoWeb] = IdA
+			        )
+			    )
+		formatString: 0
+		lineageTag: e3aa4ed0-4c2e-43cc-acb1-41141775589d
+
+	measure 'Fuentes Candidato B' =
+			
+			VAR IdB = SELECTEDVALUE('Selector Candidato B'[IdCandidatoWeb])
+			RETURN
+			    IF(
+			        NOT ISINSCOPE(Neocities_PropuestasDetalle[Tema]),
+			        BLANK(),
+			        CALCULATE(
+			            SUM(Neocities_PropuestasDetalle[CantidadFuentes]),
+			            Neocities_PropuestasDetalle[IdCandidatoWeb] = IdB
+			        )
+			    )
+		formatString: 0
+		lineageTag: 78e26941-36b3-4ea5-a177-858d6ada65b4
+
+	measure 'Diferencia Fuentes A vs B' = [Fuentes Candidato A] - [Fuentes Candidato B]
+		formatString: 0
+		lineageTag: d7c53b58-6bdc-4564-a40a-1f0beb0c5faa
+
+	measure 'Total Fuentes Candidato A' =
+			
+			VAR IdA = SELECTEDVALUE('Selector Candidato A'[IdCandidatoWeb])
+			RETURN
+			    CALCULATE(
+			        SUM(Neocities_PropuestasDetalle[CantidadFuentes]),
+			        Neocities_PropuestasDetalle[IdCandidatoWeb] = IdA
+			    )
+		formatString: 0
+		lineageTag: 09712aa3-9521-4afd-8252-fad0a9757400
+
+	measure 'Total Fuentes Candidato B' =
+			
+			VAR IdB = SELECTEDVALUE('Selector Candidato B'[IdCandidatoWeb])
+			RETURN
+			    CALCULATE(
+			        SUM(Neocities_PropuestasDetalle[CantidadFuentes]),
+			        Neocities_PropuestasDetalle[IdCandidatoWeb] = IdB
+			    )
+		formatString: 0
+		lineageTag: 850960e1-cd07-413b-aaef-a3206cd197a3
+
+	measure 'Diferencia Total Fuentes A vs B' = [Total Fuentes Candidato A] - [Total Fuentes Candidato B]
+		formatString: 0
+		lineageTag: 8c39f03b-3bf4-4466-a854-1e7ecce7d28d
+
+	measure 'Cantidad Propuestas Candidato A' =
+			
+			VAR IdA = SELECTEDVALUE('Selector Candidato A'[IdCandidatoWeb])
+			RETURN
+			    CALCULATE(
+			        COUNTROWS(Neocities_PropuestasDetalle),
+			        Neocities_PropuestasDetalle[IdCandidatoWeb] = IdA
+			    )
+		formatString: 0
+		lineageTag: 1aeedbb2-0ddc-471b-95fa-ad60565c46bf
+
+	measure 'Cantidad Propuestas Candidato B' =
+			
+			VAR IdB = SELECTEDVALUE('Selector Candidato B'[IdCandidatoWeb])
+			RETURN
+			    CALCULATE(
+			        COUNTROWS(Neocities_PropuestasDetalle),
+			        Neocities_PropuestasDetalle[IdCandidatoWeb] = IdB
+			    )
+		formatString: 0
+		lineageTag: b5d6974a-58f1-484c-bd8f-62520fe797c9
+
+	measure 'ONPE Total Ingresos Campaña' = CALCULATE(SUM(ONPE_GastosCampana[Monto]), ONPE_GastosCampana[Tipo] = "Ingreso")
+		formatString: "S/"\ #,0.00;-"S/"\ #,0.00;"S/"\ #,0.00
+		lineageTag: ddcbc183-a958-445a-b891-2a5065154a79
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-PE"}
+
+	measure 'ONPE Total Gastos Campaña' = CALCULATE(SUM(ONPE_GastosCampana[Monto]), ONPE_GastosCampana[Tipo] = "Gasto")
+		formatString: "S/"\ #,0.00;-"S/"\ #,0.00;"S/"\ #,0.00
+		lineageTag: a4efd86b-4c6c-427f-970c-aba75c21f85a
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-PE"}
+
+	measure 'ONPE Saldo Campaña' = [ONPE Total Ingresos Campaña] - [ONPE Total Gastos Campaña]
+		formatString: "S/"\ #,0.00;-"S/"\ #,0.00;"S/"\ #,0.00
+		lineageTag: 779fa3b6-920d-4b78-af60-da965dd68ba2
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-PE"}
+
+	partition 'Tabla de Medidas' = m
+		mode: import
+		source =
+				let
+				    Origen = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Columna1 = _t]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(Origen,{{"Columna1", type text}}),
+				    #"Columnas quitadas" = Table.RemoveColumns(#"Tipo cambiado",{"Columna1"})
+				in
+				    #"Columnas quitadas"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

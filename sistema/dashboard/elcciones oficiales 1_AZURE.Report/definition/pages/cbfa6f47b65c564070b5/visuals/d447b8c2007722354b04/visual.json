@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "d447b8c2007722354b04",
+  "position": {
+    "x": 416,
+    "y": 0,
+    "z": 38000,
+    "height": 48,
+    "width": 816,
+    "tabOrder": 29000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Perfil Detallado por Candidato",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Anthropic Mono, ui-monospace, monospace",
+                      "fontSize": "18pt",
+                      "color": "#414fb1"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "525d3f5624de7bb8d811",
+  "position": {
+    "x": 586.36414978514426,
+    "y": 63.363535911602213,
+    "z": 2000,
+    "height": 309.77728667894417,
+    "width": 650.73345610804176,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "RTC_ComparativaResumen"
+                        }
+                      },
+                      "Property": "Elecciones"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(RTC_ComparativaResumen.Elecciones)",
+              "nativeQueryRef": "Elecciones totales",
+              "displayName": "Elecciones totales"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "RTC_ComparativaResumen"
+                        }
+                      },
+                      "Property": "Contratos"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(RTC_ComparativaResumen.Contratos)",
+              "nativeQueryRef": "Contratos",
+              "displayName": "Contratos"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "RTC_ComparativaResumen"
+                        }
+                      },
+                      "Property": "Total contratos S/"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(RTC_ComparativaResumen.Total contratos S/)",
+              "nativeQueryRef": "Total contratos S/",
+              "displayName": "Total contratos S/"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "RTC_ComparativaResumen"
+                        }
+                      },
+                      "Property": "Titulos"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(RTC_ComparativaResumen.Titulos)",
+              "nativeQueryRef": "Titulos",
+              "displayName": "Titulos"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "RTC_ComparativaResumen"
+                        }
+                      },
+                      "Property": "Bienes"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(RTC_ComparativaResumen.Bienes)",
+              "nativeQueryRef": "Bienes",
+              "displayName": "Bienes"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "RTC_ComparativaResumen"
+                        }
+                      },
+                      "Property": "Trabajos"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(RTC_ComparativaResumen.Trabajos)",
+              "nativeQueryRef": "Trabajos",
+              "displayName": "Trabajos"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "RTC_ComparativaResumen"
+                      }
+                    },
+                    "Property": "Elecciones"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

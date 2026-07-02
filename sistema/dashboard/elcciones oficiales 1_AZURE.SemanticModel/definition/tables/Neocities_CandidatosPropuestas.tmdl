@@ -1,0 +1,74 @@
+table Neocities_CandidatosPropuestas
+	lineageTag: c9e4973f-1cc6-4499-adc1-1a5a3dd67fb1
+
+	column IdCandidatoWeb
+		dataType: string
+		lineageTag: 687ba55f-2f25-460a-96ce-a3706b72573b
+		summarizeBy: none
+		sourceColumn: IdCandidatoWeb
+
+		annotation SummarizationSetBy = Automatic
+
+	column Candidato
+		dataType: string
+		lineageTag: 1fa65c8b-6735-47ad-b97d-2a92256a241a
+		summarizeBy: none
+		sourceColumn: Candidato
+
+		annotation SummarizationSetBy = Automatic
+
+	column Partido
+		dataType: string
+		lineageTag: 8791daba-664d-4a79-a6dc-39cc26a02fbd
+		summarizeBy: none
+		sourceColumn: Partido
+
+		annotation SummarizationSetBy = Automatic
+
+	column Info
+		dataType: string
+		lineageTag: e38862e5-1508-4e84-9219-a1bd2e3d5878
+		summarizeBy: none
+		sourceColumn: Info
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebOficial
+		dataType: string
+		lineageTag: a89fa480-6aee-4193-9945-49645723d3dd
+		summarizeBy: none
+		sourceColumn: WebOficial
+
+		annotation SummarizationSetBy = Automatic
+
+	column VideoUrl
+		dataType: string
+		lineageTag: abb53aa4-f1d0-4046-ab2d-5cf85dcb2e28
+		summarizeBy: none
+		sourceColumn: VideoUrl
+
+		annotation SummarizationSetBy = Automatic
+
+	column FuenteDataset
+		dataType: string
+		lineageTag: af898737-0594-4c09-af67-d765657fd4cb
+		summarizeBy: none
+		sourceColumn: FuenteDataset
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Neocities_CandidatosPropuestas = m
+		mode: import
+		source =
+				let
+				  Origen = Csv.Document(File.Contents("C:\Users\DIEGO\Downloads\PROYECTO_SI885_2026-II-U2_DASHBOARDELECTORAL-main\data\Neocities_CandidatosPropuestas.csv"), [Delimiter = ",", Columns = 7, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(Origen, {{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}}, "es"),
+				    #"Encabezados promovidos" = Table.PromoteHeaders(#"Tipo de columna cambiado", [PromoteAllScalars=true]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos",{{"IdCandidatoWeb", type text}, {"Candidato", type text}, {"Partido", type text}, {"Info", type text}, {"WebOficial", type text}, {"VideoUrl", type text}, {"FuenteDataset", type text}})
+				in
+				  #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

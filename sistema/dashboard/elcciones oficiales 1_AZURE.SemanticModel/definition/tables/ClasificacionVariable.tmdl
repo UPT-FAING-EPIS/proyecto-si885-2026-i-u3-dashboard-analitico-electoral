@@ -1,0 +1,60 @@
+table ClasificacionVariable
+	lineageTag: 2d52a6d9-997e-483c-96ea-eb5f1d870efd
+
+	column IdClasificacionVariable
+		dataType: int64
+		formatString: 0
+		lineageTag: 4c0b396e-d38c-4371-8060-bfb8682ebb0c
+		summarizeBy: sum
+		sourceColumn: IdClasificacionVariable
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdClasificacion
+		dataType: int64
+		formatString: 0
+		lineageTag: 4a470697-cc85-46a7-8d5a-bd3e6a27bb44
+		summarizeBy: none
+		sourceColumn: IdClasificacion
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdVariable
+		dataType: int64
+		formatString: 0
+		lineageTag: ceed81dd-f882-40fa-b4fe-87f0e62cb18f
+		summarizeBy: none
+		sourceColumn: IdVariable
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdSubVariable
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b3a3ce3-ebe3-43a0-bc59-f267997adbf3
+		summarizeBy: none
+		sourceColumn: IdSubVariable
+
+		annotation SummarizationSetBy = Automatic
+
+	column Justificacion
+		dataType: string
+		lineageTag: c04fefbd-290f-492f-9fa0-c7fbb64dd513
+		summarizeBy: none
+		sourceColumn: Justificacion
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ClasificacionVariable = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("sql-candidatos2026-dev-w3-z0lh9d.database.windows.net", "Elecciones2026DW"),
+				    dbo_ClasificacionVariable = Origen{[Schema="dbo",Item="ClasificacionVariable"]}[Data]
+				in
+				    dbo_ClasificacionVariable
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

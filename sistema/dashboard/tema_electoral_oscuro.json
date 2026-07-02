@@ -1,0 +1,96 @@
+{
+  "name": "Monitor Electoral Peru 2026",
+  "dataColors": [
+    "#C8102E", "#1a6edb", "#d4860a", "#0d7a4e",
+    "#7c3aed", "#e85c9c", "#60a5fa", "#2dd4a0",
+    "#f5b642", "#a78bfa"
+  ],
+  "good": "#2dd4a0",
+  "neutral": "#f5b642",
+  "bad": "#C8102E",
+  "background": "#0B0F1A",
+  "foreground": "#161B2E",
+  "tableAccent": "#C8102E",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [{ "color": { "solid": { "color": "#161B2E" } } }]
+      }
+    },
+    "card": {
+      "*": {
+        "background": [{ "color": { "solid": { "color": "#161B2E" } } }],
+        "labels": [{ "color": { "solid": { "color": "#ffffff" } }, "fontSize": 22 }],
+        "categoryLabels": [{ "color": { "solid": { "color": "#8892b0" } }, "fontSize": 9 }]
+      }
+    },
+    "barChart": {
+      "*": {
+        "background": [{ "color": { "solid": { "color": "#161B2E" } } }],
+        "dataPoint": [{ "defaultColor": { "solid": { "color": "#C8102E" } } }],
+        "categoryAxis": [{ "labelColor": { "solid": { "color": "#8892b0" } }, "gridlineColor": { "solid": { "color": "#1E2540" } } }],
+        "valueAxis":    [{ "labelColor": { "solid": { "color": "#8892b0" } }, "gridlineColor": { "solid": { "color": "#1E2540" } } }],
+        "legend":       [{ "labelColor": { "solid": { "color": "#8892b0" } } }],
+        "dataLabels":   [{ "color": { "solid": { "color": "#ffffff" } } }]
+      }
+    },
+    "columnChart": {
+      "*": {
+        "background": [{ "color": { "solid": { "color": "#161B2E" } } }],
+        "dataPoint": [{ "defaultColor": { "solid": { "color": "#C8102E" } } }],
+        "categoryAxis": [{ "labelColor": { "solid": { "color": "#8892b0" } }, "gridlineColor": { "solid": { "color": "#1E2540" } } }],
+        "valueAxis":    [{ "labelColor": { "solid": { "color": "#8892b0" } }, "gridlineColor": { "solid": { "color": "#1E2540" } } }],
+        "dataLabels":   [{ "color": { "solid": { "color": "#ffffff" } } }]
+      }
+    },
+    "lineChart": {
+      "*": {
+        "background": [{ "color": { "solid": { "color": "#161B2E" } } }],
+        "dataPoint": [{ "defaultColor": { "solid": { "color": "#C8102E" } } }],
+        "categoryAxis": [{ "labelColor": { "solid": { "color": "#8892b0" } }, "gridlineColor": { "solid": { "color": "#1E2540" } } }],
+        "valueAxis":    [{ "labelColor": { "solid": { "color": "#8892b0" } }, "gridlineColor": { "solid": { "color": "#1E2540" } } }]
+      }
+    },
+    "donutChart": {
+      "*": {
+        "background": [{ "color": { "solid": { "color": "#161B2E" } } }],
+        "legend":     [{ "labelColor": { "solid": { "color": "#8892b0" } } }],
+        "dataLabels": [{ "color": { "solid": { "color": "#ffffff" } } }]
+      }
+    },
+    "tableEx": {
+      "*": {
+        "background": [{ "color": { "solid": { "color": "#161B2E" } } }],
+        "header": [{ "fontColor": { "solid": { "color": "#ffffff" } }, "background": { "solid": { "color": "#1E2540" } } }],
+        "rows": [{
+          "fontColor":          { "solid": { "color": "#e2e8f0" } },
+          "backgroundColor":    { "solid": { "color": "#161B2E" } },
+          "altFontColor":       { "solid": { "color": "#e2e8f0" } },
+          "altBackgroundColor": { "solid": { "color": "#1E2540" } }
+        }],
+        "grid": [{ "gridColor": { "solid": { "color": "#1E2540" } }, "rowPadding": 5 }]
+      }
+    },
+    "slicer": {
+      "*": {
+        "background": [{ "color": { "solid": { "color": "#161B2E" } } }],
+        "data":   [{ "fontColor": { "solid": { "color": "#e2e8f0" } } }],
+        "header": [{ "fontColor": { "solid": { "color": "#8892b0" } }, "background": { "solid": { "color": "#161B2E" } } }]
+      }
+    },
+    "page": {
+      "*": {
+        "background":  [{ "color": { "solid": { "color": "#0B0F1A" } }, "transparency": 0 }],
+        "outspace":    [{ "color": { "solid": { "color": "#0B0F1A" } }, "transparency": 0 }],
+        "wallpaper":   [{ "color": { "solid": { "color": "#0B0F1A" } }, "transparency": 0 }]
+      }
+    }
+  },
+  "textClasses": {
+    "callout":    { "color": "#ffffff",  "fontSize": 28, "fontFace": "Segoe UI" },
+    "title":      { "color": "#ffffff",  "fontSize": 14, "fontFace": "Segoe UI" },
+    "header":     { "color": "#8892b0",  "fontSize": 10, "fontFace": "Segoe UI" },
+    "label":      { "color": "#8892b0",  "fontSize": 10, "fontFace": "Segoe UI" },
+    "largeTitle": { "color": "#ffffff",  "fontSize": 22, "fontFace": "Segoe UI" }
+  }
+}

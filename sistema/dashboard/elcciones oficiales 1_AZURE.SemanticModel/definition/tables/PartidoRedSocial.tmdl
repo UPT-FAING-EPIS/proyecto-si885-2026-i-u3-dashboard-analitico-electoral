@@ -1,0 +1,88 @@
+table PartidoRedSocial
+	lineageTag: 80676989-9c2b-4957-a820-5d81fcb012b0
+
+	column IdPartidoRed
+		dataType: int64
+		formatString: 0
+		lineageTag: 29440388-2d6b-447d-bfa9-fab9409d1f7c
+		summarizeBy: sum
+		sourceColumn: IdPartidoRed
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdPartido
+		dataType: int64
+		formatString: 0
+		lineageTag: 2917f137-1c4f-4f38-8831-3df44b6dbf41
+		summarizeBy: none
+		sourceColumn: IdPartido
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdRedSocial
+		dataType: int64
+		formatString: 0
+		lineageTag: c74d1d0d-918b-43a2-b8fd-475b5efc3398
+		summarizeBy: sum
+		sourceColumn: IdRedSocial
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tiene
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e43a53d4-6ff6-4e77-a74f-6244d514d9de
+		summarizeBy: none
+		sourceColumn: Tiene
+
+		annotation SummarizationSetBy = Automatic
+
+	column MotivoNoTiene
+		dataType: string
+		lineageTag: 3e300c92-4336-4e31-93a3-2fe8355eb51c
+		summarizeBy: none
+		sourceColumn: MotivoNoTiene
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuario
+		dataType: string
+		lineageTag: 4d089234-3fa0-4f5b-9d7c-ba96451532b0
+		summarizeBy: none
+		sourceColumn: Usuario
+
+		annotation SummarizationSetBy = Automatic
+
+	column Seguidores
+		dataType: double
+		lineageTag: 489a534f-0db2-4138-810e-211b238aa878
+		summarizeBy: sum
+		sourceColumn: Seguidores
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Likes
+		dataType: int64
+		lineageTag: ecd1658b-316e-41c7-8d26-f196cbbf2639
+		summarizeBy: sum
+		sourceColumn: Likes
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition PartidoRedSocial = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("sql-candidatos2026-dev-w3-z0lh9d.database.windows.net", "Elecciones2026DW"),
+				    dbo_PartidoRedSocial = Origen{[Schema="dbo",Item="PartidoRedSocial"]}[Data]
+				in
+				    dbo_PartidoRedSocial
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+
