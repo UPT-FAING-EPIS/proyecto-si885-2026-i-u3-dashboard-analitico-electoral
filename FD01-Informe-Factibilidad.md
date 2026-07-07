@@ -1,230 +1,363 @@
-<center>
+<!-- Archivo generado desde `FD01-EPIS-Informe de Factibilidad.docx` para visualizacion en GitHub. -->
 
-[comment]: <img src="./media/media/image1.png" style="width:1.088in;height:1.46256in" alt="escudo.png" />
-
-![./media/media/image1.png](./media/logo-upt.png)
+![Imagen del informe](media/fd01_factibilidad/fd01_imagen_01.png)
 
 **UNIVERSIDAD PRIVADA DE TACNA**
 
-**FACULTAD DE INGENIERIA**
+**FACULTAD DE INGENIERÍA**
 
 **Escuela Profesional de Ingeniería de Sistemas**
 
-**Proyecto *{Nombre de Proyecto}***
+**Proyecto “Dashboard de análisis electoral Perú 2026”**
 
-Curso: *{Nombre de Asignatura}*
+Curso: Inteligencia de Negocios
 
-Docente: *{Nombre de Docente}*
+Docente: Mag. Patrick Jose Cuadros Quiroga
 
 Integrantes:
 
-***{Apellidos y nombres del estudiante (código universitario)}***
+**Chura Ticona, Mary Luz (2019065163)**
+
+**Diego Chara Apaza (2019065026)**
 
 **Tacna – Perú**
 
-***{Año}***
+**2026**
 
-**  
-**
-</center>
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
+# Dashboard de análisis electoral Perú 2026
 
-Sistema *{Nombre del Sistema}*
+# Documento Informe de Factibilidad
 
-Informe de Factibilidad
+# Versión 1.0
 
-Versión *{1.0}*
+**CONTROL DE VERSIONES**
 
-|CONTROL DE VERSIONES||||||
-| :-: | :- | :- | :- | :- | :- |
-|Versión|Hecha por|Revisada por|Aprobada por|Fecha|Motivo|
-|1\.0|MPV|ELV|ARV|10/10/2020|Versión Original|
+| Versión | Hecha por | Revisada por | Aprobada por | Fecha | Motivo |
+| --- | --- | --- | --- | --- | --- |
+| 1.0 | JZP, MCT,MAC | AFR | AFR | 15/04/2026 | Versión Original |
 
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
+**ÍNDICE GENERAL**
 
-# **INDICE GENERAL**
+**Informe de Factibilidad**
 
-[1. Descripción del Proyecto](#_Toc52661346)
+**Descripción del Proyecto**
 
-[2. Riesgos](#_Toc52661347)
+**Nombre del proyecto**
 
-[3. Análisis de la Situación actual](#_Toc52661348)
+Dashboard de análisis electoral– Perú 2026
 
-[4. Estudio de Factibilidad](#_Toc52661349)
+**Duración del proyecto**
 
-[4.1 Factibilidad Técnica](#_Toc52661350)
+Fecha de inicio: 13 de abril del 2026
 
-[4.2 Factibilidad económica](#_Toc52661351)
+Fecha de finalización: 13 de julio del 2026
 
-[4.3 Factibilidad Operativa](#_Toc52661352)
+Duración estimada: 3 meses
 
-[4.4 Factibilidad Legal](#_Toc52661353)
+**Descripción**
 
-[4.5 Factibilidad Social](#_Toc52661354)
+El presente proyecto consiste en el desarrollo de un dashboard interactivo para el análisis del perfil de los candidatos presidenciales en el contexto de las Elecciones Generales del Perú 2026. La solución integra información relevante de cada candidato, como datos personales, perfil socioeconómico, patrimonio declarado, antecedentes legales y presencia en redes sociales.
 
-[4.6 Factibilidad Ambiental](#_Toc52661355)
+El sistema permite organizar y visualizar la información de manera dinámica, facilitando la exploración individual de cada candidato mediante filtros interactivos, así como la comparación entre candidatos según indicadores clave como ingresos, patrimonio, nivel de riesgo legal y actividad en campaña.
 
-[5. Análisis Financiero](#_Toc52661356)
+Las visualizaciones incluyen análisis demográfico (edad, género, nivel educativo), perfil económico (ingresos y bienes declarados ante la ONPE), clasificación de riesgo legal y penal, presencia en TikTok y cobertura de visitas de campaña por región.
 
-[6. Conclusiones](#_Toc52661357)
+El dashboard transforma información dispersa en múltiples fuentes oficiales en una herramienta visual clara, permitiendo analizar el perfil integral de cada candidato y favoreciendo una comprensión objetiva del panorama electoral.
 
+El proyecto está orientado a estudiantes, ciudadanos y analistas interesados en el análisis electoral, proporcionando una plataforma que promueve la transparencia, el acceso a la información y la toma de decisiones informadas.
 
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
+**1.4 Objetivos**
 
-**<u>Informe de Factibilidad</u>**
+**1.4.1 Objetivo general**
 
-1. <span id="_Toc52661346" class="anchor"></span>**Descripción del Proyecto**
+Desarrollar un dashboard interactivo que permita analizar el perfil integral de los candidatos presidenciales del Perú para las Elecciones Generales 2026, mediante visualizaciones dinámicas e indicadores que faciliten la interpretación de su información socioeconómica, legal y de campaña.
 
-    1.1. Nombre del proyecto
+**Objetivos Específicos**
 
-    1.2. Duración del proyecto
+Integrar información de los candidatos presidenciales incluyendo datos personales, perfil socioeconómico y trayectoria.
 
-    1.3. Descripción
+Diseñar visualizaciones que permitan analizar individualmente a cada candidato mediante filtros dinámicos.
 
-        En que consiste el proyecto/importancia del mismo, contexto en que se va desenvolver
+Analizar los ingresos y patrimonio declarados por cada candidato ante la ONPE.
 
-    1.4. Objetivos
+Clasificar a los candidatos según su nivel de riesgo legal y penal mediante indicadores visuales.
 
-        1.4.1 Objetivo general
-        1.4.2 Objetivos Específicos
-            Para cada objetivo específico se indicara que se va a lograr
+Evaluar la presencia digital de los candidatos en la red social TikTok.
 
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
+Analizar la cobertura geográfica de las visitas de campaña por candidato.
 
-2. <span id="_Toc52661347" class="anchor"></span>**Riesgos**
+Implementar herramientas de comparación entre candidatos según indicadores clave.
 
-    Señale los riesgos que pudieran afectar el éxito del proyecto.}*
+Publicar el dashboard en un entorno accesible que permita su visualización e interacción.
 
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
+**Riesgos**
 
-3. <span id="_Toc52661348" class="anchor"></span>**Análisis de la Situación actual**
+Dificultad para encontrar información completa y ordenada sobre los planes de gobierno.
 
-    3.1. Planteamiento del problema
+Posible inconsistencia entre las fuentes de información electoral consultadas.
 
-            Describa antecedentes y situación actual, explicando la problemática y/o necesidad que será resuelta con el proyecto propuesto.
+Retrasos en la limpieza y estructuración de los datos.
 
-    3.2. Consideraciones de hardware y software
+Errores en la clasificación de propuestas por sector.
 
-            Hardware y software posibles para la implementación, se analizara lo que existe y es alcanzable, se evaluara que tecnología se puede > utilizar en el proyecto.
+Limitaciones técnicas en el diseño del dashboard.
 
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
+Falta de experiencia del equipo en herramientas de visualización de datos.
 
-4. <span id="_Toc52661349" class="anchor"></span>**Estudio de
-    Factibilidad**
+Riesgo de interpretar de forma subjetiva las propuestas políticas.
 
-    Describir los resultados que esperan alcanzar del estudio de factibilidad, las actividades que se realizaron para preparar la evaluación de factibilidad y por quien fue aprobado.
+Dificultad para estimar costos reales de algunas propuestas de gobierno.
 
-    4.1. <span id="_Toc52661350" class="anchor"></span>Factibilidad Técnica
+Posibles problemas al publicar el dashboard en un entorno web o repositorio público.
 
-        El estudio de viabilidad técnica se enfoca en obtener un entendimiento de los recursos tecnológicos disponibles actualmente y su aplicabilidad a las necesidades que se espera tenga el proyecto. En el caso de tecnología informática esto implica una evaluación del hardware y software y como este puede cubrir las necesidades del sistema propuesto.
+**Análisis de la Situación actual**
 
-        Realizar una evaluación de la tecnología actual existente y la posibilidad de utilizarla en el desarrollo e implantación del sistema.*
+**Planteamiento del problema**
 
-        Describir acerca del hardware (equipos, servidor), software (aplicaciones, navegadores, sistemas operativos, dominio, internet, infraestructura de red física, etc.
+En el Perú, la información relacionada con los candidatos presidenciales se encuentra distribuida en múltiples fuentes, como declaraciones juradas de la ONPE, portales institucionales y registros públicos. Esta dispersión dificulta el acceso, análisis y comprensión del perfil real de cada candidato por parte de los ciudadanos.
 
-    4.2. <span id="_Toc52661351" class="anchor"></span>Factibilidad Económica
+En el contexto de las Elecciones Generales del Perú 2026, los datos sobre ingresos, patrimonio, antecedentes legales y actividad de campaña de los candidatos están disponibles de forma fragmentada y en formatos poco accesibles, lo que impide una evaluación comparativa clara.
 
-        El propósito del estudio de viabilidad económica, es determinar los beneficios económicos del proyecto o sistema propuesto para la organización, en contraposición con los costos.
-        Como se mencionó anteriormente en el estudio de factibilidad técnica wvaluar si la institución (departamento de TI) cuenta con las herramientas necesarias para la implantación del sistema y evaluar si la propuesta requiere o no de una inversión inicial en infraestructura informática.
-        Se plantearán los costos del proyecto.
-        Costeo del Proyecto: Consiste en estimar los costos de los recursos Humanos, materiales o consumibles y/o máquinas) directos para completar las actividades del proyecto}.*
+Asimismo, no existe una herramienta integrada que permita visualizar de manera conjunta el perfil socioeconómico, legal y digital de los candidatos presidenciales, lo que limita la capacidad del ciudadano de evaluar a quienes aspiran al cargo.
 
-        Definir los siguientes costos:
+Esta situación genera una brecha en la capacidad de los ciudadanos, estudiantes y analistas para interpretar de forma clara la información disponible sobre los candidatos, dificultando la toma de decisiones informadas.
 
-        4.2.1. Costos Generales
+En este contexto, surge la necesidad de desarrollar un dashboard interactivo que permita integrar, organizar y visualizar el perfil de los candidatos presidenciales, facilitando su análisis comparativo mediante herramientas gráficas, filtros dinámicos e indicadores visuales.
 
-                Los costos generales son todos los gastos realizados en accesorios y material de oficina y de uso diario, necesarios para los procesos, tales como, papeles, plumas, cartuchos de impresora, marcadores, computadora etc. Colocar tabla de costos.
+**Consideraciones de hardware y software**
 
-        4.2.2. Costos operativos durante el desarrollo 
-        
-                Evaluar costos necesarios para la operatividad de las actividades de la empresa durante el periodo en el que se realizara el proyecto. Los costos de operación pueden ser renta de oficina, agua, luz, teléfono, etc.
+Con respecto a los recursos tecnológicos requeridos para el desarrollo del proyecto de dashboard de análisis electoral, se consideran los siguientes componentes de hardware y software necesarios para la recopilación, procesamiento y visualización de datos.
 
-        4.2.3. Costos del ambiente
+| Aspecto | Nombre | Cantidad |
+| --- | --- | --- |
+| Hardware | Procesador i5-7th | 2 |
+| Hardware | Memoria RAM 8GB o más | 2 |
+| Hardware | Almacenamiento 500 GB o más | 2 |
+| Hardware | Procesador: 1:8 GHz o más (2 núcleo o más) | 2 |
+| Hardware | Computadores personales para el manejo de información hacia el sistema. | 2 |
+| Hardware | Conexión a Internet | 1 |
+| Hardware |  |  |
+| Software | Sistema Operativo: La versión de paga del Sistema Operativo Windows 10 o superior.<br> | 2 |
+| Software | Power BI / Tableau (herramienta de visualización)<br> | 2 |
+| Software | Python (opcional para análisis de datos) | 2 |
+| Software | Visual Studio Code (IDE) | 2 |
+| Software | Git (control de versiones)<br> | 2 |
+| Software | Terraform (infraestructura como código) | 2 |
+|  | <br> | 2 |
 
-                Evaluar si se cuenta con los requerimientos técnicos para la implantación del software como el dominio, infraestructura de red, acceso a internet, etc.
+**Estudio de Factibilidad**
 
-        4.2.4. Costos de personal
+**Factibilidad Técnica**
 
-                Aquí se incluyen los gastos generados por el recurso humano que se necesita para el desarrollo del sistema únicamente.
+El proyecto de dashboard de análisis electoral es técnicamente viable, ya que se basa en el uso de herramientas ampliamente utilizadas en el análisis y visualización de datos, como Power BI, Microsoft Excel y lenguajes de programación como Python.
 
-                No se considerará personal para la operación y funcionamiento del sistema.
+Estas tecnologías permiten la recopilación, procesamiento y representación gráfica de grandes volúmenes de información electoral de manera eficiente, facilitando la construcción de dashboards interactivos que permiten comparar candidatos, resultados y propuestas de gobierno.
 
-                Incluir tabla que muestra los gastos correspondientes al personal.
+Asimismo, el desarrollo del sistema se realizará de manera progresiva, iniciando con la recopilación y limpieza de datos provenientes de fuentes oficiales como la ONPE, seguido de la estructuración de la información y finalmente la implementación de dashboards interactivos. Este enfoque incremental permite reducir riesgos técnicos y asegurar la correcta construcción del sistema.
 
-                Indicar organización y roles. Indicar horario de trabajo del personal.
+Desde el punto de vista de infraestructura, el proyecto puede ser desplegado utilizando servicios en la nube como AWS o Azure, mediante el uso de herramientas de infraestructura como código como Terraform, lo que permite automatizar la configuración del entorno, optimizar recursos y reducir costos operativos.
 
-        4.2.5.  Costos totales del desarrollo del sistema
+En cuanto al entorno tecnológico, el sistema es viable debido a que las herramientas utilizadas son accesibles, cuentan con documentación amplia y no requieren infraestructura compleja para su implementación. Además, los usuarios finales están familiarizados con el uso de dashboards y plataformas digitales, lo que facilita la adopción del sistema.
 
-                {Totalizar costos y realizar resumen de costo final del proyecto y la forma de pago.
+Finalmente, el proyecto no requiere el desarrollo de aplicaciones móviles ni el uso de tecnologías complejas como geolocalización o notificaciones en tiempo real, lo que reduce significativamente la complejidad técnica y aumenta su viabilidad.
 
-    4.3. <span id="_Toc52661352" class="anchor"></span>Factibilidad Operativa
+**Factibilidad Económica**
 
-        Describir los beneficios del producto y si se tiene la capacidad por parte del cliente para mantener el sistema funcionando y garantizar el buen funcionamiento y su impacto en los usuarios. Lista de interesados.
+El proyecto es económicamente viable, ya que no requiere una inversión elevada en infraestructura y utiliza herramientas accesibles para el desarrollo de dashboards y análisis de datos. Los costos están asociados principalmente a recursos operativos, ambiente tecnológico y personal.
 
-    4.4. <span id="_Toc52661353" class="anchor"></span>Factibilidad Legal
+**Costos Generales**
 
-        Determinar si existe conflicto del proyecto con restricciones legales como leyes y regulaciones del país o locales relacionadas con seguridad, protección de datos, conducta de negocio, empleo y adquisiciones.
+**COSTOS GENERALES**
 
-    4.5. <span id="_Toc52661354" class="anchor"></span>Factibilidad Social 
+| Descripcion | cantidad | costo Unitario | Costo total |
+| --- | --- | --- | --- |
+| Hojas | 1/2 millar | S/20.00 | S/10.00 |
+| Lapiceros | 6 | S/1.00 | S/6.00 |
+| notas adhesivas | 1 | S/5.00 | S/5.00 |
+| total | total | total | S/21.00 |
 
-        Evaluar influencias y asuntos de índole social y cultural como el clima político, códigos de conducta y ética*
+**Costos operativos durante el desarrollo**
 
-    4.6. <span id="_Toc52661355" class="anchor"></span>Factibilidad Ambiental
+**COSTOS OPERATIVOS**
 
-        Evaluar influencias y asuntos de índole ambiental como el impacto y repercusión en el medio ambiente.
+| Descripción | mes/cantidad | costo Unitario | Costo total |
+| --- | --- | --- | --- |
+| Luz | 3 | S/40.00 | S/120.00 |
+| Agua | 3 | S/25.00 | S/75.00 |
+| Costos legales | 1 | S/100.00 | S/100.00 |
+| Servicios de limpieza | 1 | S/15.00 | S/15.00 |
+| total | total | total | S/310.00 |
 
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
+**Costos del ambiente**
 
-5. <span id="_Toc52661356" class="anchor"></span>**Análisis Financiero**
+**COSTOS AMBIENTE**
 
-    El plan financiero se ocupa del análisis de ingresos y gastos asociados a cada proyecto, desde el punto de vista del instante temporal en que se producen. Su misión fundamental es detectar situaciones financieramente inadecuadas.
-    Se tiene que estimar financieramente el resultado del proyecto.
+| Descripcion | mes/cantida | costo Unitario | Costo total |
+| --- | --- | --- | --- |
+| Dominio sitio web | 3 | S/220.00 | S/55.00 |
+| Acceso de internet | 3 | S/69.90 | S/209.70 |
+| software | 3 | S/0.00 | S/0.00 |
+| total | total | total | S/264.70 |
 
-    5.1. Justificación de la Inversión
+**Costos de personal**
 
-        5.1.1. Beneficios del Proyecto
+**COSTOS DEL PERSONAL**
 
-            El beneficio se calcula como el margen económico menos los costes de oportunidad, que son los márgenes que hubieran podido obtenerse de haber dedicado el capital y el esfuerzo a otras actividades.
-            El beneficio, obtenido lícitamente, no es sólo una recompensa a la inversión, al esfuerzo y al riesgo asumidos por el empresario, sino que también es un factor esencial para que las empresas sigan en el  mercado e incorporen nuevas inversiones al tejido industrial y social de las naciones.
-            Describir beneficios tangibles e intangibles*
-            Beneficios tangibles: son de fácil cuantificación, generalmente están relacionados con la reducción de recursos o talento humano.
-            Beneficios intangibles: no son fácilmente cuantificables y están relacionados con elementos o mejora en otros procesos de la organización.
->
-            Ejemplo de beneficios:
+| Descripción | mes/cantidad | Salario Unitario | Total |
+| --- | --- | --- | --- |
+| Desarrollador Full Stack | 3 | S/ 1,280.00 | S/ 3,840.00 |
+| Desarrollador Data / BI | 3 | S/ 1,280.00 | S/ 3,840.00 |
+| total | total | total | S/ 7,680.00 |
 
-            - Mejoras en la eficiencia del área bajo estudio.
-            - Reducción de personal.
-            - Reducción de futuras inversiones y costos.
-            - Disponibilidad del recurso humano.
-            - Mejoras en planeación, control y uso de recursos.
-            - Suministro oportuno de insumos para las operaciones.
-            - Cumplimiento de requerimientos gubernamentales.
-            - Toma acertada de decisiones.
-            - Disponibilidad de información apropiada.
-            - Aumento en la confiabilidad de la información.
-            - Mejor servicio al cliente externo e interno
-            - Logro de ventajas competitivas.
-            - Valor agregado a un producto de la compañía.
-        
-        5.1.2. Criterios de Inversión
+**Costos totales del desarrollo del sistema**
 
-            5.1.2.1. Relación Beneficio/Costo (B/C)
+**COSTOS TOTALES**
 
-                En base a los costos y beneficios identificados se evalúa si es factible el desarrollo del proyecto. 
-                Si se presentan varias alternativas de solución se evaluará cada una de ellas para determinar la mejor solución desde el punto de vista del > retorno de la inversión
-                El B/C si es mayor a uno, se acepta el proyecto; si el B/C es igual a uno es indiferente aceptar o rechazar el proyecto y si el B/C es menor a uno se rechaza el proyecto
+| COSTOS | mes/cantida |
+| --- | --- |
+| GENERALES | S/21.00 |
+| OPERATIVOS | S/310.00 |
+| AMBIENTE | S/264.70 |
+| PERSONAL | S/7,680.00 |
+| TOTAL | S/8,275.70 |
 
-            5.1.2.2. Valor Actual Neto (VAN)
-            
-                Valor actual de los beneficios netos que genera el proyecto. Si el VAN es mayor que cero, se acepta el proyecto; si el VAN es igual a cero es indiferente aceptar o rechazar el proyecto y si el VAN es menor que cero se rechaza el proyecto
+**Factibilidad Operativa**
 
-            5.1.2.3 Tasa Interna de Retorno (TIR)*
-                Es la tasa porcentual que indica la rentabilidad promedio anual que genera el capital invertido en el proyecto. Si la TIR es mayor que el costo de oportunidad se acepta el proyecto, si la TIR es igual al costo de oportunidad es indiferente aceptar o rechazar el proyecto, si la TIR es menor que el costo de oportunidad se rechaza el proyecto
+La factibilidad operativa del proyecto de dashboard de análisis electoral es alta, debido a que los usuarios objetivo cuentan con conocimientos básicos en el uso de herramientas digitales, lo que facilita la adopción del sistema. Actualmente, la mayoría de personas está familiarizada con el uso de plataformas web, dashboards interactivos y visualización de datos, lo que permite que la implementación del sistema no requiera procesos complejos de adaptación.
 
-                Costo de oportunidad de capital (COK) es la tasa de interés que podría haber obtenido con el dinero invertido en el proyecto
+El sistema será diseñado considerando principios de usabilidad y accesibilidad, con el objetivo de que los usuarios puedan interactuar de manera sencilla e intuitiva con la información. A través de gráficos, indicadores y filtros dinámicos, el dashboard permitirá una navegación clara y eficiente, facilitando la comprensión de los resultados electorales y la comparación de propuestas de los candidatos.
 
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
+Asimismo, el proyecto presenta una alta adaptabilidad, ya que puede integrarse fácilmente con diferentes fuentes de datos, como información oficial de entidades públicas o datasets abiertos. Esta característica permite mantener el sistema actualizado y mejorar su funcionalidad a lo largo del tiempo sin necesidad de realizar cambios estructurales complejos.
 
-6. <span id="_Toc52661357" class="anchor"></span>**Conclusiones**
+En cuanto al soporte y mantenimiento, el sistema requerirá actualizaciones periódicas para garantizar la calidad de la información, el correcto funcionamiento de los dashboards y la mejora continua de la experiencia del usuario. Estas actividades pueden ser gestionadas por el equipo de desarrollo sin requerir recursos adicionales significativos.
 
-Explicar los resultados del análisis de factibilidad que nos indican si el proyecto es viable y factible.
+Por otro lado, el proyecto contempla la posibilidad de incorporar mejoras continuas basadas en la retroalimentación de los usuarios, lo que permitirá optimizar el sistema y adaptarlo a nuevas necesidades. De esta manera, el dashboard no solo será funcional en su etapa inicial, sino que podrá evolucionar progresivamente.
+
+Finalmente, el desarrollo del sistema será realizado por un equipo de estudiantes con conocimientos en análisis de datos y desarrollo de software, quienes asumirán roles específicos en el diseño, implementación y documentación del proyecto. En conjunto, estos factores demuestran que el proyecto es operativamente viable, ya que puede ser implementado, utilizado y mantenido de manera eficiente en su entorno de aplicación.
+
+**Factibilidad Legal**
+
+La factibilidad legal del proyecto de dashboard de análisis electoral es alta, ya que se basa en el uso de información pública proveniente de fuentes oficiales, como datos electorales y planes de gobierno publicados por entidades del Estado. Esto garantiza que la información utilizada no infringe derechos de propiedad privada ni normas de confidencialidad.
+
+Asimismo, el proyecto cumple con la normativa vigente en el Perú relacionada con la protección de datos personales, como la Ley N° 29733, Ley de Protección de Datos Personales. En este sentido, el sistema no recopila ni almacena datos sensibles de los usuarios, ya que su función principal es la visualización y análisis de información pública.
+
+En cuanto al desarrollo del software, se respetan las licencias de las herramientas utilizadas, tales como Power BI, Python, Visual Studio Code y otras tecnologías de uso libre o educativo. Esto asegura que el sistema sea desarrollado de manera legal y sostenible.
+
+Finalmente, el proyecto incluirá términos de uso y referencias a las fuentes de información empleadas, garantizando transparencia en el manejo de los datos y delimitando responsabilidades en el uso del sistema. Por lo tanto, el proyecto es legalmente viable.
+
+**Factibilidad Social**
+
+El proyecto presenta una alta viabilidad social, ya que responde a la necesidad de mejorar el acceso a la información electoral de manera clara, organizada y comprensible. En muchos casos, los ciudadanos no cuentan con herramientas que les permitan analizar y comparar de forma sencilla los planes de gobierno y propuestas de los candidatos presidenciales.
+
+La implementación de un dashboard de análisis electoral contribuye a fortalecer la transparencia informativa, permitiendo a los usuarios comprender mejor los resultados de las elecciones y las propuestas políticas. Esto favorece una toma de decisiones más informada y promueve una participación ciudadana más consciente.
+
+Asimismo, el proyecto tiene un impacto positivo en el ámbito educativo, ya que puede ser utilizado como herramienta de aprendizaje para estudiantes y personas interesadas en temas políticos, sociales y de análisis de datos.
+
+En este sentido, el sistema no solo beneficia a los usuarios individuales, sino que también aporta al desarrollo de una sociedad más informada y crítica, fortaleciendo los procesos democráticos. Por lo tanto, el proyecto es socialmente viable.
+
+**Factibilidad Ambiental**
+
+El proyecto es ambientalmente viable, ya que se basa en el uso de herramientas digitales que no requieren el uso de recursos físicos significativos. Al tratarse de un sistema de visualización de datos, se reduce el uso de papel y otros materiales tradicionales utilizados para la difusión de información, contribuyendo así a una gestión más sostenible.
+
+Asimismo, el sistema utiliza infraestructura tecnológica ya existente, como computadoras personales y servicios en la nube, lo que evita la necesidad de implementar nuevos recursos físicos que generen impacto ambiental adicional.
+
+En relación con el consumo energético, el proyecto se apoya en tecnologías eficientes y optimizadas, lo que minimiza el uso de energía en comparación con otros sistemas más complejos. Además, al centralizar la información en un solo entorno digital, se reduce la necesidad de desplazamientos físicos para acceder a información electoral.
+
+Por otro lado, el proyecto contribuye indirectamente a la educación digital y al uso responsable de la información, promoviendo prácticas sostenibles mediante el aprovechamiento de tecnologías modernas.
+
+En consecuencia, el proyecto no genera impactos negativos significativos en el medio ambiente y, por el contrario, contribuye a la reducción del uso de recursos físicos, por lo que es ambientalmente viable.
+
+**Análisis Financiero**
+
+**Justificación de la Inversión**
+
+El proyecto de dashboard de análisis electoral se justifica económicamente debido a que permite optimizar el acceso, análisis y comprensión de la información electoral mediante el uso de herramientas tecnológicas de visualización de datos.
+
+Si bien el sistema no genera ingresos directos como un producto comercial, produce beneficios económicos indirectos, tales como la optimización del tiempo de análisis, la mejora en la toma de decisiones y el aprovechamiento eficiente de información pública. Además, puede ser utilizado como base para futuros desarrollos tecnológicos o aplicaciones de análisis de datos.
+
+La inversión inicial del proyecto corresponde al desarrollo del sistema, incluyendo recursos humanos, herramientas tecnológicas y costos operativos durante un periodo de tres meses. Posteriormente, el sistema entra en funcionamiento, generando beneficios mensuales estimados que permiten recuperar la inversión en el corto plazo.
+
+**Beneficios del Proyecto**
+
+**Beneficios tangibles:**
+
+Reducción del tiempo y costo en el análisis manual de información electoral
+
+Optimización en la organización y procesamiento de datos provenientes de fuentes oficiales
+
+Disminución de esfuerzos repetitivos en la elaboración de reportes
+
+Mejora en la eficiencia del uso de recursos humanos mediante la automatización del análisis de datos
+
+Ahorro económico estimado de S/ 1,200 mensuales (S/ 14,400 anuales) basado en la reducción del 40% del tiempo de análisis, según estimaciones de productividad en automatización de datos
+
+**Beneficios intangibles:**
+
+Mejora en el acceso a la información electoral de forma clara y estructurada
+
+Apoyo en la toma de decisiones informadas por parte de los usuarios
+
+Incremento en la transparencia y comprensión de los procesos electorales
+
+Fortalecimiento del análisis académico y político mediante herramientas digitales
+
+Promoción del uso de tecnologías de visualización de datos en el análisis electoral.
+
+**Criterios de Inversión**
+
+Para evaluar la viabilidad económica del proyecto, se ha considerado un horizonte de evaluación de un año, tomando en cuenta la inversión inicial y los beneficios económicos generados durante la operación del sistema.
+
+**Tabla de ingresos por 1 año**
+
+| PERIODO | EGRESOS | INGRESOS | FN |
+| --- | --- | --- | --- |
+| 0 |  |  | -S/8,275.70 |
+| 1 | S/285.00 | S/1,200.00 | S/915.00 |
+| 2 | S/285.00 | S/1,200.00 | S/915.00 |
+| 3 | S/285.00 | S/1,200.00 | S/915.00 |
+| 4 | S/285.00 | S/1,200.00 | S/915.00 |
+| 5 | S/285.00 | S/1,200.00 | S/915.00 |
+| 6 | S/285.00 | S/1,200.00 | S/915.00 |
+| 7 | S/285.00 | S/1,200.00 | S/915.00 |
+| 8 | S/285.00 | S/1,200.00 | S/915.00 |
+| 9 | S/285.00 | S/1,200.00 | S/915.00 |
+| 10 | S/285.00 | S/1,200.00 | S/915.00 |
+| 11 | S/285.00 | S/1,200.00 | S/915.00 |
+| 12 | S/285.00 | S/1,200.00 | S/915.00 |
+
+**5.1.2.1 Relación Beneficio/Costo (B/C)**
+
+| b/c | 1.33 |
+| --- | --- |
+
+La relación beneficio/costo obtenida es de 1.33, lo que indica que por cada sol invertido en el proyecto se obtiene un beneficio de S/ 1.33. Esto demuestra que los beneficios generados superan los costos de implementación y operación, haciendo el proyecto económicamente viable.
+
+**5.1.2.2 Valor Actual Neto (VAN)**
+
+| VAN | S/2,242.94 |
+| --- | --- |
+
+El Valor Actual Neto del proyecto es de S/ 2,242.94, lo que indica que, considerando una tasa de descuento del 8%, el proyecto genera beneficios económicos adicionales después de recuperar la inversión inicial.
+
+**5.1.2.3 Tasa Interna de Retorno (TIR)**
+
+| TIR | 0.046 |
+| --- | --- |
+
+La Tasa Interna de Retorno obtenida es de 4.6%, la cual es menor a la tasa de descuento del 8%. Sin embargo, debido a que el proyecto presenta un VAN positivo y beneficios operativos, se considera viable en el contexto académico, ya que no tiene como objetivo principal la generación de rentabilidad financiera, sino el desarrollo de una solución tecnológica funcional.
+
+**Conclusiones**
+
+En conclusión, el proyecto de dashboard de análisis electoral y evaluación de planes de gobierno – Perú 2026 es viable desde el punto de vista técnico, ya que se cuenta con herramientas accesibles y ampliamente utilizadas como Power BI, Excel y tecnologías de desarrollo que permiten implementar una solución eficiente, escalable y de fácil acceso para los usuarios.
+
+Respecto a la factibilidad económica, el proyecto presenta resultados favorables, con un Valor Actual Neto (VAN) de S/ 2,242.94 y una relación beneficio/costo (B/C) de 1.33, lo que indica que la inversión es recuperable y que los beneficios generados superan los costos de implementación y operación. Si bien la Tasa Interna de Retorno (TIR) es de 4.6%, menor a la tasa de descuento del 8%, el proyecto sigue siendo viable en el contexto académico, ya que su objetivo principal no es la generación de rentabilidad financiera, sino el desarrollo de una solución tecnológica funcional y útil.
+
+En cuanto a la factibilidad operativa, el sistema es viable debido a que los usuarios están familiarizados con el uso de herramientas digitales y dashboards, lo que facilita su implementación, uso y mantenimiento sin requerir procesos complejos de capacitación.
+
+Desde el punto de vista legal, el proyecto cumple con la normativa vigente en el Perú, especialmente en lo relacionado con el uso de información pública y la protección de datos personales, garantizando un manejo adecuado y transparente de la información.
+
+En relación con la factibilidad social, el sistema tiene un impacto positivo, ya que contribuye a mejorar el acceso a la información electoral, facilita la comparación de propuestas de los candidatos y promueve una toma de decisiones más informada por parte de los ciudadanos.
+
+Finalmente, en cuanto a la factibilidad ambiental, el proyecto no genera impactos negativos significativos, ya que se basa en el uso de herramientas digitales que reducen el consumo de recursos físicos, promoviendo prácticas sostenibles mediante la gestión eficiente de la información.
+
+En conjunto, los resultados obtenidos demuestran que el proyecto es viable desde un enfoque técnico, económico y social, siendo una propuesta recomendable para su desarrollo e implementación en el ámbito académico.
