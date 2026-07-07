@@ -26,11 +26,13 @@ El video de presentacion del sistema se encuentra disponible en el siguiente enl
 
 ## Documentos del proyecto
 
+Los documentos principales del sistema se pueden consultar desde los siguientes enlaces:
+
 - [Informe de Factibilidad](FD01-EPIS-Informe%20de%20Factibilidad.docx)
 - [Informe de Vision](FD02-EPIS-Informe%20Vision.docx)
 - [Informe de Especificacion de Requerimientos](FD03-EPIS-Informe%20Especificaci%C3%B3n%20Requerimientos.docx)
 - [Informe de Arquitectura de Software](FD04-EPIS-Informe%20Arquitectura%20de%20Software.docx)
-- [Informe de Proyecto Final](FD05-EPIS-Informe%20ProyectoFinal.docx)
+- [Informe de Proyecto Final](FD05-EPIS-Informe%20ProyectoFinal.pdf)
 - [Propuesta del Proyecto](FD06-EPIS-PropuestaProyecto.docx)
 - [Presentacion del Dashboard Electoral](Documentacion/PresentacionDashboard-Electoral.pptx)
 - [Triptico del Dashboard Analitico Electoral](Documentacion/triptico_dashboard_analitico_electoral.pdf)
