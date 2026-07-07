@@ -28,7 +28,7 @@ El video de presentacion del sistema se encuentra disponible en el siguiente enl
 
 Los documentos principales del sistema se pueden consultar desde los siguientes enlaces:
 
-- [Informe de Factibilidad](FD01-EPIS-Informe%20de%20Factibilidad.docx)
+- Informe de Factibilidad: [DOCX](FD01-EPIS-Informe%20de%20Factibilidad.docx) | [MD](FD01-Informe-Factibilidad.md)
 - [Informe de Vision](FD02-EPIS-Informe%20Vision.docx)
 - [Informe de Especificacion de Requerimientos](FD03-EPIS-Informe%20Especificaci%C3%B3n%20Requerimientos.docx)
 - [Informe de Arquitectura de Software](FD04-EPIS-Informe%20Arquitectura%20de%20Software.docx)
