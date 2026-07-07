@@ -24,6 +24,17 @@ El video de presentacion del sistema se encuentra disponible en el siguiente enl
 
 [Ver video en Google Drive](https://drive.google.com/drive/folders/1KHawLHK9ZqBfoWdlit1HlSfCr7i3wQz2?usp=drive_link)
 
+## Documentos del proyecto
+
+- [Informe de Factibilidad](FD01-EPIS-Informe%20de%20Factibilidad.docx)
+- [Informe de Vision](FD02-EPIS-Informe%20Vision.docx)
+- [Informe de Especificacion de Requerimientos](FD03-EPIS-Informe%20Especificaci%C3%B3n%20Requerimientos.docx)
+- [Informe de Arquitectura de Software](FD04-EPIS-Informe%20Arquitectura%20de%20Software.docx)
+- [Informe de Proyecto Final](FD05-EPIS-Informe%20ProyectoFinal.docx)
+- [Propuesta del Proyecto](FD06-EPIS-PropuestaProyecto.docx)
+- [Presentacion del Dashboard Electoral](Documentacion/PresentacionDashboard-Electoral.pptx)
+- [Triptico del Dashboard Analitico Electoral](Documentacion/triptico_dashboard_analitico_electoral.pdf)
+
 ## Estructura general
 
 - `sistema/data`: archivos de datos utilizados por el sistema.
