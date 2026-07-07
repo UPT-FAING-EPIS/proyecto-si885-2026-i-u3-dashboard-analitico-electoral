@@ -1,8 +1,6 @@
-<center>
+<!-- Archivo generado desde `FD02-EPIS-Informe Vision.docx` para visualizacion en GitHub. -->
 
-[comment]: <img src="./media/media/image1.png" style="width:1.088in;height:1.46256in" alt="escudo.png" />
-
-![./media/media/image1.png](./media/logo-upt.png)
+![Imagen del informe](media/fd02_vision/fd02_imagen_01.png)
 
 **UNIVERSIDAD PRIVADA DE TACNA**
 
@@ -10,221 +8,332 @@
 
 **Escuela Profesional de Ingeniería de Sistemas**
 
-**Proyecto *{Nombre de Proyecto}***
+**Proyecto “Dashboard de análisis electoral Perú 2026”**
 
-Curso: *{Nombre de Asignatura}*
+Curso: Inteligencia de Negocios
 
-Docente: *{Nombre de Docente}*
+Docente: Mag. Patrick Jose Cuadros Quiroga
 
 Integrantes:
 
-***{Apellidos y nombres del estudiante (código universitario)}***
+**Chura Ticona, Mary Luz (2019065163)**
+
+**Diego Chara Apaza (2019065026)**
 
 **Tacna – Perú**
 
-***{Año}***
+**2026**
 
-**  
-**
-</center>
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
+**CONTROL DE VERSIONES**
 
-|CONTROL DE VERSIONES||||||
-| :-: | :- | :- | :- | :- | :- |
-|Versión|Hecha por|Revisada por|Aprobada por|Fecha|Motivo|
-|1\.0|MPV|ELV|ARV|10/10/2020|Versión Original|
+| Versión | Hecha por | Revisada por | Aprobada por | Fecha | Motivo |
+| --- | --- | --- | --- | --- | --- |
+| 1.0 | MPV | ELV | ARV | 10/10/2020 | Versión Original |
 
+# Sistema {Nombre del Sistema}
 
+# Documento de Visión
 
+# Versión {1.0}
 
+**CONTROL DE VERSIONES**
 
-
-
-
-
-
-
-
-**Sistema *{Nombre del Sistema}***
-
-**Documento de Visión**
-
-**Versión *{1.0}***
-**
-
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
-
-|CONTROL DE VERSIONES||||||
-| :-: | :- | :- | :- | :- | :- |
-|Versión|Hecha por|Revisada por|Aprobada por|Fecha|Motivo|
-|1\.0|MPV|ELV|ARV|10/10/2020|Versión Original|
-
-
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
-
+| Versión | Hecha por | Revisada por | Aprobada por | Fecha | Motivo |
+| --- | --- | --- | --- | --- | --- |
+| 1.0 | MPV | ELV | ARV | 10/10/2020 | Versión Original |
 
 **INDICE GENERAL**
-#
-[1.	Introducción](#_Toc52661346)
 
-1.1	Propósito
+# INTRODUCCION
 
-1.2	Alcance
+# En la actualidad, el acceso a la información política es fundamental para la toma de decisiones informadas por parte de los ciudadanos. Sin embargo, en el Perú, la información relacionada con los candidatos presidenciales y sus planes de gobierno suele encontrarse dispersa en múltiples fuentes, lo que dificulta su análisis, comparación y comprensión.
 
-1.3	Definiciones, Siglas y Abreviaturas
+# En este contexto, surge la necesidad de implementar soluciones tecnológicas que permitan organizar, visualizar y analizar esta información de manera clara y accesible. El presente documento propone el desarrollo de un ashboard de análisis electoral de candidatos presidenciales - Perú 2026
 
-1.4	Referencias
+# A lo largo de este documento se describen los objetivos, alcance, usuarios, características y beneficios del sistema, con el fin de establecer una visión clara del proyecto y su impacto en el análisis de información política.
 
-1.5	Visión General
+## Propósito
 
-[2.	Posicionamiento](#_Toc52661347)
+## El propósito de este documento es definir una visión clara y estructurada del sistema “Dashboard de análisis de candidatos presidenciales y evaluación de planes de gobierno-Perú 2026”, estableciendo sus objetivos, funcionalidades, alcance y beneficios esperados.
 
-2.1	Oportunidad de negocio
+## Asimismo, busca servir como guía para el desarrollo del sistema, permitiendo que todos los involucrados tengan una comprensión común del proyecto y sus alcances.
 
-2.2	Definición del problema
+## Alcance
 
-[3.	Descripción de los interesados y usuarios](#_Toc52661348)
+## El sistema contempla el desarrollo de un dashboard interactivo que permitirá a los usuarios analizar el perfil de los candidatos presidenciales y comparar sus planes de gobierno.
 
-3.1	Resumen de los interesados
+## El sistema incluirá funcionalidades como:
 
-3.2	Resumen de los usuarios
+## Visualización del perfil de candidatos (datos personales, características socioeconómicas y trayectoria)
 
-3.3	Entorno de usuario
+## Análisis de ingresos y patrimonio declarados ante la ONPE
 
-3.4	Perfiles de los interesados
+## Clasificación de candidatos según nivel de riesgo legal y penal
 
-3.5	Perfiles de los Usuarios
+## Evaluación de presencia digital en TikTok y actividad en campaña
 
-3.6	Necesidades de los interesados y usuarios
+## Uso de filtros dinámicos para analizar información por candidato o partido político.
 
-[4.	Vista General del Producto](#_Toc52661349)
+## No se contempla la integración con sistemas oficiales en tiempo real ni el uso de datos sensibles, ya que el proyecto se desarrolla en un entorno académico.
 
-4.1	Perspectiva del producto
+## Definiciones, Siglas y Abreviaturas
 
-4.2	Resumen de capacidades
+## Dashboard: Herramienta visual que permite representar datos mediante gráficos e indicadores
 
-4.3	Suposiciones y dependencias
+## BI: Business Intelligence (Inteligencia de Negocios)
 
-4.4	Costos y precios
+## ONPE: Oficina Nacional de Procesos Electorales
 
-4.5	Licenciamiento e instalación
+## Dataset: Conjunto de datos organizados para su análisis
 
-[5.	Características del producto](#_Toc52661350)
+## Referencias
 
-[6.	Restricciones](#_Toc52661351)
+## El presente documento se basa en el informe de factibilidad desarrollado previamente, así como en información proveniente de fuentes oficiales como la ONPE y portales de datos abiertos relacionados con las Elecciones Generales del Perú 2026.
 
-[7.	Rangos de calidad](#_Toc52661352)
+## Visión General
 
-[8.	Precedencia y Prioridad](#_Toc52661353)
+## El sistema propuesto es una herramienta digital orientada a mejorar el acceso y comprensión de la información política en el Perú.
 
-[9.	Otros requerimientos del producto](#_Toc52661354)
+## Su finalidad es proporcionar una plataforma que permita analizar el perfil de los candidatos presidenciales y analizar su perfil socioeconómico, legal y de campaña.
 
-b) Estandares legales
+## A través de esta solución, se busca transformar información compleja en conocimiento accesible, facilitando el análisis de propuestas políticas, promoviendo la transparencia y contribuyendo a una toma de decisiones informada.
 
-c) Estandares de comunicación	](#_toc394513800)37
+# POSICIONAMIENTO
 
-d) Estandaraes de cumplimiento de la plataforma	](#_toc394513800)42
+## Oportunidad de negocio
 
-e) Estandaraes de calidad y seguridad	](#_toc394513800)42
+## El crecimiento del uso de herramientas digitales y plataformas de análisis de datos representa una oportunidad significativa para el desarrollo de soluciones orientadas al análisis político. En el Perú, los datos públicos de los candidatos contienen información valiosa, pero no siempre se presentan de forma clara, integrada y fácil de comparar.
 
-[CONCLUSIONES](#_Toc52661355)
+## En este contexto, existe una oportunidad para desarrollar un dashboard que permita centralizar, organizar y visualizar las propuestas de los candidatos, facilitando su análisis comparativo.
 
-[RECOMENDACIONES](#_Toc52661356)
+## Asimismo, el proyecto se alinea con la creciente demanda de herramientas de Business Intelligence (BI), que permiten transformar datos en información útil para la toma de decisiones. Esto no solo aporta valor académico, sino que también tiene potencial aplicación en ámbitos educativos, institucionales y de análisis político.
 
-[BIBLIOGRAFIA](#_Toc52661357)
+## Definición del problema
 
-[WEBGRAFIA](#_Toc52661358)
+## Actualmente, la información relacionada con los candidatos presidenciales en el Perú se encuentra distribuida en diversas fuentes como la ONPE, el JNE y medios digitales, lo que dificulta su acceso, análisis y comparación. Los datos sobre ingresos, patrimonio, antecedentes legales y actividad de campaña están disponibles de forma fragmentada y en formatos poco accesibles. No existe una herramienta que integre el perfil socioeconómico, legal y digital de los candidatos en un solo entorno visual. Por ello, se propone el desarrollo de un dashboard interactivo que centralice esta información y facilite su análisis comparativo.
 
+## Los planes de gobierno suelen ser documentos extensos, técnicos y poco estandarizados, lo que limita su interpretación y la comparación directa entre candidatos. Además, no existe una herramienta que integre el perfil de los candidatos con el análisis estructurado de sus propuestas.
 
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
+## Esta situación genera una brecha en la capacidad de los ciudadanos, estudiantes y analistas para comprender de manera integral las prioridades, enfoques y estrategias de los partidos políticos.
 
-**<u>Informe de Visión</u>**
+## Por ello, se propone el desarrollo de un dashboard interactivo que permita centralizar la información, organizar las propuestas y facilitar su análisis comparativo mediante visualizaciones claras y herramientas dinámicas de exploración.
 
-1. <span id="_Toc52661346" class="anchor"></span>**Introducción**
+# DESCRIPCION DE LOS INTERESADOS Y USUARIOS
 
-    1.1	Propósito
+## Resumen de los interesados y usuarios
 
-    1.2	Alcance
+## Los principales interesados en el sistema de dashboard de análisis electoral incluyen a estudiantes, docentes, analistas de datos y ciudadanos interesados en comprender los procesos electorales.
 
-    1.3	Definiciones, Siglas y Abreviaturas
+## Asimismo, el equipo desarrollador constituye un interesado clave, ya que es responsable de la implementación, mantenimiento y mejora del sistema. Las instituciones educativas también se consideran interesadas, debido a que pueden utilizar el sistema como herramienta de aprendizaje en cursos relacionados con análisis de datos y ciencias sociales.
 
-    1.4	Referencias
+## Resumen de los usuarios
 
-    1.5	Visión General
+## Los usuarios del sistema están conformados principalmente por estudiantes, ciudadanos y analistas que desean visualizar información electoral de manera clara y estructurada.
 
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
+## Asimismo, se consideran usuarios técnicos como los desarrolladores y analistas de datos, quienes interactúan con el sistema para actualizar información, mejorar visualizaciones y asegurar el correcto funcionamiento del dashboard.
 
-2. <span id="_Toc52661347" class="anchor"></span>**Posicionamiento**
+## Entorno de los Usuarios
 
-    2.1	Oportunidad de negocio
+## El sistema será utilizado en un entorno web, accesible desde computadoras personales o dispositivos móviles con conexión a internet.
 
-    2.2	Definición del problema
+## El dashboard contará con una interfaz amigable e intuitiva, permitiendo a los usuarios interactuar con gráficos, filtros y reportes sin necesidad de conocimientos técnicos avanzados. Esto facilita su uso tanto en contextos académicos como personales.
 
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
+## Perfiles de los Interesados
 
-3. <span id="_Toc52661348" class="anchor"></span>**Vista General del Producto**
+## Los interesados del sistema incluyen principalmente al equipo desarrollador, encargado del diseño e implementación del dashboard, y a las instituciones educativas, que pueden utilizar el sistema como herramienta de apoyo académico.
 
-    3.1	Resumen de los interesados
+## Asimismo, se consideran interesados los analistas de datos y docentes, quienes buscan herramientas que faciliten la interpretación de información electoral y la enseñanza de conceptos relacionados con análisis de datos.
 
-    3.2	Resumen de los usuarios
+## Perfiles de los Usuarios
 
-    3.3	Entorno de usuario
+## Los usuarios del sistema se dividen en dos grupos principales:
 
-    3.4	Perfiles de los interesados
+## Usuarios generales: ciudadanos y estudiantes interesados en analizar resultados electorales y comparar propuestas de candidatos.
 
-    3.5	Perfiles de los Usuarios
+## Usuarios técnicos: desarrolladores y analistas de datos que gestionan la información, actualizan el sistema y mejoran las visualizaciones.
 
-    3.6	Necesidades de los interesados y usuarios
+## Cada grupo tiene diferentes niveles de conocimiento técnico, por lo que el sistema debe ser accesible y fácil de usar.
 
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
+## Necesidades de los interesados y usuarios
 
-4. <span id="_Toc52661349" class="anchor"></span>**Estudio de
-    Factibilidad**
+## Las principales necesidades identificadas son:
 
-    4.1	Perspectiva del producto
+## Acceso a información electoral organizada y confiable
 
-    4.2	Resumen de capacidades
+## Visualización clara de resultados y propuestas
 
-    4.3	Suposiciones y dependencias
+## Comparación de candidatos por sectores (salud, educación, economía, etc.)
 
-    4.4	Costos y precios
+## Herramientas interactivas para análisis de datos
 
-    4.5	Licenciamiento e instalación
+## Facilidad de uso sin requerir conocimientos técnicos avanzados
 
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
+## Acceso desde cualquier dispositivo con conexión a internet
 
-5. <span id="_Toc52661350" class="anchor"></span>**Características del producto**
+## Estas necesidades justifican el desarrollo del dashboard como una solución que facilita el análisis y comprensión de la información electoral.
 
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
+# VISTA GENERAL DEL PRODUCTO
 
-6. <span id="_Toc52661351" class="anchor"></span>**Restricciones**
+## Perspectiva del producto
 
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
+## El sistema Dashboard de análisis electoral se presenta como una solución tecnológica orientada a la visualización y análisis de datos electorales del Perú.
 
-7. <span id="_Toc52661352" class="anchor"></span>**Rangos de Calidad**
+## El producto no reemplaza sistemas existentes, sino que complementa la información disponible en fuentes oficiales, integrándola en un entorno visual interactivo que facilita su comprensión.
 
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
+## El sistema permitirá centralizar datos electorales y planes de gobierno, transformándolos en gráficos, indicadores y reportes que apoyan el análisis y la toma de decisiones.
 
-8. <span id="_Toc52661353" class="anchor"></span>**Precedencia y Prioridad**
+## Resumen de capacidades
 
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
+## El sistema contará con las siguientes capacidades principales:
 
-9. <span id="_Toc52661354" class="anchor"></span>**Otros requerimientos del producto**
+## Visualización del perfil integral de candidatos presidenciales
 
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
+## Análisis de ingresos y patrimonio declarados
 
-<span id="_Toc52661355" class="anchor"></span>**CONCLUSIONES**
+## Clasificación de riesgo legal y penal por candidato
 
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
+## Evaluación de presencia en TikTok y cobertura de campaña
 
-<span id="_Toc52661356" class="anchor"></span>**RECOMENDACIONES**
+## Comparación entre candidatos mediante gráficos interactivos
 
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
+## Filtros dinámicos por candidato y partido político.
 
-<span id="_Toc52661357" class="anchor"></span>**BIBLIOGRAFIA**
+## Estas capacidades permitirán transformar datos complejos en información clara y útil para el usuario.
 
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
+## Suposiciones y dependencias
 
-<span id="_Toc52661358" class="anchor"></span>**WEBGRAFIA**
+## El sistema asume que los usuarios cuentan con acceso a internet y dispositivos capaces de visualizar dashboards.
 
-<div style="page-break-after: always; visibility: hidden">\pagebreak</div>
+## Asimismo, depende de la disponibilidad de información electoral proveniente de fuentes oficiales o datasets previamente recopilados.
+
+## El correcto funcionamiento del sistema también depende del uso adecuado de herramientas de análisis de datos y de la calidad de la información utilizada.
+
+## Costos y precios
+
+## El sistema no contempla costos para los usuarios finales, ya que se desarrolla en un entorno académico con fines educativos.
+
+## Los costos asociados corresponden al desarrollo, implementación y mantenimiento del sistema, los cuales han sido detallados en el informe de factibilidad.
+
+## El acceso al dashboard será gratuito, permitiendo su uso por parte de estudiantes, docentes y ciudadanos interesados.
+
+## Licenciamiento e instalación
+
+## El sistema será implementado como una plataforma digital accesible mediante navegador web, sin necesidad de instalación por parte del usuario final.
+
+## El acceso se realizará a través de un enlace público, permitiendo visualizar el dashboard desde cualquier dispositivo con conexión a internet.
+
+## Las herramientas utilizadas para su desarrollo serán de uso libre o educativo, garantizando la viabilidad del sistema en el entorno académico.
+
+# CARACTERÍSTICAS DEL PRODUCTO
+
+# El sistema Dashboard de análisis electoral contará con las siguientes características principales:
+
+# Visualización de resultados electorales mediante gráficos interactivos
+
+# Comparación de candidatos presidenciales
+
+# Análisis de perfil socioeconómico y legal por candidato.
+
+# Uso de filtros y segmentación de datos para personalizar el análisis
+
+# Generación de reportes visuales
+
+# Interfaz intuitiva y fácil de usar
+
+# Estas características permiten transformar la información electoral en una herramienta accesible para el análisis y la toma de decisiones.
+
+# RESTRICCIONES
+
+# El sistema presenta las siguientes restricciones:
+
+# Dependencia de conexión a internet para su uso
+
+# Uso de datos previamente recopilados (no en tiempo real)
+
+# Limitación a herramientas gratuitas o académicas
+
+# Acceso mediante navegador web (no aplicación móvil)
+
+# Dependencia de la calidad de los datos utilizados
+
+# Estas restricciones se deben principalmente al enfoque académico del proyecto.
+
+# RANGOS DE CALIDAD
+
+# El sistema presenta las siguientes restricciones:
+
+# Dependencia de conexión a internet para su uso
+
+# Uso de datos previamente recopilados (no en tiempo real)
+
+# Limitación a herramientas gratuitas o académicas
+
+# Acceso mediante navegador web (no aplicación móvil)
+
+# Dependencia de la calidad de los datos utilizados
+
+# Estas restricciones se deben principalmente al enfoque académico del proyecto.
+
+# PRECEDENCIA Y PRIORIDAD
+
+# Las funcionalidades del sistema se priorizan de la siguiente manera:
+
+# Prioridad alta:
+
+# Visualización de resultados electorales
+
+# Comparación de candidatos
+
+# Prioridad media:
+
+# Análisis de propuestas por sector
+
+# Filtros interactivos
+
+# Prioridad baja:
+
+# Generación de reportes avanzados
+
+# Mejoras visuales adicionales
+
+# Esta priorización permite asegurar una implementación progresiva del sistema.
+
+# OTROS REQUERIMIENTOS DEL PRODUCTO
+
+# El sistema deberá cumplir con los siguientes requerimientos adicionales:
+
+# Compatibilidad con navegadores web modernos
+
+# Diseño responsivo para diferentes dispositivos
+
+# Uso de buenas prácticas de desarrollo
+
+# Escalabilidad para futuras mejoras
+
+# Facilidad de mantenimiento
+
+# Asimismo, se deberán considerar los siguientes estándares:
+
+# Estándares legales: uso de datos públicos y cumplimiento de normativas
+
+# Estándares de comunicación: claridad en la presentación de la información
+
+# Estándares de plataforma: compatibilidad con herramientas de BI
+
+# Estándares de calidad y seguridad: integridad y confiabilidad de los datos
+
+# CONCLUSIONES
+
+# El sistema Dashboard de análisis electoral es una solución viable que permite mejorar el acceso y análisis de la información electoral.
+
+# El proyecto cumple con los requerimientos técnicos y funcionales necesarios para su implementación en un entorno académico, proporcionando una herramienta útil para estudiantes, analistas y ciudadanos. Asimismo, el sistema contribuye a la transparencia informativa y facilita la toma de decisiones mediante el uso de visualizaciones de datos.
+
+# RECOMENDACIONES
+
+# Se recomienda continuar con el desarrollo del sistema priorizando las funcionalidades principales del dashboard. Asimismo, se sugiere mejorar progresivamente las visualizaciones e incorporar nuevas fuentes de datos para enriquecer el análisis.
+
+# También se recomienda validar el sistema mediante pruebas con usuarios para optimizar la experiencia de uso.
+
+# BIBLIOGRAFIA
+
+# WEBGRAFIA
