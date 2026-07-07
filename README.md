@@ -32,7 +32,7 @@ Los documentos principales del sistema se pueden consultar desde los siguientes 
 - Informe de Vision: [DOCX](FD02-EPIS-Informe%20Vision.docx) | [MD](FD02-Informe-Vision.md)
 - Informe de Especificacion de Requerimientos: [DOCX](FD03-EPIS-Informe%20Especificaci%C3%B3n%20Requerimientos.docx) | [MD](FD03-Informe-Especificacion-Requerimientos.md)
 - Informe de Arquitectura de Software: [DOCX](FD04-EPIS-Informe%20Arquitectura%20de%20Software.docx) | [MD](FD04-Informe-Arquitectura-Software.md)
-- [Informe de Proyecto Final](FD05-EPIS-Informe%20ProyectoFinal.pdf)
+- Informe de Proyecto Final: [PDF](FD05-EPIS-Informe%20ProyectoFinal.pdf) | [MD](FD05-Informe-ProyectoFinal.md)
 - [Propuesta del Proyecto](FD06-EPIS-PropuestaProyecto.docx)
 - [Presentacion del Dashboard Electoral](Documentacion/PresentacionDashboard-Electoral.pptx)
 - [Triptico del Dashboard Analitico Electoral](Documentacion/triptico_dashboard_analitico_electoral.pdf)
